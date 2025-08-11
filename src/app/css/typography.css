@@ -1,0 +1,56 @@
+.text-xsm {
+ font-size: var(--font-size-xsm);
+}
+
+.text-sm {
+ font-size: var(--font-size-sm);
+}
+
+.text-md {
+ font-size: var(--font-size-md);
+}
+
+.text-lg {
+ font-size: var(--font-size-lg);
+}
+
+.text-xl {
+ font-size: var(--font-size-xl);
+}
+
+.text-xxl {
+ font-size: var(--font-size-xxl);
+}
+
+.text-w-400 {
+ font-weight: var(--font-weight-400);
+}
+
+.text-w-500 {
+ font-weight: var(--font-weight-500);
+}
+
+.text-w-600 {
+ font-weight: var(--font-weight-600);
+}
+
+.text-bold {
+ font-weight: var(--font-weight-700);
+}
+
+/* Text Alignment */
+.text-center {
+ text-align: center;
+}
+
+.text-left {
+ text-align: left !important;
+}
+
+.text-right {
+ text-align: right;
+}
+
+.text-Uppercase {
+ text-transform: uppercase;
+}

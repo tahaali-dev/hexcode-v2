@@ -1,0 +1,140 @@
+/* Width */
+.w-100 {
+ min-width: 100%;
+}
+
+.w-50 {
+ min-width: 50%;
+}
+
+.w-14 {
+ min-width: 14%;
+}
+
+.w-15 {
+ width: 15%;
+}
+
+.w-20 {
+ min-width: 20%;
+}
+
+.w-25 {
+ min-width: 25%;
+}
+
+.w-85 {
+ min-width: 85%;
+}
+
+.mw-85 {
+ max-width: 70%;
+}
+
+.w-max {
+ width: max-content;
+}
+
+
+
+/* Flexbox Utility Classes */
+.d-flex {
+ display: flex;
+}
+
+.flex-column {
+ flex-direction: column;
+}
+
+.flex-row {
+ flex-direction: row;
+}
+
+.g-start {
+ align-items: start;
+}
+
+.align-end {
+ align-items: end;
+}
+
+.align-center {
+ align-items: center;
+}
+
+.justify-center {
+ justify-content: center;
+}
+
+.justify-start {
+ justify-content: flex-start;
+}
+
+.justify-end {
+ justify-content: flex-end;
+}
+
+.justify-between {
+ justify-content: space-between;
+}
+
+.flex-wrap {
+ flex-wrap: wrap;
+}
+
+/* Gap */
+.g-xs {
+ gap: var(--spacing-xs);
+}
+
+.g-sm {
+ gap: var(--spacing-sm);
+}
+
+.g-mmd {
+ gap: var(--spacing-mmd);
+}
+
+.g-md {
+ gap: var(--spacing-md);
+}
+
+.g-lg {
+ gap: var(--spacing-lg) !important;
+}
+
+.g-xl {
+ gap: var(--spacing-xl);
+}
+
+
+/* Desktop none */
+.d-none {
+ display: none !important;
+}
+
+.m-none {
+ display: flex !important;
+}
+
+@media only screen and (max-width: 786px) {
+ .m-none {
+  display: none !important;
+ }
+
+ .d-none {
+  display: flex !important;
+ }
+
+ .text-xxl {
+  font-size: 24px;
+ }
+
+ .p-xl {
+  padding: 16px;
+ }
+
+  .mw-85 {
+   max-width: 100%;
+  }
+}
