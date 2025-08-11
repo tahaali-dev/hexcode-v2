@@ -58,8 +58,8 @@ export default function ContactForm({ show, onClose }: { show: boolean; onClose:
             <StyledImage
               src={CloseIcon}
               alt="figma-icon"
-              width="20"
-              height="20"
+              width={20}
+              height={20}
             />
           </div>
         </div>
