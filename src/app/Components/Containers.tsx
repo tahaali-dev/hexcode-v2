@@ -24,8 +24,8 @@ export const DashedContainer = ({
           <StyledImage
             className="hex-left-bottom"
             src={GreyHex}
-            width={16}
-            height={16}
+            width={24}
+            height={24}
             alt="Hex Left Bottom"
           />
         )}
@@ -34,8 +34,8 @@ export const DashedContainer = ({
           <StyledImage
             className="hex-right-bottom"
             src={GreyHex}
-            width={16}
-            height={16}
+            width={24}
+            height={24}
             alt="Hex Right Bottom"
           />
         )}
@@ -58,15 +58,15 @@ export const Container = styled.section`
 
   .hex-left-bottom {
     position: absolute;
-    bottom: -8px;
-    left: -8.5px;
+    bottom: -12px;
+    left: -12px;
     z-index: 1;
   }
 
   .hex-right-bottom {
     position: absolute;
-    bottom: -8px;
-    right: -8.5px;
+    bottom: -12px;
+    right: -12px;
     z-index: 1;
   }
   }
