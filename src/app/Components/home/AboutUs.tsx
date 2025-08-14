@@ -78,6 +78,7 @@ const Wrapper = styled.div`
 
     .hexagons-image{
     margin-top:48px;
+        width:100%;
     }
 
     @media (max-width: 768px) {
