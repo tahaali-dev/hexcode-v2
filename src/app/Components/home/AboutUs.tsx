@@ -89,6 +89,7 @@ const Wrapper = styled.div`
 
       .hexagons-image{
     margin-top:24px;
+    width:100%;
     }
   }
 `;

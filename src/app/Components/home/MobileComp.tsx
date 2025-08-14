@@ -13,11 +13,16 @@ const nine = "/companies/Volt.svg";
 const eleven = "/companies/userexperior.svg";
 const sixteen = "/companies/delve.svg";
 
-// Image list
+// Image list with dimensions
 const imageList = [
-  five, two,
-  eleven, three, four, nine,
-  sixteen, seven
+  { src: five, width: 108, height: 37 },
+  { src: two, width: 68, height: 42 },
+  { src: eleven, width: 108, height: 26 },
+  { src: three, width: 108, height: 26 },
+  { src: four, width: 108, height: 26 },
+  { src: nine, width: 68, height: 42 },
+  { src: sixteen, width: 108, height: 42 },
+  { src: seven, width: 112, height: 18 }
 ];
 
 const MobileComp = () => {
@@ -44,13 +49,13 @@ const MobileComp = () => {
         </div>
 
         <LogoWrap>
-          {imageList.map((imageSrc, index) => (
+          {imageList.map((image, index) => (
             <LogoBox key={index}>
               <StyledImage
-                src={imageSrc}
+                src={image.src}
                 alt={`icon-${index + 1}`}
-                width={107}
-                height={48}
+                width={image.width}
+                height={image.height}
               />
             </LogoBox>
           ))}
@@ -93,11 +98,6 @@ const LogoBox = styled.div`
   border-bottom: 1px dashed #d3d3d3;
   border-right: 1px dashed #d3d3d3;
 
-  img{
-  height:34px;
-  }
-
-
   /* Remove right border for last column items */
   &:nth-of-type(2n) {
     border-right: none;
@@ -107,4 +107,5 @@ const LogoBox = styled.div`
   &:nth-last-of-type(-n+2) {
     border-bottom: none;
   }
+
 `;

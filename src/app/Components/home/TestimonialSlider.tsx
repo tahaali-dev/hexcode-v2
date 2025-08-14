@@ -61,10 +61,10 @@ export default function TestimonialSlider({ activeIndex }: TestimonialSliderProp
               {testimonials.map((t, index) => (
                 <div className="keen-slider__slide" key={index}>
                   <Slide isActive={activeIndex === index}>
-                    <StyledImage src={t.image} alt={t.name} width={392} height={453} />
+                    <StyledImage src={t.image} alt={t.name} width={392} height={453} className='testimonial-image' />
                     <Content>
-                      <div>
-                        <StyledImage src={t.logo?.src ?? ""} alt={t.company} width={t.logo?.width} height={t.logo?.height} />
+                      <div className='mob-flex'>
+                        <StyledImage src={t.logo?.src ?? ""} alt={t.company} width={t.logo?.width} height={t.logo?.height} className='comy-logo' />
                         <Text>{t.text}</Text>
                       </div>
                       <div className="bottom">
@@ -102,6 +102,22 @@ const Wrapper = styled.div`
 
 @media (max-width: 768px) {
 padding : 32px 0px 0px 0px;
+
+.testimonial-image{
+width:100%;
+}
+
+.mob-flex{
+display:flex;
+flex-direction:column; 
+align-items:center;
+gap:8px;
+margin-top:18px;
+}
+
+.comy-logo{
+
+}
 }
 `
 

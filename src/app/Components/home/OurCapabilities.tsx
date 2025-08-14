@@ -95,6 +95,14 @@ const LottieBox = styled.div`
   justify-content: center;
   align-items: center;
   margin: 24px 0px;
+
+      @media (max-width: 768px) {
+        margin: 24px 0px 0px 0px;
+    img{
+    width: 122px;
+    height: 148px;
+    }
+    }
 `;
 
 const Card = styled.li`

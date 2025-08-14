@@ -166,6 +166,8 @@ const LeftBox = styled.div<{ type?: string }>`
     .w-full {
       width: 100%;
     }
+
+
   }
 `;
 
@@ -184,6 +186,11 @@ border-radius: 16px;
 
     .w-full {
       width: 100%;
+    }
+
+    .mobile-illustration{
+    width:100%;
+    height:100%;
     }
   }
 `;
