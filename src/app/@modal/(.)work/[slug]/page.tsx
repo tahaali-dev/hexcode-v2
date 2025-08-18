@@ -11,6 +11,7 @@ const CloseRd = "/icons/closeRound.svg"
 import gsap from 'gsap';
 import { usePathname } from "next/navigation";
 import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
+import StarbriteCs from "@/app/Components/casestudy/Starbright";
 
 
 const ANIMATION_DURATION_0 = 0.3;
@@ -85,9 +86,9 @@ const ModalContent = () => {
               <SensytechCs />
             )}
 
-            {/* {location.pathname === "/work/starbrite-dental" && (
-              <ProjectStarbright />
-            )} */}
+            {pathname === "/work/starbrite-dental" && (
+              <StarbriteCs />
+            )}
 
             <Footer />
 

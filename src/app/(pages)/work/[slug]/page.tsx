@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { usePathname } from "next/navigation";
 import VoltCs from "@/app/Components/casestudy/Volt";
 import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
+import StarbriteCs from "@/app/Components/casestudy/Starbright";
 
 const Page = () => {
   const pathname = usePathname();
@@ -11,8 +12,8 @@ const Page = () => {
     <>
       <FullPageWrap>
         {pathname === "/work/volt" && <VoltCs />}
-        {pathname === "/work/sensyrtech" && <SensytechCs />
-        }
+        {pathname === "/work/sensyrtech" && <SensytechCs />}
+        {pathname === "/work/starbrite-dental" && <StarbriteCs />}
       </FullPageWrap>
     </>
   );
