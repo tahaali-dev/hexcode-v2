@@ -1,3 +1,4 @@
+import Link from "next/link"
 import EmptyContainer from "./Components/Containers"
 import AboutUs from "./Components/home/AboutUs"
 import Benefits from "./Components/home/Benefits"
@@ -13,6 +14,7 @@ import VideoPlayer from "./Components/home/VideoPlayer"
 const page = () => {
   return (
     <>
+      <Link href={"/work/volt"}>Modal</Link>
       <PrimeFold />
       <CompanyMarq />
       <MobileComp />

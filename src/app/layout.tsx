@@ -36,8 +36,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en" className={museoSans.variable}>
@@ -45,9 +47,9 @@ export default function RootLayout({
         <body className={museoSans.className}>
           <Header />
           {children}
-          <Footer />
-
-          <MobileNav />
+          {modal}
+          {/* <Footer /> */}
+          {/* <MobileNav /> */}
         </body>
       </SmoothScrollProvider>
     </html>
