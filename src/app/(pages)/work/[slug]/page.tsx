@@ -2,17 +2,20 @@
 import styled from "@emotion/styled";
 import { usePathname } from "next/navigation";
 import VoltCs from "@/app/Components/casestudy/Volt";
+import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
 
 const Page = () => {
- const pathname = usePathname();
+  const pathname = usePathname();
 
- return (
-  <>
-   <FullPageWrap>
-    {pathname === "/work/volt" && <VoltCs />}
-   </FullPageWrap>
-  </>
- );
+  return (
+    <>
+      <FullPageWrap>
+        {pathname === "/work/volt" && <VoltCs />}
+        {pathname === "/work/sensyrtech" && <SensytechCs />
+        }
+      </FullPageWrap>
+    </>
+  );
 };
 
 export default Page;

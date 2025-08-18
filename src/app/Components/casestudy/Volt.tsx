@@ -52,562 +52,562 @@ const Result1D = "/casestudy/volt/v-r1-d.webp";
 const Result1M = "/casestudy/volt/v-r1-d.webp";
 
 const VoltCs = () => {
- const projects = ["Sensyrtech", "Tinker Village"];
+  const projects = ["Sensyrtech", "Tinker Village"];
 
- return (
-  <div>
-   {/* section 1 */}
-   <DashedContainer>
-    <SectionCont className='px-40 py-40'>
-     <div className='d-flex align-center justify-between align-start-mob g-md m-col'>
-      <div className='d-flex flex-column g-start'>
-       <HexSectionName title="Volt Money" />
+  return (
+    <div>
+      {/* section 1 */}
+      <DashedContainer>
+        <SectionCont className='px-40 py-40'>
+          <div className='d-flex align-center justify-between align-start-mob g-md m-col'>
+            <div className='d-flex flex-column g-start'>
+              <HexSectionName title="Volt Money" />
 
-       <DyTitleH1
-        fontSize={{ base: '48px', md: '38px', sm: '38px' }}
-        lineHeight={{ base: '56px', md: '44px', sm: '44px' }}
-        fontWeight={300}
-        fontStyle="normal"
-        textTransform="uppercase"
-        color="#181010"
-        className='text-left mt-md'
-       >
-        Building trust in a new category of credit
-       </DyTitleH1>
+              <DyTitleH1
+                fontSize={{ base: '48px', md: '38px', sm: '38px' }}
+                lineHeight={{ base: '56px', md: '44px', sm: '44px' }}
+                fontWeight={300}
+                fontStyle="normal"
+                textTransform="uppercase"
+                color="#181010"
+                className='text-left mt-md'
+              >
+                Building trust in a new category of credit
+              </DyTitleH1>
 
-       <BtnHolder className='d-flex g-md mt-xl'>
-        <BtnVar2 onClick={() => window.open("https://voltmoney.in/", "_blank")}>Visit Site</BtnVar2>
-        <PrimaryBtn
-         padding="16px"
-         fontSize="18px"
-         margin="0"
-         borderRadius="8px"
-         btnContent="Book a call"
-         onClick={() => window.open("https://calendly.com/shabbir-hexcode/30min", "_blank")}
-        />
-       </BtnHolder>
-      </div>
-
-     </div>
-
-     <Dpara
-      fontSize="20px"
-      lineHeight="28px"
-      fontWeight="300"
-      color="#352727"
-      mdFontSize="18px"
-      mdLineHeight="24px"
-      smFontSize="18px"
-      smLineHeight="24px"
-      textAlign="left"
-      className='mt-lg'
-     >
-      When the Volt Money team first reached out to us at Hexcode, they had a bold idea: what if people could get affordable loans simply by pledging their mutual funds, without ever having to sell them? The catch? Most people had never even heard of this kind of credit. That meant building not just a product but also trust, education, and a sense of security around an unfamiliar financial tool, all while making it really easy to use.
-     </Dpara>
-
-     <Dpara
-      fontSize="20px"
-      lineHeight="28px"
-      fontWeight="300"
-      color="#352727"
-      mdFontSize="18px"
-      mdLineHeight="24px"
-      smFontSize="18px"
-      smLineHeight="24px"
-      textAlign="left"
-      className='mt-lg'
-     >
-      Over almost two years, we became more than just a design agency for Volt. We were partners, working side by side with their team to shape everything from their brand identity and app experience to marketing and design systems. Our goal was simple: help Volt become a trusted, clear, and approachable option for anyone curious about borrowing against their investments.
-     </Dpara>
-
-     <div className='mt-xl d-flex g-md flex-wrap'>
-      <ProjectTypeTag2
-       title="Finance"
-       backgroundColor="#FBC1D4"
-       color="#181010"
-       isHover={false}
-      />
-      <ProjectTypeTag2
-       title="Visual Identity"
-       backgroundColor="#C3ABFF"
-       color="#181010"
-       isHover={false}
-      />
-      <ProjectTypeTag2
-       title="Website & Product"
-       backgroundColor="#81D0FF"
-       color="#181010"
-       isHover={false}
-      />
-     </div>
-    </SectionCont>
-   </DashedContainer>
-
-   <BottomDashCont>
-    <BannerWap className='m-none'>
-     <img src={banner0D} alt="" />
-    </BannerWap>
-    <BannerWap className='d-none'>
-     <img src={banner0M} alt="" />
-    </BannerWap>
-   </BottomDashCont>
-
-
-   {/* section 6 */}
-   <DashedContainer leftBottom rightBottom>
-    <SectionCont className='d-flex flex-column g-start'>
-     <div className='px-40 py-40 d-flex flex-column g-start'>
-      <DyH2
-       fontSize={{ base: '40px', md: '32px', sm: '32px' }}
-       lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
-       fontWeight={300}
-       fontStyle="normal"
-       textTransform="capitalize"
-       color="#181010"
-      >
-       The Challenge
-      </DyH2>
-
-      <Dpara
-       fontSize="20px"
-       lineHeight="28px"
-       fontWeight="300"
-       color="#352727"
-       mdFontSize="18px"
-       mdLineHeight="24px"
-       smFontSize="18px"
-       smLineHeight="24px"
-       textAlign="left"
-       className='mt-lg'
-      >
-       Borrowing against mutual funds isn’t something most people know about, so right from the start, we had to help users understand and feel good about what Volt offered. Trust was everything. That meant stripping out jargon, making every process feel seamless, and always putting the user’s concerns first. The Volt team was rapidly adding features, raising capital, and growing their momentum.
-      </Dpara>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={Challenge1D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={Challenge1M} alt="" />
-      </BannerWap>
-     </div>
-    </SectionCont>
-   </DashedContainer>
-
-   <EmptyContainer height="76px" />
-
-   {/* section 7 */}
-   <DashedContainer leftBottom rightBottom>
-    <SectionCont className='d-flex flex-column g-start'>
-     <div className='px-40 py-40 d-flex flex-column g-start'>
-      <DyH2
-       fontSize={{ base: '40px', md: '32px', sm: '32px' }}
-       lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
-       fontWeight={300}
-       fontStyle="normal"
-       textTransform="capitalize"
-       color="#181010"
-      >
-       Our Process
-      </DyH2>
-
-      <Dpara
-       fontSize="20px"
-       lineHeight="28px"
-       fontWeight="300"
-       color="#352727"
-       mdFontSize="18px"
-       mdLineHeight="24px"
-       smFontSize="18px"
-       smLineHeight="24px"
-       textAlign="left"
-       className='mt-lg'
-      >
-       Every phase of our work with Volt involved close collaboration and open feedback. We spent time with their team to understand not just the product, but also the users, their doubts, and what would make them feel confident. Together, we iterated, tested, and refined, always aiming to make a complex idea feel simple and approachable.
-      </Dpara>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={Process1D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={Process1M} alt="" />
-      </BannerWap>
-     </div>
-    </SectionCont>
-   </DashedContainer>
-
-   <EmptyContainer height="76px" />
-
-   {/* section 2 */}
-   <DashedContainer leftBottom rightBottom>
-    <SectionCont className='d-flex flex-column g-start'>
-     <div className='px-40 py-40 d-flex flex-column g-start'>
-      <HexSectionName title="How we helped" />
-
-      <DyH2
-       fontSize={{ base: '40px', md: '32px', sm: '32px' }}
-       lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
-       fontWeight={300}
-       fontStyle="normal"
-       textTransform="capitalize"
-       color="#181010"
-       className='mt-md'
-      >
-       Brand Identity
-      </DyH2>
-
-      <Dpara
-       fontSize="20px"
-       lineHeight="28px"
-       fontWeight="300"
-       color="#352727"
-       mdFontSize="18px"
-       mdLineHeight="24px"
-       smFontSize="18px"
-       smLineHeight="24px"
-       textAlign="left"
-       className='mt-lg'
-      >
-       We kicked things off by uncovering what made Volt special, then defined how it should look and sound to the world. The visual style needed the right balance: it had to feel modern and credible, but never cold or intimidating. We crafted a look that was both trustworthy and welcoming.
-      </Dpara>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={BrandingBanner1D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={BrandingBanner1M} alt="" />
-      </BannerWap>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={BrandingBanner2D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={BrandingBanner2M} alt="" />
-      </BannerWap>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={BrandingBanner3D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={BrandingBanner3M} alt="" />
-      </BannerWap>
-     </div>
-    </SectionCont>
-   </DashedContainer>
-
-   <EmptyContainer height="76px" />
-
-   {/* section 3 */}
-   <DashedContainer >
-    <SectionCont className='px-40 py-40 d-flex flex-column g-start'>
-     <DyH2
-      fontSize={{ base: '40px', md: '32px', sm: '32px' }}
-      lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
-      fontWeight={300}
-      fontStyle="normal"
-      textTransform="capitalize"
-      color="#181010"
-     >
-      Mobile App
-     </DyH2>
-
-     <Dpara
-      fontSize="20px"
-      lineHeight="28px"
-      fontWeight="300"
-      color="#352727"
-      mdFontSize="18px"
-      mdLineHeight="24px"
-      smFontSize="18px"
-      smLineHeight="24px"
-      textAlign="left"
-      className='mt-lg'
-     >
-      Next, we designed an app that anyone not just finance pros could use with confidence. Whether pledging funds, checking on loans, or receiving updates, every step was streamlined to feel clear and comforting, never overwhelming. We built a reusable component library so the Volt team could quickly add new features without feeling lost.
-     </Dpara>
-    </SectionCont>
-   </DashedContainer>
-
-   <BottomDashCont>
-    <BannerWap className=' m-none'>
-     <img src={MobileApp2D} alt="" />
-    </BannerWap>
-    <BannerWap className='d-none'>
-     <img src={MobileApp2M} alt="" />
-    </BannerWap>
-   </BottomDashCont>
-
-   {/* section 4 */}
-   <DashedContainer leftBottom rightBottom>
-    <SectionCont className='d-flex flex-column g-start'>
-     <div className='px-40 py-40 d-flex flex-column g-start'>
-      <DyH2
-       fontSize={{ base: '40px', md: '32px', sm: '32px' }}
-       lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
-       fontWeight={300}
-       fontStyle="normal"
-       textTransform="capitalize"
-       color="#181010"
-      >
-       Design System
-      </DyH2>
-
-      <Dpara
-       fontSize="20px"
-       lineHeight="28px"
-       fontWeight="300"
-       color="#352727"
-       mdFontSize="18px"
-       mdLineHeight="24px"
-       smFontSize="18px"
-       smLineHeight="24px"
-       textAlign="left"
-       className='mt-lg'
-      >
-       As Volt grew, they needed to keep their product feeling consistent, no matter how fast they moved. Our custom design system became the single source of truth for every color, button, and interaction. It was more than just a rulebook. It acted like a kit that empowered both designers and developers to do their best work, faster.
-      </Dpara>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={banner3D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={banner3M} alt="" />
-      </BannerWap>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={banner4D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={banner4M} alt="" />
-      </BannerWap>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={banner5D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={banner5M} alt="" />
-      </BannerWap>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={banner6D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={banner6M} alt="" />
-      </BannerWap>
-     </div>
-    </SectionCont>
-   </DashedContainer>
-
-   <EmptyContainer height="76px" />
-
-   {/* section 5 */}
-   <DashedContainer leftBottom rightBottom>
-    <SectionCont className='d-flex flex-column g-start'>
-     <div className='px-40 py-40 d-flex flex-column g-start'>
-      <DyH2
-       fontSize={{ base: '40px', md: '32px', sm: '32px' }}
-       lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
-       fontWeight={300}
-       fontStyle="normal"
-       textTransform="capitalize"
-       color="#181010"
-      >
-       Marketing Website
-      </DyH2>
-
-      <Dpara
-       fontSize="20px"
-       lineHeight="28px"
-       fontWeight="300"
-       color="#352727"
-       mdFontSize="18px"
-       mdLineHeight="24px"
-       smFontSize="18px"
-       smLineHeight="24px"
-       textAlign="left"
-       className='mt-lg'
-      >
-       We knew first impressions were important, especially in a new financial category. So we made sure Volt’s website told their story simply and clearly, breaking down the benefits and guiding users through the process step by step. Social proof and friendly visuals built the trust that new customers needed.
-      </Dpara>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={Marketing1D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={Marketing1M} alt="" />
-      </BannerWap>
-     </div>
-
-     <div>
-      <BannerWap className='p-sm m-none'>
-       <img src={Marketing2D} alt="" />
-      </BannerWap>
-      <BannerWap className='p-sm d-none'>
-       <img src={Marketing2M} alt="" />
-      </BannerWap>
-     </div>
-    </SectionCont>
-   </DashedContainer>
-
-   <EmptyContainer height="76px" />
-
-
-   {/* section 8 */}
-   <DashedContainer >
-    <SectionCont className='d-flex flex-column g-start'>
-     <div className='px-40 py-40 d-flex flex-column g-start'>
-      <DyH2
-       fontSize={{ base: '40px', md: '32px', sm: '32px' }}
-       lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
-       fontWeight={300}
-       fontStyle="normal"
-       textTransform="capitalize"
-       color="#181010"
-      >
-       Results
-      </DyH2>
-
-      <Dpara
-       fontSize="20px"
-       lineHeight="28px"
-       fontWeight="300"
-       color="#352727"
-       mdFontSize="18px"
-       mdLineHeight="24px"
-       smFontSize="18px"
-       smLineHeight="24px"
-       textAlign="left"
-       className='mt-lg'
-      >
-       So how did it all turn out? Users loved the app, which earned a <a target='_blank' className='red-anchor' href="https://play.google.com/store/apps/details?id=in.voltmoney&hl=en_IN">4.8+ rating</a> on the Google Play Store. The website helped drive new signups, thanks to its clarity. Most importantly, Volt’s customers felt empowered to try something new, backed by a product (and a partner) that put their needs first.
-      </Dpara>
-
-      <Dpara
-       fontSize="20px"
-       lineHeight="28px"
-       fontWeight="300"
-       color="#352727"
-       mdFontSize="18px"
-       mdLineHeight="24px"
-       smFontSize="18px"
-       smLineHeight="24px"
-       textAlign="left"
-       className='mt-lg'
-      >
-       Through all the ups, pivots, and launches, we didn’t just keep Volt looking sharp. We helped them grow with their users in mind every step of the way.
-      </Dpara>
-
-      {/* Testimonial */}
-      <div className=' top-dashed mt-lg'>
-       {testimonials
-        .filter((testimonial) => testimonial.name === "Lalit Bihani")
-        .map((t, index) => (
-         <TestimonialCard key={index} className='mt-xl'>
-          <HexSectionName title="Testimonial" className="d-flex align-center justify-start g-sm about-img" />
-          <Dpara
-           fontSize="28px"
-           lineHeight="40px"
-           fontWeight="300"
-           color="#181010"
-           mdFontSize="32px"
-           mdLineHeight="46px"
-           smFontSize="18px"
-           smLineHeight="24px"
-           textAlign="left"
-           className="mt-lg testimonial-text"
-          >
-           {t.shortText}
-          </Dpara>
-          <div className="d-flex justify-between mt-lg align-center ">
-           {/* Left side: Person image and info */}
-           <div className="d-flex align-center g-md">
-            <StyledImage src={t.image} width={64} height={64} className="client-image" alt={t.name} priority />
-            <div className="d-flex flex-column">
-             <Author>{t.name}</Author>
-             <SubText>{t.title}</SubText>
+              <BtnHolder className='d-flex g-md mt-xl'>
+                <BtnVar2 onClick={() => window.open("https://voltmoney.in/", "_blank")}>Visit Site</BtnVar2>
+                <PrimaryBtn
+                  padding="16px"
+                  fontSize="18px"
+                  margin="0"
+                  borderRadius="8px"
+                  btnContent="Book a call"
+                  onClick={() => window.open("https://calendly.com/shabbir-hexcode/30min", "_blank")}
+                />
+              </BtnHolder>
             </div>
-           </div>
 
-           {/* Right side: Company logo */}
-           <div className="m-none">
-            <StyledImage src={t.logo} width={64} height={28} alt={t.company} priority />
-           </div>
           </div>
-         </TestimonialCard>
-        ))}
-      </div>
-     </div>
+
+          <Dpara
+            fontSize="20px"
+            lineHeight="28px"
+            fontWeight="300"
+            color="#352727"
+            mdFontSize="18px"
+            mdLineHeight="24px"
+            smFontSize="18px"
+            smLineHeight="24px"
+            textAlign="left"
+            className='mt-lg'
+          >
+            When the Volt Money team first reached out to us at Hexcode, they had a bold idea: what if people could get affordable loans simply by pledging their mutual funds, without ever having to sell them? The catch? Most people had never even heard of this kind of credit. That meant building not just a product but also trust, education, and a sense of security around an unfamiliar financial tool, all while making it really easy to use.
+          </Dpara>
+
+          <Dpara
+            fontSize="20px"
+            lineHeight="28px"
+            fontWeight="300"
+            color="#352727"
+            mdFontSize="18px"
+            mdLineHeight="24px"
+            smFontSize="18px"
+            smLineHeight="24px"
+            textAlign="left"
+            className='mt-lg'
+          >
+            Over almost two years, we became more than just a design agency for Volt. We were partners, working side by side with their team to shape everything from their brand identity and app experience to marketing and design systems. Our goal was simple: help Volt become a trusted, clear, and approachable option for anyone curious about borrowing against their investments.
+          </Dpara>
+
+          <div className='mt-xl d-flex g-md flex-wrap'>
+            <ProjectTypeTag2
+              title="Finance"
+              backgroundColor="#FBC1D4"
+              color="#181010"
+              isHover={false}
+            />
+            <ProjectTypeTag2
+              title="Visual Identity"
+              backgroundColor="#C3ABFF"
+              color="#181010"
+              isHover={false}
+            />
+            <ProjectTypeTag2
+              title="Website & Product"
+              backgroundColor="#81D0FF"
+              color="#181010"
+              isHover={false}
+            />
+          </div>
+        </SectionCont>
+      </DashedContainer>
+
+      <BottomDashCont>
+        <BannerWap className='m-none'>
+          <img src={banner0D} alt="" />
+        </BannerWap>
+        <BannerWap className='d-none'>
+          <img src={banner0M} alt="" />
+        </BannerWap>
+      </BottomDashCont>
 
 
-    </SectionCont>
-   </DashedContainer>
+      {/* section 6 */}
+      <DashedContainer leftBottom rightBottom>
+        <SectionCont className='d-flex flex-column g-start'>
+          <div className='px-40 py-40 d-flex flex-column g-start'>
+            <DyH2
+              fontSize={{ base: '40px', md: '32px', sm: '32px' }}
+              lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
+              fontWeight={300}
+              fontStyle="normal"
+              textTransform="capitalize"
+              color="#181010"
+            >
+              The Challenge
+            </DyH2>
 
-   <BottomDashCont>
-    <BannerWap className='m-none'>
-     <img src={Result1D} alt="" />
-    </BannerWap>
-    <BannerWap className='d-none'>
-     <img src={Result1M} alt="" />
-    </BannerWap>
-   </BottomDashCont>
+            <Dpara
+              fontSize="20px"
+              lineHeight="28px"
+              fontWeight="300"
+              color="#352727"
+              mdFontSize="18px"
+              mdLineHeight="24px"
+              smFontSize="18px"
+              smLineHeight="24px"
+              textAlign="left"
+              className='mt-lg'
+            >
+              Borrowing against mutual funds isn’t something most people know about, so right from the start, we had to help users understand and feel good about what Volt offered. Trust was everything. That meant stripping out jargon, making every process feel seamless, and always putting the user’s concerns first. The Volt team was rapidly adding features, raising capital, and growing their momentum.
+            </Dpara>
+          </div>
 
-   <EmptyContainer height="76px" />
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={Challenge1D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={Challenge1M} alt="" />
+            </BannerWap>
+          </div>
+        </SectionCont>
+      </DashedContainer>
+
+      <EmptyContainer height="76px" />
+
+      {/* section 7 */}
+      <DashedContainer leftBottom rightBottom>
+        <SectionCont className='d-flex flex-column g-start'>
+          <div className='px-40 py-40 d-flex flex-column g-start'>
+            <DyH2
+              fontSize={{ base: '40px', md: '32px', sm: '32px' }}
+              lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
+              fontWeight={300}
+              fontStyle="normal"
+              textTransform="capitalize"
+              color="#181010"
+            >
+              Our Process
+            </DyH2>
+
+            <Dpara
+              fontSize="20px"
+              lineHeight="28px"
+              fontWeight="300"
+              color="#352727"
+              mdFontSize="18px"
+              mdLineHeight="24px"
+              smFontSize="18px"
+              smLineHeight="24px"
+              textAlign="left"
+              className='mt-lg'
+            >
+              Every phase of our work with Volt involved close collaboration and open feedback. We spent time with their team to understand not just the product, but also the users, their doubts, and what would make them feel confident. Together, we iterated, tested, and refined, always aiming to make a complex idea feel simple and approachable.
+            </Dpara>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={Process1D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={Process1M} alt="" />
+            </BannerWap>
+          </div>
+        </SectionCont>
+      </DashedContainer>
+
+      <EmptyContainer height="76px" />
+
+      {/* section 2 */}
+      <DashedContainer leftBottom rightBottom>
+        <SectionCont className='d-flex flex-column g-start'>
+          <div className='px-40 py-40 d-flex flex-column g-start'>
+            <HexSectionName title="How we helped" />
+
+            <DyH2
+              fontSize={{ base: '40px', md: '32px', sm: '32px' }}
+              lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
+              fontWeight={300}
+              fontStyle="normal"
+              textTransform="capitalize"
+              color="#181010"
+              className='mt-md'
+            >
+              Brand Identity
+            </DyH2>
+
+            <Dpara
+              fontSize="20px"
+              lineHeight="28px"
+              fontWeight="300"
+              color="#352727"
+              mdFontSize="18px"
+              mdLineHeight="24px"
+              smFontSize="18px"
+              smLineHeight="24px"
+              textAlign="left"
+              className='mt-lg'
+            >
+              We kicked things off by uncovering what made Volt special, then defined how it should look and sound to the world. The visual style needed the right balance: it had to feel modern and credible, but never cold or intimidating. We crafted a look that was both trustworthy and welcoming.
+            </Dpara>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={BrandingBanner1D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={BrandingBanner1M} alt="" />
+            </BannerWap>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={BrandingBanner2D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={BrandingBanner2M} alt="" />
+            </BannerWap>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={BrandingBanner3D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={BrandingBanner3M} alt="" />
+            </BannerWap>
+          </div>
+        </SectionCont>
+      </DashedContainer>
+
+      <EmptyContainer height="76px" />
+
+      {/* section 3 */}
+      <DashedContainer >
+        <SectionCont className='px-40 py-40 d-flex flex-column g-start'>
+          <DyH2
+            fontSize={{ base: '40px', md: '32px', sm: '32px' }}
+            lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
+            fontWeight={300}
+            fontStyle="normal"
+            textTransform="capitalize"
+            color="#181010"
+          >
+            Mobile App
+          </DyH2>
+
+          <Dpara
+            fontSize="20px"
+            lineHeight="28px"
+            fontWeight="300"
+            color="#352727"
+            mdFontSize="18px"
+            mdLineHeight="24px"
+            smFontSize="18px"
+            smLineHeight="24px"
+            textAlign="left"
+            className='mt-lg'
+          >
+            Next, we designed an app that anyone not just finance pros could use with confidence. Whether pledging funds, checking on loans, or receiving updates, every step was streamlined to feel clear and comforting, never overwhelming. We built a reusable component library so the Volt team could quickly add new features without feeling lost.
+          </Dpara>
+        </SectionCont>
+      </DashedContainer>
+
+      <BottomDashCont>
+        <BannerWap className=' m-none'>
+          <img src={MobileApp2D} alt="" />
+        </BannerWap>
+        <BannerWap className='d-none'>
+          <img src={MobileApp2M} alt="" />
+        </BannerWap>
+      </BottomDashCont>
+
+      {/* section 4 */}
+      <DashedContainer leftBottom rightBottom>
+        <SectionCont className='d-flex flex-column g-start'>
+          <div className='px-40 py-40 d-flex flex-column g-start'>
+            <DyH2
+              fontSize={{ base: '40px', md: '32px', sm: '32px' }}
+              lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
+              fontWeight={300}
+              fontStyle="normal"
+              textTransform="capitalize"
+              color="#181010"
+            >
+              Design System
+            </DyH2>
+
+            <Dpara
+              fontSize="20px"
+              lineHeight="28px"
+              fontWeight="300"
+              color="#352727"
+              mdFontSize="18px"
+              mdLineHeight="24px"
+              smFontSize="18px"
+              smLineHeight="24px"
+              textAlign="left"
+              className='mt-lg'
+            >
+              As Volt grew, they needed to keep their product feeling consistent, no matter how fast they moved. Our custom design system became the single source of truth for every color, button, and interaction. It was more than just a rulebook. It acted like a kit that empowered both designers and developers to do their best work, faster.
+            </Dpara>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={banner3D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={banner3M} alt="" />
+            </BannerWap>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={banner4D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={banner4M} alt="" />
+            </BannerWap>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={banner5D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={banner5M} alt="" />
+            </BannerWap>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={banner6D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={banner6M} alt="" />
+            </BannerWap>
+          </div>
+        </SectionCont>
+      </DashedContainer>
+
+      <EmptyContainer height="76px" />
+
+      {/* section 5 */}
+      <DashedContainer leftBottom rightBottom>
+        <SectionCont className='d-flex flex-column g-start'>
+          <div className='px-40 py-40 d-flex flex-column g-start'>
+            <DyH2
+              fontSize={{ base: '40px', md: '32px', sm: '32px' }}
+              lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
+              fontWeight={300}
+              fontStyle="normal"
+              textTransform="capitalize"
+              color="#181010"
+            >
+              Marketing Website
+            </DyH2>
+
+            <Dpara
+              fontSize="20px"
+              lineHeight="28px"
+              fontWeight="300"
+              color="#352727"
+              mdFontSize="18px"
+              mdLineHeight="24px"
+              smFontSize="18px"
+              smLineHeight="24px"
+              textAlign="left"
+              className='mt-lg'
+            >
+              We knew first impressions were important, especially in a new financial category. So we made sure Volt’s website told their story simply and clearly, breaking down the benefits and guiding users through the process step by step. Social proof and friendly visuals built the trust that new customers needed.
+            </Dpara>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={Marketing1D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={Marketing1M} alt="" />
+            </BannerWap>
+          </div>
+
+          <div>
+            <BannerWap className='p-sm m-none'>
+              <img src={Marketing2D} alt="" />
+            </BannerWap>
+            <BannerWap className='p-sm d-none'>
+              <img src={Marketing2M} alt="" />
+            </BannerWap>
+          </div>
+        </SectionCont>
+      </DashedContainer>
+
+      <EmptyContainer height="76px" />
 
 
-   <DashedContainer leftBottom rightBottom>
-    <div className='px-40 py-40 d-flex flex-column g-start'>
-     <DyH2
-      fontSize={{ base: '40px', md: '32px', sm: '32px' }}
-      lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
-      fontWeight={300}
-      fontStyle="normal"
-      textTransform="capitalize"
-      color="#181010"
-      className=''
-     >
-      More Projects
-     </DyH2>
+      {/* section 8 */}
+      <DashedContainer >
+        <SectionCont className='d-flex flex-column g-start'>
+          <div className='px-40 py-40 d-flex flex-column g-start'>
+            <DyH2
+              fontSize={{ base: '40px', md: '32px', sm: '32px' }}
+              lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
+              fontWeight={300}
+              fontStyle="normal"
+              textTransform="capitalize"
+              color="#181010"
+            >
+              Results
+            </DyH2>
 
-     <ProjectsGrid columnGap="32px" marginTop="48px">
-      {projectList
-       .filter((project) => projects.includes(project.projectName))
-       .map((project, idx) => (
-        <ProjectCard
-         key={idx}
-         banner={project.banner}
-         projectName={project.projectName}
-         projectDetails={project.projectDetails}
-         tags={project.tags}
-         url={project.url}
-         marginTag="16px 0px 32px 0px"
-         mode={1}
-        />
-       ))}
-     </ProjectsGrid>
+            <Dpara
+              fontSize="20px"
+              lineHeight="28px"
+              fontWeight="300"
+              color="#352727"
+              mdFontSize="18px"
+              mdLineHeight="24px"
+              smFontSize="18px"
+              smLineHeight="24px"
+              textAlign="left"
+              className='mt-lg'
+            >
+              So how did it all turn out? Users loved the app, which earned a <a target='_blank' className='red-anchor' href="https://play.google.com/store/apps/details?id=in.voltmoney&hl=en_IN">4.8+ rating</a> on the Google Play Store. The website helped drive new signups, thanks to its clarity. Most importantly, Volt’s customers felt empowered to try something new, backed by a product (and a partner) that put their needs first.
+            </Dpara>
+
+            <Dpara
+              fontSize="20px"
+              lineHeight="28px"
+              fontWeight="300"
+              color="#352727"
+              mdFontSize="18px"
+              mdLineHeight="24px"
+              smFontSize="18px"
+              smLineHeight="24px"
+              textAlign="left"
+              className='mt-lg'
+            >
+              Through all the ups, pivots, and launches, we didn’t just keep Volt looking sharp. We helped them grow with their users in mind every step of the way.
+            </Dpara>
+
+            {/* Testimonial */}
+            <div className=' top-dashed mt-lg'>
+              {testimonials
+                .filter((testimonial) => testimonial.name === "Lalit Bihani")
+                .map((t, index) => (
+                  <TestimonialCard key={index} className='mt-xl'>
+                    <HexSectionName title="Testimonial" className="d-flex align-center justify-start g-sm about-img" />
+                    <Dpara
+                      fontSize="28px"
+                      lineHeight="40px"
+                      fontWeight="300"
+                      color="#181010"
+                      mdFontSize="32px"
+                      mdLineHeight="46px"
+                      smFontSize="18px"
+                      smLineHeight="24px"
+                      textAlign="left"
+                      className="mt-lg testimonial-text"
+                    >
+                      {t.shortText}
+                    </Dpara>
+                    <div className="d-flex justify-between mt-lg align-center ">
+                      {/* Left side: Person image and info */}
+                      <div className="d-flex align-center g-md">
+                        <StyledImage src={t.image} width={64} height={64} className="client-image" alt={t.name} priority />
+                        <div className="d-flex flex-column">
+                          <Author>{t.name}</Author>
+                          <SubText>{t.title}</SubText>
+                        </div>
+                      </div>
+
+                      {/* Right side: Company logo */}
+                      <div className="m-none">
+                        <StyledImage src={t.logo} width={64} height={28} alt={t.company} priority />
+                      </div>
+                    </div>
+                  </TestimonialCard>
+                ))}
+            </div>
+          </div>
+
+
+        </SectionCont>
+      </DashedContainer>
+
+      <BottomDashCont>
+        <BannerWap className='m-none'>
+          <img src={Result1D} alt="" />
+        </BannerWap>
+        <BannerWap className='d-none'>
+          <img src={Result1M} alt="" />
+        </BannerWap>
+      </BottomDashCont>
+
+      <EmptyContainer height="76px" />
+
+
+      <DashedContainer leftBottom rightBottom>
+        <div className='px-40 py-40 d-flex flex-column g-start'>
+          <DyH2
+            fontSize={{ base: '40px', md: '32px', sm: '32px' }}
+            lineHeight={{ base: '48px', md: '40px', sm: '40px' }}
+            fontWeight={300}
+            fontStyle="normal"
+            textTransform="capitalize"
+            color="#181010"
+            className=''
+          >
+            More Projects
+          </DyH2>
+
+          <ProjectsGrid columnGap="32px" marginTop="48px">
+            {projectList
+              .filter((project) => projects.includes(project.projectName))
+              .map((project, idx) => (
+                <ProjectCard
+                  key={idx}
+                  banner={project.banner}
+                  projectName={project.projectName}
+                  projectDetails={project.projectDetails}
+                  tags={project.tags}
+                  url={project.url}
+                  marginTag="16px 0px 32px 0px"
+                  mode={1}
+                />
+              ))}
+          </ProjectsGrid>
+        </div>
+
+      </ DashedContainer>
     </div>
-
-   </ DashedContainer>
-  </div>
- )
+  )
 }
 
 export default VoltCs;

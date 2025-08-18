@@ -10,6 +10,7 @@ import { useEffect, useRef } from "react";
 const CloseRd = "/icons/closeRound.svg"
 import gsap from 'gsap';
 import { usePathname } from "next/navigation";
+import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
 
 
 const ANIMATION_DURATION_0 = 0.3;
@@ -81,7 +82,7 @@ const ModalContent = () => {
             )}
 
             {pathname === "/work/sensyrtech" && (
-              <VoltCs />
+              <SensytechCs />
             )}
 
             {/* {location.pathname === "/work/starbrite-dental" && (
