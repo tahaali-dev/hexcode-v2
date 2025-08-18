@@ -80,11 +80,11 @@ const ModalContent = () => {
               <VoltCs />
             )}
 
-            {/* {location.pathname === "/work/sensyrtech" && (
-              <ProjectSensytech />
+            {pathname === "/work/sensyrtech" && (
+              <VoltCs />
             )}
 
-            {location.pathname === "/work/starbrite-dental" && (
+            {/* {location.pathname === "/work/starbrite-dental" && (
               <ProjectStarbright />
             )} */}
 
