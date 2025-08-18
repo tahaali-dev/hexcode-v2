@@ -25,15 +25,29 @@ const seventeen = "/companies/biotale.svg";
 const eighteen = "/companies/logo.svg";
 const nineteen = "/companies/sensyrtech.svg";
 
-// Image list
+// Image list with width and height for each logo
 const imageList = [
-  one, two, three, four, nine, five, eleven,
-  seven, eight, ten, twelve, thirteen, fourteen,
-  fifteen, sixteen, seventeen, eighteen, nineteen
+  { src: one, width: 112, height: 36 },
+  { src: two, width: 68, height: 36 },
+  { src: three, width: 108, height: 36 },
+  { src: four, width: 108, height: 36 },
+  { src: nine, width: 68, height: 36 },
+  { src: five, width: 108, height: 36 },
+  { src: eleven, width: 152, height: 40 },
+  { src: seven, width: 156, height: 24 },
+  { src: eight, width: 108, height: 36 },
+  { src: ten, width: 108, height: 36 },
+  { src: twelve, width: 108, height: 36 },
+  { src: thirteen, width: 112, height: 36 },
+  { src: fourteen, width: 42, height: 48 },
+  { src: fifteen, width: 86, height: 36 },
+  { src: sixteen, width: 108, height: 36 },
+  { src: seventeen, width: 108, height: 36 },
+  { src: eighteen, width: 108, height: 36 },
+  { src: nineteen, width: 76, height: 42 },
 ];
 
 const CompanyMarq = () => {
-
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -65,7 +79,7 @@ const CompanyMarq = () => {
             pauseOnClick={false}
             play={hoveredIndex === null}
           >
-            {imageList.map((imageSrc, index) => (
+            {imageList.map((image, index) => (
               <div
                 className="logo-holder"
                 key={index}
@@ -73,11 +87,11 @@ const CompanyMarq = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <StyledImage
-                  src={imageSrc}
+                  src={image.src}
                   alt={`icon-${index + 1}`}
                   className={`company-logo ${hoveredIndex === index ? "active" : ""}`}
-                  width={107}
-                  height={48}
+                  width={image.width}
+                  height={image.height}
                 />
               </div>
             ))}
@@ -86,12 +100,11 @@ const CompanyMarq = () => {
           <div className="gradient-right" />
         </div>
       </Wrapper>
-    </DashedContainer>
+    </DashedContainer >
   );
 };
 
 export default CompanyMarq;
-
 
 // styles ----
 const Wrapper = styled.div`
@@ -142,7 +155,7 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-  display:none;
-  padding: 24px 0px;
+    display:none;
+    padding: 24px 0px;
   }
 `;
