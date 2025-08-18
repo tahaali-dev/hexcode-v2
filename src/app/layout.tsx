@@ -12,6 +12,7 @@ import Footer from "./Components/common/Footer";
 import SmoothScrollProvider from "./Components/common/SmoothScrollProvider";
 import localFont from "next/font/local";
 import MobileNav from "./Components/MobileNav";
+import ClarityProvider from "./Components/Clarity";
 const museoSans = localFont({
   src: [
     { path: "../../public/fonts/MuseoSans100.woff2", weight: "100", style: "normal" },
@@ -43,6 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={museoSans.variable}>
+      <ClarityProvider />
       <SmoothScrollProvider>
         <body className={museoSans.className}>
           <Header />
