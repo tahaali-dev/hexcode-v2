@@ -31,6 +31,16 @@ const museoSans = localFont({
 export const metadata: Metadata = {
   title: "Hexcode – UX/UI for fast growing startups.",
   description: "Hexcode is a creative UI/UX design studio offering intuitive, user-focused interfaces along with full-stack development services. Let's build your next digital product together.",
+  openGraph: {
+    images: [
+      {
+        url: "https://i.ibb.co/PvC2CS6S/OG.png",
+        width: 1200,
+        height: 630,
+        alt: "Hexcode – UX/UI for fast growing startups.",
+      },
+    ],
+  },
   other: {
     'font-display': 'swap',
   },
