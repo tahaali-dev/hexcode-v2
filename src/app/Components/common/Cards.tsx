@@ -34,12 +34,7 @@ const ProjectCard = ({
 
     if (isInternalProject) {
       const slug = encodeURIComponent(projectName.toLowerCase().replace(/\s+/g, "-"));
-
       router.push(`/work/${slug}`);
-
-      if (mode === 1) {
-        window.location.reload();
-      }
     } else if (url) {
       window.open(url, "_blank", "noopener,noreferrer");
     }
