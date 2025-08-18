@@ -47,9 +47,9 @@ export default function RootLayout({
         <body className={museoSans.className}>
           <Header />
           {children}
+          <Footer />
+          <MobileNav />
           {modal}
-          {/* <Footer /> */}
-          {/* <MobileNav /> */}
         </body>
       </SmoothScrollProvider>
     </html>
