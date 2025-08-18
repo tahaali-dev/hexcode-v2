@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "./globals.css";
 import './css/colors.css';
 import './css/layouts.css';
@@ -44,9 +45,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={museoSans.variable}>
-      <ClarityProvider />
       <SmoothScrollProvider>
         <body className={museoSans.className}>
+          <Suspense fallback={null}>
+            <ClarityProvider />
+          </Suspense>
           <Header />
           {children}
           <Footer />
