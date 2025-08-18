@@ -57,6 +57,6 @@ export default function RootLayout({
           {modal}
         </body>
       </SmoothScrollProvider>
-    </html>
+    </html >
   );
 }
