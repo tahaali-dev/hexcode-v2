@@ -48,7 +48,7 @@ const ProjectCard = ({
   return (
     <div>
       <ProjectCardWrapper as="div" onClick={handleClick}>
-        <StyledImage src={banner} alt="project-banner" className="project-banner" width={400} height={400} />
+        <StyledImage src={banner} alt="project-banner" className="project-banner" width={400} height={400} priority />
         <p className="project-details mt-md">
           <span className="project-name">{projectName}</span> - {projectDetails}
         </p>
