@@ -1,7 +1,8 @@
 import EmptyContainer from "./Components/Containers"
 import AboutUs from "./Components/home/AboutUs"
 import Benefits from "./Components/home/Benefits"
-import CompanyMarq from "./Components/home/CompanyMarq"
+import CompaniesWeWork from "./Components/home/CompaniesWeWork"
+// import CompanyMarq from "./Components/home/CompanyMarq"
 import Faqs from "./Components/home/Faqs"
 import MobileComp from "./Components/home/MobileComp"
 import OurCapabilities from "./Components/home/OurCapabilities"
@@ -16,7 +17,8 @@ const page = () => {
   return (
     <>
       <PrimeFold />
-      <CompanyMarq />
+      <CompaniesWeWork />
+      {/* <CompanyMarq /> */}
       <MobileComp />
       <VideoPlayer />
       <EmptyContainer height="76px" />
