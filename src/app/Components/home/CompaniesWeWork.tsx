@@ -36,7 +36,7 @@ const imageList = [
  { src: seven, width: 156, height: 24, category: "Iot" },
  { src: eight, width: 108, height: 36, category: "Information technology" },
  { src: twelve, width: 108, height: 36, category: "Sustainability" },
- { src: fourteen, width: 42, height: 48, category: "Enterprise" },
+ { src: fourteen, width: 42, height: 48, category: "Entertainment" },
  { src: sixteen, width: 108, height: 36, category: "Artificial intelligence" },
  { src: seventeen, width: 108, height: 36, category: "Artificial intelligence" },
  { src: nineteen, width: 76, height: 42, category: "Iot, saas" },
