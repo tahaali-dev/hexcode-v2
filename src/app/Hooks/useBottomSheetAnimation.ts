@@ -3,8 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 
-const ANIMATION_DURATION_0 = 0.3;
-const ANIMATION_DURATION = 0.4;
+const ANIMATION_DURATION_0 = 0.2;
+const ANIMATION_DURATION = 0.3;
 
 interface UseBottomSheetAnimationProps {
  wrapperRef: React.RefObject<HTMLDivElement | null>;
@@ -24,25 +24,38 @@ export const useBottomSheetAnimation = ({
 
   if (!wrapper || !sheet || !scrollable) return;
 
-  // Fade in backdrop first
   // Opening animation
   gsap.fromTo(
    wrapper,
-   { opacity: 0 },
+   { opacity: 0, background: 'rgba(0,0,0,0)' },
    {
     opacity: 1,
     duration: ANIMATION_DURATION_0,
-    ease: 'power2.out',
+    ease: 'power1.inOut',
+    onUpdate: function () {
+     // Keep background transparent during opacity fade-in
+     wrapper.style.background = 'rgba(0,0,0,0)';
+    },
     onComplete: () => {
-     gsap.fromTo(
-      sheet,
-      { y: '100%' },
-      {
-       y: '0%',
-       duration: ANIMATION_DURATION,
-       ease: 'power3.out',
+     // Now fade in the background color overlay
+     gsap.to(wrapper, {
+      background: 'hsla(0, 0%, 0%, 0.6)',
+      duration: 0.3,
+      ease: 'power1.inOut',
+      onUpdate: function () {
+      },
+      onComplete: () => {
+       gsap.fromTo(
+        sheet,
+        { y: '100%' },
+        {
+         y: '0%',
+         duration: ANIMATION_DURATION,
+         ease: 'power3.out',
+        }
+       );
       }
-     );
+     });
     },
    }
   );

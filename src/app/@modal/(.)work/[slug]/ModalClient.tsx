@@ -13,83 +13,84 @@ import StarbriteCs from "@/app/Components/casestudy/Starbright";
 
 const CloseRd = "/icons/closeRound.svg";
 
-const ANIMATION_DURATION_0 = 0.3;
-const ANIMATION_DURATION = 0.4;
+const ANIMATION_DURATION_0 = 0.2;
+const ANIMATION_DURATION = 0.3;
 
 const ModalClient = () => {
- const router = useRouter();
- const pathname = usePathname();
- const sheetRef = useRef<HTMLDivElement | null>(null);
- const wrapperRef = useRef<HTMLDivElement | null>(null);
- const scrollableRef = useRef<HTMLDivElement | null>(null);
+   const router = useRouter();
+   const pathname = usePathname();
+   const sheetRef = useRef<HTMLDivElement | null>(null);
+   const wrapperRef = useRef<HTMLDivElement | null>(null);
+   const scrollableRef = useRef<HTMLDivElement | null>(null);
 
- useBottomSheetAnimation({ wrapperRef, sheetRef, scrollableRef });
+   useBottomSheetAnimation({ wrapperRef, sheetRef, scrollableRef });
 
- const handleClose = () => {
-  gsap.to(sheetRef.current, {
-   y: '100%',
-   duration: ANIMATION_DURATION,
-   ease: 'power3.in',
-   onComplete: () => {
-    gsap.to(wrapperRef.current, {
-     opacity: 0,
-     duration: ANIMATION_DURATION_0,
-     ease: 'power2.in',
-     onComplete: () => {
-      router.back()
-     },
-    });
-   },
-  });
- };
+   const handleClose = () => {
+      gsap.to(sheetRef.current, {
+         y: '100%',
+         duration: ANIMATION_DURATION,
+         ease: 'power3.in',
+         onComplete: () => {
+            gsap.to(wrapperRef.current, {
+               background: 'rgba(0,0,0,0)',
+               opacity: 0,
+               duration: ANIMATION_DURATION_0,
+               ease: 'power2.in',
+               onComplete: () => {
+                  router.back();
+               },
+            });
+         },
+      });
+   };
 
- const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-  if (sheetRef.current && !sheetRef.current.contains(e.target as Node)) {
-   handleClose();
-  }
- };
+   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (sheetRef.current && !sheetRef.current.contains(e.target as Node)) {
+         handleClose();
+      }
+   };
 
- useEffect(() => {
-  const body = document.body;
-  body.style.overflow = 'hidden';
+   useEffect(() => {
+      const body = document.body;
+      body.style.overflow = 'hidden';
 
-  return () => {
-   body.style.overflow = '';
-  };
- }, []);
+      return () => {
+         body.style.overflow = '';
+      };
+   }, []);
 
- return (
-  <PageWrapper ref={wrapperRef} onClick={handleBackdropClick}>
-   <BottomSheet ref={sheetRef} onClick={(e) => e.stopPropagation()}>
-    <ScrollableContent ref={scrollableRef}>
-     <ScrollMarker id="scroll-marker" />
-     <SheetContent>
+   return (
+      <PageWrapper ref={wrapperRef} onClick={handleBackdropClick}>
+         <BottomSheet ref={sheetRef} onClick={(e) => e.stopPropagation()}>
+            <ScrollableContent ref={scrollableRef}>
+               <ScrollMarker id="scroll-marker" />
+               <SheetContent>
 
-      <EmptyContainer height="76px" />
+                  <EmptyContainer height="76px" />
 
-      <CloseBtn onClick={handleClose}>
-       <img src={CloseRd} alt="close-rd" />
-      </CloseBtn>
+                  <CloseBtn onClick={handleClose}>
+                     <img src={CloseRd} alt="close-rd" />
+                  </CloseBtn>
 
-      {pathname === "/work/volt" && (
-       <VoltCs />
-      )}
+                  {pathname === "/work/volt" && (
+                     <VoltCs />
+                  )}
 
-      {pathname === "/work/sensyrtech" && (
-       <SensytechCs />
-      )}
+                  {pathname === "/work/sensyrtech" && (
+                     <SensytechCs />
+                  )}
 
-      {pathname === "/work/starbrite-dental" && (
-       <StarbriteCs />
-      )}
+                  {pathname === "/work/starbrite-dental" && (
+                     <StarbriteCs />
+                  )}
 
-      <Footer />
+                  <Footer />
 
-     </SheetContent>
-    </ScrollableContent>
-   </BottomSheet>
-  </PageWrapper>
- );
+               </SheetContent>
+            </ScrollableContent>
+         </BottomSheet>
+      </PageWrapper>
+   );
 };
 
 export default ModalClient;
@@ -101,7 +102,6 @@ const PageWrapper = styled.div`
    top: 0;
    left: 0;
    z-index: 10;
-   background: hsla(0, 0%, 0%, 0.6);
    `;
 
 const BottomSheet = styled.div`

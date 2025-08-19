@@ -6,16 +6,16 @@ import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
 import StarbriteCs from "@/app/Components/casestudy/Starbright";
 
 interface ClientCaseStudyProps {
- slug: string;
+  slug: string;
 }
 
 const ClientCaseStudy: React.FC<ClientCaseStudyProps> = ({ slug }) => {
- let content: React.ReactNode = null;
- if (slug === "volt") content = <VoltCs />;
- else if (slug === "sensyrtech") content = <SensytechCs />;
- else if (slug === "starbrite-dental") content = <StarbriteCs />;
+  let content: React.ReactNode = null;
+  if (slug === "volt") content = <VoltCs />;
+  else if (slug === "sensyrtech") content = <SensytechCs />;
+  else if (slug === "starbrite-dental") content = <StarbriteCs />;
 
- return <FullPageWrap>{content}</FullPageWrap>;
+  return <FullPageWrap>{content}</FullPageWrap>;
 };
 
 const FullPageWrap = styled.div`
