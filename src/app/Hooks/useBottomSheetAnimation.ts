@@ -10,12 +10,14 @@ interface UseBottomSheetAnimationProps {
  wrapperRef: React.RefObject<HTMLDivElement | null>;
  sheetRef: React.RefObject<HTMLDivElement | null>;
  scrollableRef: React.RefObject<HTMLDivElement | null>;
+ onFullWidthChange?: (isFull: boolean) => void; // <-- Add callback prop
 }
 
 export const useBottomSheetAnimation = ({
  wrapperRef,
  sheetRef,
  scrollableRef,
+ onFullWidthChange,
 }: UseBottomSheetAnimationProps) => {
  useEffect(() => {
   const wrapper = wrapperRef.current;
@@ -42,8 +44,7 @@ export const useBottomSheetAnimation = ({
       background: 'hsla(0, 0%, 0%, 0.6)',
       duration: 0.3,
       ease: 'power1.inOut',
-      onUpdate: function () {
-      },
+      onUpdate: function () { },
       onComplete: () => {
        gsap.fromTo(
         sheet,
@@ -54,7 +55,7 @@ export const useBottomSheetAnimation = ({
          ease: 'power3.out',
         }
        );
-      }
+      },
      });
     },
    }
@@ -97,8 +98,11 @@ export const useBottomSheetAnimation = ({
 
   // Resize sheet on scroll
   const marker = scrollable.querySelector('#scroll-marker');
+  let lastFullWidth = false;
+  let scrollTriggerInstance: any = null;
+
   if (marker) {
-   ScrollTrigger.create({
+   scrollTriggerInstance = ScrollTrigger.create({
     trigger: scrollable,
     scroller: scrollable,
     // start: 'top 0',
@@ -119,6 +123,13 @@ export const useBottomSheetAnimation = ({
       overwrite: true,
       immediateRender: true,
      });
+
+     // Send true when width is full (progress >= 1)
+     const isFull = progress >= 1;
+     if (onFullWidthChange && isFull !== lastFullWidth) {
+      onFullWidthChange(isFull);
+      lastFullWidth = isFull;
+     }
     },
    });
   }
@@ -129,6 +140,8 @@ export const useBottomSheetAnimation = ({
    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
    lenis.destroy();
    document.body.style.overflow = 'auto';
+   // Optionally, send false on cleanup
+   if (onFullWidthChange) onFullWidthChange(false);
   };
- }, [wrapperRef, sheetRef, scrollableRef]);
+ }, [wrapperRef, sheetRef, scrollableRef, onFullWidthChange]);
 };

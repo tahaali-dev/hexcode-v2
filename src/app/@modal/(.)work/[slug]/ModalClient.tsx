@@ -5,7 +5,7 @@ import EmptyContainer from "@/app/Components/Containers";
 import { useBottomSheetAnimation } from "@/app/Hooks/useBottomSheetAnimation";
 import styled from "@emotion/styled";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from 'gsap';
 import { usePathname } from "next/navigation";
 import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
@@ -23,7 +23,14 @@ const ModalClient = () => {
    const wrapperRef = useRef<HTMLDivElement | null>(null);
    const scrollableRef = useRef<HTMLDivElement | null>(null);
 
-   useBottomSheetAnimation({ wrapperRef, sheetRef, scrollableRef });
+   const [isFullWidth, setIsFullWidth] = useState(false);
+   useBottomSheetAnimation({
+      wrapperRef,
+      sheetRef,
+      scrollableRef,
+      onFullWidthChange: setIsFullWidth,
+   });
+
 
    const handleClose = () => {
       gsap.to(sheetRef.current, {
@@ -59,6 +66,12 @@ const ModalClient = () => {
       };
    }, []);
 
+   // Handler for Book a Call CTA
+   const handleBookCall = () => {
+      // You can replace this with your actual booking link
+      window.open("https://calendly.com/your-link", "_blank");
+   };
+
    return (
       <PageWrapper ref={wrapperRef} onClick={handleBackdropClick}>
          <BottomSheet ref={sheetRef} onClick={(e) => e.stopPropagation()}>
@@ -85,6 +98,14 @@ const ModalClient = () => {
                   )}
 
                   <Footer />
+
+                  {
+                     <BookCallFixed isVisible={isFullWidth}>
+                        <BookCallButton onClick={handleBookCall}>
+                           Book a Call
+                        </BookCallButton>
+                     </BookCallFixed>
+                  }
 
                </SheetContent>
             </ScrollableContent>
@@ -198,3 +219,50 @@ const CloseBtn = styled.button`
       }
       }
    `;
+
+// Fixed Book a Call CTA at the bottom inside the modal
+const BookCallFixed = styled.div<{ isVisible: boolean }>`
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0; 
+  display: flex;
+  justify-content: center;
+  z-index: 1200;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+  transform: ${({ isVisible }) =>
+      isVisible ? "translateY(-24px)" : "translateY(100%)"};
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+`;
+
+
+const BookCallButton = styled.button`
+   pointer-events: auto;
+   background: #ee232a;
+   color: #fff;
+   border: none;
+   border-radius: 32px;
+   padding: 16px 36px;
+   font-size: 1.1rem;
+   font-weight: 700;
+   box-shadow: 0 4px 16px rgba(238, 35, 42, 0.15);
+   cursor: pointer;
+   transition: background 0.2s, transform 0.15s;
+
+   &:hover {
+      background: #c91c23;
+      transform: translateY(-2px) scale(1.04);
+   }
+
+   &:active {
+      background: #a3171b;
+      transform: scale(0.98);
+   }
+
+   @media (max-width: 768px) {
+      padding: 12px 24px;
+      font-size: 1rem;
+   }
+`;
