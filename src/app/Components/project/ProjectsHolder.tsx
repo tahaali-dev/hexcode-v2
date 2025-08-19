@@ -11,18 +11,23 @@ interface ProjectsHolderProps {
 
 const ProjectsHolder = ({ selectedTag }: ProjectsHolderProps) => {
 
-  const filteredProjects =
-    selectedTag === null || selectedTag === "All"
-      ? projectList
-      : projectList.filter((project) =>
-        project.tags.includes(selectedTag)
-      );
+  const isAll = selectedTag === null || selectedTag === "All";
+  const filteredProjects = isAll
+    ? projectList
+    : projectList.filter((project) =>
+      project.tags.includes(selectedTag)
+    );
+
+  // If "All", map in reverse order
+  const projectsToMap = isAll
+    ? [...filteredProjects].reverse()
+    : filteredProjects;
 
   return (
     <DashedContainer leftBottom rightBottom>
       <ProjectsWrapper>
         <ProjectsGrid marginTop="0px" marginTopMob="0px">
-          {filteredProjects.map((project, idx) => (
+          {projectsToMap.map((project, idx) => (
             <ProjectCard
               key={idx}
               banner={project.banner}
@@ -34,7 +39,6 @@ const ProjectsHolder = ({ selectedTag }: ProjectsHolderProps) => {
           ))}
         </ProjectsGrid>
       </ProjectsWrapper>
-
     </DashedContainer>
   )
 }
