@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 const ProjectsIcon = "/icons/navIconActive1.svg";
 const AboutIcon = "/icons/navIconActive2.svg";
 const ServicesIcon = "/icons/navIconActive3.svg";
-const HomeIcon = "/icons/navIconActive1.svg";
+const HomeIcon = "/icons/navIconActive5.svg";
 import { useAnchorNavigation } from '../Hooks/useAnchorNavigation';
 
 const MobileNav = () => {
