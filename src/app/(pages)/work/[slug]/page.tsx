@@ -1,44 +1,55 @@
-"use client";
-import styled from "@emotion/styled";
-import { usePathname } from "next/navigation";
-import VoltCs from "@/app/Components/casestudy/Volt";
-import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
-import StarbriteCs from "@/app/Components/casestudy/Starbright";
+import ClientCaseStudy from "@/app/Components/casestudy/ClientCaseStudy";
+import { workMetadata } from "@/app/Static/workMetadata";
+import { Metadata } from "next";
 
-const Page = () => {
-  const pathname = usePathname();
+// Generate metadata function for server-side rendering
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const pathname = `/work/${params.slug}`;
+  const metadata = workMetadata.find(item => item.pathname === pathname);
+  if (!metadata) {
+    return {
+      title: "Work - Case Study | Hexcode",
+      description: "Explore our portfolio of successful projects and case studies showcasing our expertise in digital solutions.",
+      keywords: ["case study", "portfolio", "Hexcode", "digital solutions"],
+      openGraph: {
+        title: "Work - Case Study | Hexcode",
+        description: "Explore our portfolio of successful projects and case studies showcasing our expertise in digital solutions.",
+        images: ["/Logo.svg"]
+      }
+    };
+  }
 
+  return {
+    title: metadata.title,
+    description: metadata.description,
+    keywords: metadata.keywords,
+    openGraph: {
+      title: metadata.openGraph.title,
+      description: metadata.openGraph.description,
+      images: metadata.openGraph.images,
+      type: "website",
+      siteName: "Hexcode",
+      url: pathname
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metadata.title,
+      description: metadata.description,
+      images: metadata.openGraph.images
+    },
+    alternates: {
+      canonical: pathname
+    }
+  };
+}
+
+
+const Page = ({ params }: { params: { slug: string } }) => {
   return (
     <>
-      <FullPageWrap>
-        {pathname === "/work/volt" && <VoltCs />}
-        {pathname === "/work/sensyrtech" && <SensytechCs />}
-        {pathname === "/work/starbrite-dental" && <StarbriteCs />}
-      </FullPageWrap>
+      <ClientCaseStudy slug={params.slug} />
     </>
   );
 };
 
 export default Page;
-
-const FullPageWrap = styled.div`
-  .red-anchor {
-    color: #ee232a;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .top-dashed {
-    border-top: 1px dashed #d3d3d3;
-  }
-
-  @media (max-width: 768px) {
-    .m-col {
-      flex-direction: column;
-    }
-
-    .align-start-mob {
-      align-items: flex-start;
-    }
-  }
-`;

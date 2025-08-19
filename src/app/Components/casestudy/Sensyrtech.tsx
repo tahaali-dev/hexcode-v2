@@ -1,3 +1,4 @@
+"use client";
 import EmptyContainer, { DashedContainer, StyledImage } from '../Containers'
 import { Dpara, DyH2, DyH3, DyLi, DyTitleH1, HexSectionName } from '../TypSetting'
 import styled from '@emotion/styled'

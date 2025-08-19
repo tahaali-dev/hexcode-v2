@@ -3,7 +3,6 @@ import VoltCs from "@/app/Components/casestudy/Volt";
 import Footer from "@/app/Components/common/Footer";
 import EmptyContainer from "@/app/Components/Containers";
 import { useBottomSheetAnimation } from "@/app/Hooks/useBottomSheetAnimation";
-import { useMetadata } from "@/app/Hooks/useMetadata";
 import styled from "@emotion/styled";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
@@ -25,7 +24,6 @@ const ModalClient = () => {
  const scrollableRef = useRef<HTMLDivElement | null>(null);
 
  useBottomSheetAnimation({ wrapperRef, sheetRef, scrollableRef });
- useMetadata(pathname);
 
  const handleClose = () => {
   gsap.to(sheetRef.current, {
