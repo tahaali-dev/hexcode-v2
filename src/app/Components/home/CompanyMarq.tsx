@@ -6,24 +6,24 @@ import { DashedContainer, StyledImage } from "../Containers";
 import { Dpara } from "../TypSetting";
 
 // Images ----
-const one = "/companies/UAE.svg";
-const two = "/companies/MPL.svg";
-const three = "/companies/cuemath.svg";
-const four = "/companies/Rupeek.svg";
-const five = "/companies/Micromax.svg";
-const seven = "/companies/ayla.svg";
-const eight = "/companies/affinity.svg";
-const nine = "/companies/Volt.svg";
-const ten = "/companies/squadcast.svg";
-const eleven = "/companies/userexperior.svg";
-const twelve = "/companies/Cyanergy.svg";
-const thirteen = "/companies/tinker.svg";
-const fourteen = "/companies/abc.svg";
-const fifteen = "/companies/starbrite.svg";
-const sixteen = "/companies/delve.svg";
-const seventeen = "/companies/biotale.svg";
-const eighteen = "/companies/logo.svg";
-const nineteen = "/companies/sensyrtech.svg";
+const one = "/companies/UAE.svg"; //fin
+const two = "/companies/MPL.svg"; // gaming
+const three = "/companies/cuemath.svg"; // ed-tech
+const four = "/companies/Rupeek.svg"; // fin
+const five = "/companies/Micromax.svg"; // information and  tech
+const seven = "/companies/ayla.svg"; //IOT
+const eight = "/companies/affinity.svg"; // information and  tech
+const nine = "/companies/Volt.svg"; //fin
+const ten = "/companies/squadcast.svg"; //saas
+const eleven = "/companies/userexperior.svg"; //saas
+const twelve = "/companies/Cyanergy.svg"; //sust
+const thirteen = "/companies/tinker.svg"; // ed-tech
+const fourteen = "/companies/abc.svg"; // enter
+const fifteen = "/companies/starbrite.svg"; // health
+const sixteen = "/companies/delve.svg"; // AI
+const seventeen = "/companies/biotale.svg"; // AI
+const eighteen = "/companies/logo.svg"; // saas
+const nineteen = "/companies/sensyrtech.svg"; //Iot, saas
 
 // Image list with width and height for each logo
 const imageList = [

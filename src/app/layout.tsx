@@ -55,8 +55,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={museoSans.variable}>
-      <SmoothScrollProvider>
-        <body className={museoSans.className}>
+      <body className={museoSans.className}>
+        <SmoothScrollProvider>
           <Suspense fallback={null}>
             <ClarityProvider />
           </Suspense>
@@ -65,8 +65,8 @@ export default function RootLayout({
           <Footer />
           <MobileNav />
           {modal}
-        </body>
-      </SmoothScrollProvider>
+        </SmoothScrollProvider>
+      </body>
     </html >
   );
 }

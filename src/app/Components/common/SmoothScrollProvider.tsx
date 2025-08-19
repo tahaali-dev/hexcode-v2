@@ -11,11 +11,13 @@ const SmoothScrollProvider: React.FC<Props> = ({ children }) => {
  const pathname = usePathname();
  const lenisRef = useRef<Lenis | null>(null);
 
+ console.log("pathname", pathname);
+
+
  // Route condition check (e.g., /work/projectX)
  const isModal = pathname.startsWith("/work/") && pathname !== "/work";
 
  useEffect(() => {
-  // if (isModal) return; // Don’t init Lenis if in modal
 
   const lenis = new Lenis();
   lenisRef.current = lenis;
@@ -31,7 +33,7 @@ const SmoothScrollProvider: React.FC<Props> = ({ children }) => {
    lenis.destroy();
    lenisRef.current = null;
   };
- }, [isModal]);
+ }, []);
 
  // Reset scroll position on route change
  // useEffect(() => {
