@@ -14,34 +14,36 @@ export const workMetadata: WorkMetadata[] = [
  {
   pathname: "/work/volt",
   title: "Volt - Case Study | Hexcode",
-  description: "Explore our work with Volt - a comprehensive case study showcasing our expertise in innovative solutions and digital transformation.",
+  description: "Building trust in a new category of credit",
   keywords: ["Volt", "case study", "digital transformation", "Hexcode", "innovation"],
   openGraph: {
    title: "Volt - Case Study | Hexcode",
-   description: "Explore our work with Volt - a comprehensive case study showcasing our expertise in innovative solutions and digital transformation.",
-   images: ["/projectsBn/volt.jpg"]
+   description: "Building trust in a new category of credit",
+   images: [
+    "https://i.ibb.co/PvC2CS6S/OG.png"
+   ],
   }
  },
  {
   pathname: "/work/sensyrtech",
   title: "Sensyrtech - Case Study | Hexcode",
-  description: "Discover our collaboration with Sensyrtech - a detailed case study highlighting our technical expertise and successful project delivery.",
+  description: "Designing enterprise tool for Asset Tracking",
   keywords: ["Sensyrtech", "case study", "technical expertise", "Hexcode", "project delivery"],
   openGraph: {
    title: "Sensyrtech - Case Study | Hexcode",
-   description: "Discover our collaboration with Sensyrtech - a detailed case study highlighting our technical expertise and successful project delivery.",
-   images: ["/projectsBn/sensyrtech.jpg"]
+   description: "Designing enterprise tool for Asset Tracking",
+   images: ["https://i.ibb.co/PvC2CS6S/OG.png"]
   }
  },
  {
   pathname: "/work/starbrite-dental",
-  title: "Starbrite Dental - Case Study | Hexcode",
-  description: "Learn about our work with Starbrite Dental - a comprehensive case study demonstrating our healthcare technology solutions.",
+  title: "StarBrite - Case Study | Hexcode",
+  description: "Brand refresh for a leading dental clinic with trusted, high-quality care",
   keywords: ["Starbrite Dental", "case study", "healthcare technology", "Hexcode", "dental solutions"],
   openGraph: {
    title: "Starbrite Dental - Case Study | Hexcode",
-   description: "Learn about our work with Starbrite Dental - a comprehensive case study demonstrating our healthcare technology solutions.",
-   images: ["/projectsBn/brite.jpg"]
+   description: "Brand refresh for a leading dental clinic with trusted, high-quality care",
+   images: ["https://i.ibb.co/PvC2CS6S/OG.png"]
   }
  }
 ];

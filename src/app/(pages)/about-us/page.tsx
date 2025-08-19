@@ -15,6 +15,14 @@ export const metadata: Metadata = {
         description: "Meet the team and discover the story behind Hexcode. From our founding vision to our work with startups and industry leaders, see what makes us a trusted design partner.",
         type: "website",
         url: "/about-us",
+        images: [
+            {
+                url: "https://i.ibb.co/PvC2CS6S/OG.png",
+                width: 1200,
+                height: 630,
+                alt: "Hexcode – UX/UI for fast growing startups.",
+            },
+        ],
     },
 };
 

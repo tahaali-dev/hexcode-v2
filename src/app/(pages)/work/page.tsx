@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   description: "Explore our portfolio of innovative projects and creative solutions. From web development to digital transformation, see how we bring ideas to life.",
   type: "website",
   url: "/work",
+  images: [
+   {
+    url: "https://i.ibb.co/PvC2CS6S/OG.png",
+    width: 1200,
+    height: 630,
+    alt: "Hexcode – UX/UI for fast growing startups.",
+   },
+  ],
  },
 };
 

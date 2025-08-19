@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   description: "Explore the range of services Hexcode offers, including brand strategy, identity, web and product design. Partner with us to elevate your digital presence.",
   type: "website",
   url: "/our-services",
+  images: [
+   {
+    url: "https://i.ibb.co/PvC2CS6S/OG.png",
+    width: 1200,
+    height: 630,
+    alt: "Hexcode – UX/UI for fast growing startups.",
+   },
+  ],
  },
 };
 
