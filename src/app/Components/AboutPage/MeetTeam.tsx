@@ -13,11 +13,11 @@ const MuffuBhai = "/team/muffu-bhai.png"
 const Qaid = "/team/qaid.png"
 const ShabbirBhai = "/team/shabbir-bhai.png"
 const Taha = "/team/taha.png"
-
+const nakiya = "/team/nakiya.png"
 
 const teamMembers = [
   {
-    name: "Aliasgher Millwala",
+    name: "Ali",
     title: "Co-founder",
     image: AliBhai,
     bgColor: "#C3ABFF"
@@ -29,41 +29,47 @@ const teamMembers = [
     bgColor: "#FBC1D4"
   },
   {
-    name: "Husain Manpurwala",
+    name: "Husain",
     title: "Sr UI/UX Designer",
     image: Husain,
     bgColor: "#FED35B"
   },
   {
-    name: "Husain Saifee",
+    name: "Husain",
     title: "CFO",
     image: HusainSaifee,
     bgColor: "#AFF9D1"
   },
   {
-    name: "Mufaddal Ezzy",
+    name: "Mufaddal",
     title: "Creative Head",
     image: MuffuBhai,
     bgColor: "#C3ABFF "
   },
   {
-    name: "Qaidjoher",
+    name: "Naqiya",
+    title: "UI/UX Intern",
+    image: nakiya,
+    bgColor: "#FBC1D4"
+  },
+  {
+    name: "Quaid",
     title: "UI/UX Designer",
     image: Qaid,
     bgColor: "#81D0FF"
   },
   {
-    name: "Shabbir Manpurwala",
+    name: "Shabbir",
     title: "Co-founder",
     image: ShabbirBhai,
     bgColor: "#FED35B"
   },
   {
-    name: "Taha Millwala",
+    name: "Taha",
     title: "Developer",
     image: Taha,
-    bgColor: "#FBC1D4"
-  }
+    bgColor: "#81D0FF"
+  },
 ];
 
 
