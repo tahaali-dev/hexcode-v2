@@ -6,7 +6,7 @@ import { PrimaryBtn } from './Buttons';
 import CloseIcon from "../../../public/icons/close.svg";
 
 // Tags
-const tags = ['Brand Strategy', 'Identity', 'Website', 'Product design', 'Other'];
+const tags = ['Brand strategy', 'Identity', 'Website', 'Product design', 'Other'];
 
 export default function ContactForm({ show, onClose }: { show: boolean; onClose: () => void }) {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);

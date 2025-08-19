@@ -66,6 +66,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     padding: 8px 28px;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+
 a{
   text-decoration: none;
 }
@@ -102,22 +103,6 @@ const NavItem = styled.div<NavItemProps>`
     transition: color 0.3s ease;
     font-weight: ${({ active }) => (active ? "500" : "300")};
     color: ${({ active }) => (active ? "#EE232A" : "#181010")};
-
-    /* Highlight background effect */
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 8px;
-      background: rgba(200, 13, 19, 0.15); /* soft red tint */
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      border-radius: 4px;
-      z-index: -1;
-    }
   }
 
   &:hover {
@@ -128,10 +113,6 @@ const NavItem = styled.div<NavItemProps>`
 
     p {
       color: #C80D13;
-
-      &::before {
-        transform: scaleX(1);
-      }
     }
   }
 `;
