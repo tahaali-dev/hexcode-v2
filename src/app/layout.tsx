@@ -14,6 +14,7 @@ import SmoothScrollProvider from "./Components/common/SmoothScrollProvider";
 import localFont from "next/font/local";
 import MobileNav from "./Components/MobileNav";
 import ClarityProvider from "./Components/Clarity";
+import CallHover from "./Components/CallHover";
 const museoSans = localFont({
   src: [
     { path: "../../public/fonts/MuseoSans100.woff2", weight: "100", style: "normal" },
@@ -68,6 +69,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <MobileNav />
+          <CallHover />
           {modal}
         </SmoothScrollProvider>
       </body>
