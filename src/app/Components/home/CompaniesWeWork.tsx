@@ -26,20 +26,20 @@ const nineteen = "/companies/sensyrtech.svg"; //Iot, saas
 
 // Image list
 const imageList = [
- { src: one, width: 112, height: 36, category: "Finance" },
+ { src: one, width: 112, height: 36, category: "Fintech" },
  { src: two, width: 68, height: 36, category: "Gaming" },
  { src: three, width: 108, height: 36, category: "Edtech" },
- { src: four, width: 108, height: 36, category: "Finance" },
- { src: nine, width: 68, height: 36, category: "Finance" },
- { src: five, width: 108, height: 36, category: "Information technology" },
- { src: eleven, width: 138, height: 34, category: "Saas" },
- { src: seven, width: 156, height: 24, category: "Iot" },
- { src: eight, width: 108, height: 36, category: "Information technology" },
- { src: twelve, width: 108, height: 36, category: "Sustainability" },
+ { src: four, width: 108, height: 36, category: "Fintech" },
+ { src: nine, width: 68, height: 36, category: "Fintech" },
+ { src: five, width: 108, height: 36, category: "Consumer Tech" },
+ { src: eleven, width: 138, height: 34, category: "SAAS" },
+ { src: seven, width: 156, height: 24, category: "IoT" },
+ { src: eight, width: 108, height: 36, category: "Consumer Tech" },
+ { src: twelve, width: 108, height: 36, category: "Energy & Sustainability" },
  { src: fourteen, width: 42, height: 48, category: "Entertainment" },
- { src: sixteen, width: 108, height: 36, category: "Artificial intelligence" },
- { src: seventeen, width: 108, height: 36, category: "Artificial intelligence" },
- { src: nineteen, width: 76, height: 42, category: "Iot, saas" },
+ { src: sixteen, width: 108, height: 36, category: "AI" },
+ { src: seventeen, width: 108, height: 36, category: "AI" },
+ { src: nineteen, width: 76, height: 42, category: "IoT & SAAS" },
 ];
 
 // Helpers
