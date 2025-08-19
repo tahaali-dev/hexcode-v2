@@ -34,16 +34,16 @@ const SmoothScrollProvider: React.FC<Props> = ({ children }) => {
  }, [isModal]);
 
  // Reset scroll position on route change
- useEffect(() => {
-  // Wait for next tick to ensure DOM is ready
-  setTimeout(() => {
-   if (lenisRef.current) {
-    lenisRef.current.scrollTo(0, { immediate: true });
-   } else {
-    window.scrollTo(0, 0);
-   }
-  }, 0);
- }, [pathname]);
+ // useEffect(() => {
+ //  // Wait for next tick to ensure DOM is ready
+ //  setTimeout(() => {
+ //   if (lenisRef.current) {
+ //    lenisRef.current.scrollTo(0, { immediate: true });
+ //   } else {
+ //    window.scrollTo(0, 0);
+ //   }
+ //  }, 0);
+ // }, [pathname]);
 
  return <>{children}</>;
 };

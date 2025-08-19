@@ -3,7 +3,9 @@ import { workMetadata } from "@/app/Static/workMetadata";
 import { Metadata } from "next";
 
 // Generate metadata function for server-side rendering
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: any
+): Promise<Metadata> {
   const pathname = `/work/${params.slug}`;
   const metadata = workMetadata.find(item => item.pathname === pathname);
   if (!metadata) {
@@ -44,7 +46,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 
-const Page = ({ params }: { params: { slug: string } }) => {
+const Page = ({ params }: any) => {
   return (
     <>
       <ClientCaseStudy slug={params.slug} />
