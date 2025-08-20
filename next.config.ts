@@ -1,9 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // images: {
-  //   domains: ['https://i.ibb.co', 'https://screenrepo-production-bucket.s3.ap-south-1.amazonaws.com'],
-  // },
   headers: async () => [
     {
       source: '/(.*)',
