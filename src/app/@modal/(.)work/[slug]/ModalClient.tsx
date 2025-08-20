@@ -10,6 +10,8 @@ import gsap from 'gsap';
 import { usePathname } from "next/navigation";
 import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
 import StarbriteCs from "@/app/Components/casestudy/Starbright";
+import { DyH2 } from "@/app/Components/TypSetting";
+import { PrimaryBtn } from "@/app/Components/Buttons";
 
 const CloseRd = "/icons/closeRound.svg";
 
@@ -99,18 +101,36 @@ const ModalClient = () => {
 
                   <Footer />
 
-                  {
-                     <BookCallFixed isVisible={isFullWidth}>
-                        <BookCallButton onClick={handleBookCall}>
-                           Book a Call
-                        </BookCallButton>
-                     </BookCallFixed>
-                  }
+                  <BookStrip isVisible={isFullWidth}>
+                     <div className="inner">
+
+                        <DyH2
+                           fontSize={{ base: '24px', md: '32px', sm: '18px' }}
+                           lineHeight={{ base: '28px', md: '40px', sm: '28px' }}
+                           fontWeight={400}
+                           fontStyle="normal"
+                           textTransform="capitalize"
+                           color="#181010"
+                           className='ml-md'
+                        >
+                           Looking for a design partner?
+                        </DyH2>
+
+                        <PrimaryBtn
+                           padding="16px"
+                           fontSize="18px"
+                           margin="0"
+                           borderRadius="8px"
+                           btnContent="Book a call"
+                           onClick={() => window.open("https://calendly.com/shabbir-hexcode/30min", "_blank")}
+                        />
+                     </div>
+                  </BookStrip>
 
                </SheetContent>
             </ScrollableContent>
          </BottomSheet>
-      </PageWrapper>
+      </PageWrapper >
    );
 };
 
@@ -221,7 +241,7 @@ const CloseBtn = styled.button`
    `;
 
 // Fixed Book a Call CTA at the bottom inside the modal
-const BookCallFixed = styled.div<{ isVisible: boolean }>`
+const BookStrip = styled.div<{ isVisible: boolean }>`
   position: fixed;
   left: 0;
   right: 0;
@@ -229,40 +249,45 @@ const BookCallFixed = styled.div<{ isVisible: boolean }>`
   display: flex;
   justify-content: center;
   z-index: 1200;
-  pointer-events: none;
   transition: transform 0.3s ease, opacity 0.3s ease;
+
+  .inner {
+    background: #fff;
+    width: 40%;
+    min-width: 320px;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 16px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 2px 12px rgba(30, 30, 30, 0.06);
+    gap: 16px;
+  }
+
+  .inner:hover {
+    box-shadow: 0 6px 24px rgba(238, 35, 42, 0.18), 0 1.5px 8px rgba(30,30,30,0.10);
+  }
 
   transform: ${({ isVisible }) =>
       isVisible ? "translateY(-24px)" : "translateY(100%)"};
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+
+  @media (max-width: 1024px) {
+    bottom: -12px; 
+    .inner {
+      width: 85vw;
+      min-width: unset;
+      max-width: 85vw;
+      padding: 12px;
+      border-radius: 12px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+  }
+
 `;
 
 
-const BookCallButton = styled.button`
-   pointer-events: auto;
-   background: #ee232a;
-   color: #fff;
-   border: none;
-   border-radius: 32px;
-   padding: 16px 36px;
-   font-size: 1.1rem;
-   font-weight: 700;
-   box-shadow: 0 4px 16px rgba(238, 35, 42, 0.15);
-   cursor: pointer;
-   transition: background 0.2s, transform 0.15s;
-
-   &:hover {
-      background: #c91c23;
-      transform: translateY(-2px) scale(1.04);
-   }
-
-   &:active {
-      background: #a3171b;
-      transform: scale(0.98);
-   }
-
-   @media (max-width: 768px) {
-      padding: 12px 24px;
-      font-size: 1rem;
-   }
-`;
