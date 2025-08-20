@@ -105,13 +105,13 @@ const ModalClient = () => {
                      <div className="inner">
 
                         <DyH2
-                           fontSize={{ base: '24px', md: '32px', sm: '18px' }}
-                           lineHeight={{ base: '28px', md: '40px', sm: '28px' }}
+                           fontSize={{ base: '22px', md: '18px', sm: '18px' }}
+                           lineHeight={{ base: '28px', md: '28px', sm: '28px' }}
                            fontWeight={400}
                            fontStyle="normal"
                            textTransform="capitalize"
                            color="#181010"
-                           className='ml-md'
+                           className='ml-sm'
                         >
                            Looking for a design partner?
                         </DyH2>
@@ -123,6 +123,7 @@ const ModalClient = () => {
                            borderRadius="8px"
                            btnContent="Book a call"
                            onClick={() => window.open("https://calendly.com/shabbir-hexcode/30min", "_blank")}
+                           className="book-btn"
                         />
                      </div>
                   </BookStrip>
@@ -251,6 +252,13 @@ const BookStrip = styled.div<{ isVisible: boolean }>`
   z-index: 1200;
   transition: transform 0.3s ease, opacity 0.3s ease;
 
+  .book-btn{
+  height:42px;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  }
+
   .inner {
     background: #fff;
     width: 40%;
@@ -259,8 +267,8 @@ const BookStrip = styled.div<{ isVisible: boolean }>`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
-    border-radius: 16px;
+    padding: 8px;
+    border-radius: 8px;
     transition: box-shadow 0.3s ease;
     box-shadow: 0 2px 12px rgba(30, 30, 30, 0.06);
     gap: 16px;
