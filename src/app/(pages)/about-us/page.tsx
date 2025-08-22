@@ -8,11 +8,11 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
     title: "About Us | Hexcode",
-    description: "Learn about Hexcode's journey, values, and the passionate team behind our design studio. Discover how we partner with startups and industry leaders to create impactful digital experiences.",
+    description: "Learn about Hexcode's journey, values, and the passionate team behind our design studio. Discover how we partner with companies and industry leaders to create impactful digital experiences.",
     keywords: "about Hexcode, design studio, our story, team, digital design, founders, values, creative agency, design journey, professionals",
     openGraph: {
         title: "About Us | Hexcode",
-        description: "Meet the team and discover the story behind Hexcode. From our founding vision to our work with startups and industry leaders, see what makes us a trusted design partner.",
+        description: "Meet the team and discover the story behind Hexcode. From our founding vision to our work with companies and industry leaders, see what makes us a trusted design partner.",
         type: "website",
         url: "/about-us",
         images: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
                 url: "https://i.ibb.co/PvC2CS6S/OG.png",
                 width: 1200,
                 height: 630,
-                alt: "Hexcode – UX/UI for fast growing startups.",
+                alt: "Hexcode – UX/UI for fast growing companies.",
             },
         ],
     },

@@ -37,7 +37,7 @@ const PrimeFold = () => {
           color="#181010"
           className="mt-sm prime-animated text-center"
         >
-          growing startups
+          growing companies
         </DyTitleH1>
 
 
