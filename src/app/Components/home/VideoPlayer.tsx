@@ -5,6 +5,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+const MOBILE_BREAKPOINT = 768;
+
 const VideoPlayer: React.FC = () => {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -12,24 +14,29 @@ const VideoPlayer: React.FC = () => {
   useLayoutEffect(() => {
     if (!wrapperRef.current || !videoRef.current) return;
 
-    // GSAP context for cleanup
-    const ctx = gsap.context(() => {
-      // Animate width to 100vw as the wrapper approaches the top
-      gsap.to(videoRef.current, {
-        width: "100vw",
-        borderRadius: "0px",
-        ease: "none",
-        scrollTrigger: {
-          trigger: wrapperRef.current,
-          start: "top bottom",   // when wrapper hits bottom of viewport
-          end: "top top",        // until wrapper reaches top of viewport
-          scrub: true,           // smooth scrubbing
-          // markers: true,      // uncomment for debugging
-        },
-      });
-    }, wrapperRef);
+    // Only run GSAP animation if not on small devices
+    if (window.innerWidth > MOBILE_BREAKPOINT) {
+      // GSAP context for cleanup
+      const ctx = gsap.context(() => {
+        // Animate width to 100vw as the wrapper approaches the top
+        gsap.to(videoRef.current, {
+          width: "100vw",
+          borderRadius: "0px",
+          ease: "none",
+          scrollTrigger: {
+            trigger: wrapperRef.current,
+            start: "top bottom",   // when wrapper hits bottom of viewport
+            end: "top top",        // until wrapper reaches top of viewport
+            scrub: true,           // smooth scrubbing
+            // markers: true,      // uncomment for debugging
+          },
+        });
+      }, wrapperRef);
 
-    return () => ctx.revert();
+      return () => ctx.revert();
+    }
+    // On small devices, do nothing (no zoom animation)
+    return;
   }, []);
 
   return (
@@ -79,6 +86,7 @@ const Wrapper = styled.div`
     video {
       border-radius: 8px;
       width: 94vw;                /* mobile start, still scrubs to 100vw */
+      will-change: auto;          /* no need for will-change on mobile, no animation */
     }
   }
 `;

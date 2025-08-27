@@ -140,7 +140,7 @@ const Wrapper = styled.div`
 
   @media (max-width: 768px) {
     margin-top:-58px;
-    padding: 80px 12px 48px 12px;
+    padding: 80px 12px 12px 12px;
     background-size: 60px 180px;
     .m-mt-lg{ margin-top:8px; }
     .m-mt-xxl{ margin-top: 24px; button{ width:50%; } }
