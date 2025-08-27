@@ -29,6 +29,9 @@ const TextAnimation: React.FC<Props> = ({
  const itemRefs = useRef<HTMLDivElement[]>([]);
  const oneCopyWidthRef = useRef<number>(0);
 
+ // NEW: keep current slide tween to avoid snap on rapid updates
+ const trackTweenRef = useRef<gsap.core.Tween | null>(null);
+
  // start in the middle copy
  const base = baseItems.length;
  const [active, setActive] = useState<number>(base); // physical index in extendedItems
@@ -36,7 +39,8 @@ const TextAnimation: React.FC<Props> = ({
 
  // sync refs
  itemRefs.current = useMemo(
-  () => Array.from({ length: extendedItems.length }, (_, i) => itemRefs.current[i] || document.createElement("div")),
+  () =>
+   Array.from({ length: extendedItems.length }, (_, i) => itemRefs.current[i] || document.createElement("div")),
   [extendedItems.length]
  );
 
@@ -56,37 +60,37 @@ const TextAnimation: React.FC<Props> = ({
   return width;
  };
 
- // opacity falloff: dist 0/1 -> 1.0, dist 2 -> 0.9, dist 3 -> 0.8, floor 0.5
+ // UPDATED: smoother quadratic-ish falloff; floors at 0.6
  const opacityForDistance = (dist: number) => {
-  if (dist <= 1) return 1;                 // center three stay fully opaque
-  return Math.max(0, 1 - 0.3 * (dist - 1));
+  if (dist <= 1) return 1; // center three stay fully opaque
+  const t = Math.max(0, dist - 1);
+  return Math.max(0.6, 1 - 0.08 * t * (t + 1)); // 2 -> .92, 3 -> .84, ...
  };
 
- // Paint EVERY item relative to the centered index.
- // Only the center is pure white; neighbors are light-white but with full opacity at dist<=1.
+ // UPDATED: color/opacity/scale tween that lingers slightly longer than the slide
  const applyOpacityGradient = (centerIdx: number, instant = false) => {
   itemRefs.current.forEach((wrap, i) => {
    const h1 = labelEl(i);
-
-
    if (!h1) return;
 
    const dist = Math.abs(i - centerIdx);
    const isCenter = dist === 0;
 
-   const vars = {
-    color: isCenter ? "#fff" : "rgba(255,255,255,0.55)", // center white, others light-white
-    opacity: opacityForDistance(dist),                   // 1.0, 1.0, 0.9, 0.8, ...
-    scale: isCenter ? 1.03 : 1,
+   const vars: gsap.TweenVars = {
+    color: isCenter ? "#fff" : "rgba(255,255,255,0.55)", // keep your non-center color
+    opacity: opacityForDistance(dist),
+    scale: isCenter ? 1.04 : 1,
+    duration: instant ? 0 : Math.min(0.6, (slideDur ?? 0.7) + 0.1),
     ease: "power2.out",
-    duration: 0.3,
+    overwrite: "auto",
+    force3D: true,
    };
 
    instant ? gsap.set(h1, vars) : gsap.to(h1, vars);
   });
  };
 
- // center given physical index
+ // UPDATED: motion that glides and never “snaps” mid-flight
  const centerOn = (physicalIndex: number, animate = true, onComplete?: () => void) => {
   const wrap = wrapRef.current;
   const track = trackRef.current;
@@ -103,7 +107,19 @@ const TextAnimation: React.FC<Props> = ({
   const targetX = currentX + delta;
 
   if (animate) {
-   gsap.to(track, { x: targetX, duration: slideDur, ease, onComplete });
+   // kill any running slide; start fresh so it stays buttery
+   trackTweenRef.current?.kill();
+   trackTweenRef.current = gsap.to(track, {
+    x: targetX,
+    duration: slideDur,
+    ease,
+    overwrite: "auto",
+    force3D: true,
+    onComplete: () => {
+     trackTweenRef.current = null;
+     onComplete?.();
+    },
+   });
   } else {
    gsap.set(track, { x: targetX });
    onComplete?.();
@@ -140,7 +156,14 @@ const TextAnimation: React.FC<Props> = ({
   // default dim on all headings
   itemRefs.current.forEach((_, i) => {
    const h1 = labelEl(i);
-   if (h1) gsap.set(h1, { color: "rgba(255,255,255,0.55)", opacity: 0.85, scale: 1, transformOrigin: "center", willChange: "transform,color,opacity" });
+   if (h1)
+    gsap.set(h1, {
+     color: "rgba(255,255,255,0.55)",
+     opacity: 0.85,
+     scale: 1,
+     transformOrigin: "center",
+     willChange: "transform,color,opacity",
+    });
   });
 
   requestAnimationFrame(() => {
