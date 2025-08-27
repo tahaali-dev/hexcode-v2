@@ -12,13 +12,8 @@ import CompaniesWeWork from "./CompaniesWeWork";
 import VideoPlayer from "./VideoPlayer";
 const bgImg = "/img1.png";
 
-// Fast-motion background colors for animation
-const FAST_COLORS = [
-  "#ffb347", // orange
-  "#ff7e5f", // orange-red
-  "#ff5858", // red
-  "#001A46", // orange (loop)
-];
+// Use local audio file from public folder
+const TRAIN_SOUND_URL = "/audio/high.mp3"; // Place your train.mp3 in public/audio/
 
 const STREAK_COLORS = [
   "linear-gradient(90deg, #fff 0%, #fff0 100%)",
@@ -27,45 +22,42 @@ const STREAK_COLORS = [
   "linear-gradient(90deg, #ff7e5f 0%, #ffb34700 100%)",
 ];
 
+const STREAK_COUNT = 10; // Only animate 10 lines
+
 const PrimeFold = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const bgAnimRef = useRef<HTMLDivElement>(null);
   const streaksRef = useRef<HTMLDivElement>(null);
+  const trainAudioRef = useRef<HTMLAudioElement | null>(null);
 
   useTextReveal(".prime-animated");
   useButtonReveal(".prime-btn", 1.1);
+  useButtonReveal(".com-wrap", 1.1);
 
-  // Animate background color (fast, energetic, orange/red blur)
-  useEffect(() => {
-    if (bgAnimRef.current) {
-      gsap.to(bgAnimRef.current, {
-        background:
-          `linear-gradient(120deg, ${FAST_COLORS.join(", ")})`,
-        duration: 0, // set initial
-      });
-      // Animate gradient stops for a "fast" color shift
-      let colorIdx = 0;
-      const animateColors = () => {
-        colorIdx = (colorIdx + 1) % FAST_COLORS.length;
-        gsap.to(bgAnimRef.current, {
-          background: `linear-gradient(120deg, ${FAST_COLORS
-            .slice(colorIdx)
-            .concat(FAST_COLORS.slice(0, colorIdx))
-            .join(", ")})`,
-          duration: 1.2,
-          ease: "power1.inOut",
-          onComplete: animateColors,
-        });
-      };
-      animateColors();
-    }
-  }, []);
-
-  // Animate "speed streaks" for fast effect - make lines more visible
+  // Animate "speed streaks" for fast effect - only 10 lines, one-time, synced with sound
   useEffect(() => {
     if (!streaksRef.current) return;
-    const streaks = streaksRef.current.querySelectorAll(".streak");
+
+    // Play train sound
+    let audio: HTMLAudioElement | null = null;
+    if (typeof window !== "undefined") {
+      audio = new Audio(TRAIN_SOUND_URL);
+      audio.volume = 0.5;
+      trainAudioRef.current = audio;
+      // Play sound, catch autoplay errors silently
+      audio.play().catch(() => { });
+    }
+
+    const streaks = streaksRef.current.querySelectorAll<HTMLDivElement>(".streak");
+    const durations: number[] = [];
+    const delays: number[] = [];
+
     streaks.forEach((el, i) => {
+      // Each streak gets a random duration and delay, but all finish within ~1.5s
+      const duration = 0.7 + Math.random() * 0.5; // 0.7s to 1.2s
+      const delay = i * 0.08 + Math.random() * 0.18; // staggered
+      durations.push(duration);
+      delays.push(delay);
+
       gsap.fromTo(
         el,
         {
@@ -75,65 +67,74 @@ const PrimeFold = () => {
         {
           x: "120vw",
           opacity: 0,
-          duration: 0.9 + Math.random() * 0.7,
-          delay: i * 0.13 + Math.random() * 0.3,
-          repeat: -1,
+          duration,
+          delay,
+          repeat: 0,
           ease: "power1.in",
         }
       );
     });
+
+    // Fade out sound after streaks finish
+    const maxAnimTime = Math.max(...durations.map((d, i) => d + delays[i]), 1.5);
+    let fadeTimeout: NodeJS.Timeout | null = null;
+    if (audio) {
+      fadeTimeout = setTimeout(() => {
+        // Fade out audio quickly
+        const fade = setInterval(() => {
+          if (audio && audio.volume > 0.05) {
+            audio.volume = Math.max(0, audio.volume - 0.08);
+          } else if (audio) {
+            audio.pause();
+            clearInterval(fade);
+          }
+        }, 50);
+      }, maxAnimTime * 1000 - 200); // start fade out just before animation ends
+    }
+
+    // Cleanup
+    return () => {
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+      if (fadeTimeout) clearTimeout(fadeTimeout);
+    };
   }, []);
 
   return (
     <Wrapper ref={wrapperRef}>
-      {/* Fast animated background */}
-      <FastBg ref={bgAnimRef} />
       {/* Speed streaks overlay */}
       <Streaks ref={streaksRef}>
-        {Array.from({ length: 22 }).map((_, i) => {
-          // Make some lines thicker, some thinner, and vary color for visibility
-          const isThick = i % 4 === 0;
-          const isMedium = i % 4 === 1;
+        {Array.from({ length: STREAK_COUNT }).map((_, i) => {
+          // All lines are very thin, no thick or medium
           const colorIdx = i % STREAK_COLORS.length;
           return (
             <div
               key={i}
               className="streak"
               style={{
-                top: `${6 + i * 4 + Math.random() * 8}%`,
-                height: isThick
-                  ? `${5 + Math.random() * 2}px`
-                  : isMedium
-                    ? `${3.5 + Math.random() * 1.5}px`
-                    : `${2 + Math.random() * 1.2}px`,
+                top: `${6 + i * 6 + Math.random() * 10}%`,
+                height: `${1.2 + Math.random() * 0.6}px`, // very thin: 1.2px to 1.8px
                 width: `${220 + Math.random() * 180}px`,
                 background: STREAK_COLORS[colorIdx],
-                filter: isThick
-                  ? "blur(0.5px) brightness(1.2)"
-                  : isMedium
-                    ? "blur(1px) brightness(1.1)"
-                    : "blur(1.5px)",
+                filter: "blur(1.2px) brightness(1.05)",
                 position: "absolute",
                 left: 0,
-                borderRadius: "3px",
+                borderRadius: "1px",
                 pointerEvents: "none",
                 zIndex: 2,
-                boxShadow: isThick
-                  ? "0 0 12px 2px #fff8, 0 0 24px 4px #ffb34755"
-                  : isMedium
-                    ? "0 0 8px 1px #fff5"
-                    : "none",
-                opacity: isThick
-                  ? 0.85
-                  : isMedium
-                    ? 0.65
-                    : 0.5,
+                boxShadow: "none",
+                opacity: 0.45,
                 mixBlendMode: "screen",
               }}
             />
           );
         })}
       </Streaks>
+
+      {/* Hidden audio element for accessibility (not required, but for completeness) */}
+      <audio ref={trainAudioRef} src={TRAIN_SOUND_URL} style={{ display: "none" }} preload="auto" />
 
       <DyTitleH1
         fontSize={{ base: '56px', md: '38px', sm: '34px' }}
@@ -200,7 +201,7 @@ const PrimeFold = () => {
         />
       </div>
 
-      <div className="mt-xl">
+      <div className="mt-xl com-wrap">
         <CompaniesWeWork />
       </div>
 
