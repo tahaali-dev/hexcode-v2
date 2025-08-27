@@ -1,13 +1,15 @@
-import { useEffect, useCallback, useRef } from "react";
-import gsap from "gsap";
 
 /**
  * Hook to hide/show an element on scroll direction.
  * @param ref - The ref of the element to animate (usually a header)
  */
 
+import { useEffect, useCallback, useRef, useState } from "react";
+import gsap from "gsap";
+
 export const useHideOnScroll = (ref: React.RefObject<HTMLElement | null>) => {
   const lastScrollRef = useRef(0);
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
 
   const handleScroll = useCallback(() => {
     const currentScroll = window.scrollY;
@@ -15,21 +17,23 @@ export const useHideOnScroll = (ref: React.RefObject<HTMLElement | null>) => {
 
     if (!element) return;
 
+    // hide/show on scroll
     if (currentScroll > lastScrollRef.current && currentScroll > 80) {
-      // scrolling down – hide
       gsap.to(element, {
         y: "-100%",
         duration: 0.4,
         ease: "power2.out",
       });
     } else {
-      // scrolling up – show
       gsap.to(element, {
         y: "0%",
         duration: 0.4,
         ease: "power2.out",
       });
     }
+
+    // check if past 100vh
+    setScrolledPastHero(currentScroll > window.innerHeight);
 
     lastScrollRef.current = currentScroll;
   }, [ref]);
@@ -40,4 +44,6 @@ export const useHideOnScroll = (ref: React.RefObject<HTMLElement | null>) => {
       return () => window.removeEventListener("scroll", handleScroll);
     }
   }, [handleScroll]);
+
+  return { scrolledPastHero };
 };
