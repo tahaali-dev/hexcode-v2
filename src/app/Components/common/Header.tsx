@@ -74,7 +74,7 @@ const Header = () => {
             </div>
           </NavBar>
         </DashedContainer>
-      </HeaderSticky>
+      </HeaderSticky >
 
       <ContactForm show={formVisible} onClose={() => setFormVisible(false)} />
     </>
@@ -88,8 +88,11 @@ const HeaderSticky = styled.section`
   position: sticky;
   top: 0;
   z-index: 5;
-  background: var(--background-color);
+  // background: var(--background-color);
+  // background: red;
+  background-color: transparent;
   will-change: transform;
+  border-bottom: 1px solid #8F8F8F33;
 `;
 
 const NavBar = styled.div`
@@ -106,6 +109,7 @@ const LeftNav = styled.div`
 
   .logo {
     margin-right: 10px;
+    filter:brightness(0) invert(1);
   }
 `;
 
@@ -135,13 +139,15 @@ const NavItem = styled.div<NavItemProps>`
   a,p {
     position: relative;
     text-decoration: none;
-    color: #181010;
+    // color: #181010;
     font-size: 16px;
     line-height: 20px;
     text-transform: uppercase;
     transition: color 0.3s ease;
    font-weight: ${({ active }) => (active ? "500" : "300")};
-   color: ${({ active }) => (active ? "#EE232A" : "#181010")};
+  //  color: ${({ active }) => (active ? "#EE232A" : "#181010")};
+   color: ${({ active }) => (active ? "#EE232A" : "#fff")};
+
 
     /* Highlight background effect */
     &::before {

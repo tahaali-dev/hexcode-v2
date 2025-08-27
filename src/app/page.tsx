@@ -16,9 +16,9 @@ const page = () => {
   return (
     <>
       <PrimeFold />
-      <CompaniesWeWork />
-      <MobileComp />
-      <VideoPlayer />
+      {/* <CompaniesWeWork /> */}
+      {/* <MobileComp /> */}
+      {/* <VideoPlayer /> */}
       <EmptyContainer height="76px" />
       <Projects />
       <OurCapabilities />

@@ -122,7 +122,8 @@ body {
   font-family: var(--font-primary);
   font-size: var(--font-size-md);
   color: var(--clr-dark);
-  background-color: var(--clr-light);
+  /* background-color: var(--clr-light); */
+  /* background-color: red; */
   scrollbar-width: none;
   font-display: swap;
   text-rendering: optimizeLegibility;

@@ -20,7 +20,7 @@ export const DashedContainer = ({
       <div className="child">
         {children}
 
-        {leftBottom && (
+        {/* {leftBottom && (
           <StyledImage
             className="hex-left-bottom"
             src={GreyHex}
@@ -28,9 +28,9 @@ export const DashedContainer = ({
             height={24}
             alt="Hex Left Bottom"
           />
-        )}
+        )} */}
 
-        {rightBottom && (
+        {/* {rightBottom && (
           <StyledImage
             className="hex-right-bottom"
             src={GreyHex}
@@ -38,7 +38,7 @@ export const DashedContainer = ({
             height={24}
             alt="Hex Right Bottom"
           />
-        )}
+        )} */}
       </div>
     </Container>
   );
@@ -47,13 +47,15 @@ export const DashedContainer = ({
 export const Container = styled.section`
   display: flex;
   justify-content: center;
-  background-color: var(--clr-light);
-  border-bottom: 1px dashed #d3d3d3;
+  // background-color: var(--clr-light);
+  // background-color: #fff;
+  background-color: transparent;
+  // border-bottom: 1px dashed #d3d3d3;
 
 .child{
    position: relative;
-    border-left: 1px dashed #d3d3d3;
-    border-right: 1px dashed #d3d3d3;
+    // border-left: 1px dashed #d3d3d3;
+    // border-right: 1px dashed #d3d3d3;
     width: 1240px;
 
   .hex-left-bottom {

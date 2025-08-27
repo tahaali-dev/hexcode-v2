@@ -26,105 +26,106 @@ const nineteen = "/companies/sensyrtech.svg"; //Iot, saas
 
 // Image list
 const imageList = [
- { src: one, width: 112, height: 36, category: "Fintech" },
- { src: two, width: 68, height: 36, category: "Gaming" },
- { src: three, width: 108, height: 36, category: "Edtech" },
- { src: four, width: 108, height: 36, category: "Fintech" },
- { src: nine, width: 68, height: 36, category: "Fintech" },
- { src: five, width: 108, height: 36, category: "Consumer Tech" },
- { src: eleven, width: 138, height: 34, category: "SAAS" },
- { src: seven, width: 156, height: 24, category: "IoT" },
- { src: eight, width: 108, height: 36, category: "Consumer Tech" },
- { src: twelve, width: 108, height: 36, category: "Energy & Sustainability" },
- { src: fourteen, width: 42, height: 48, category: "Entertainment" },
- { src: sixteen, width: 108, height: 36, category: "AI" },
- { src: seventeen, width: 108, height: 36, category: "AI" },
- { src: nineteen, width: 76, height: 42, category: "IoT & SAAS" },
+  { src: one, width: 112, height: 36, category: "Fintech" },
+  { src: two, width: 68, height: 36, category: "Gaming" },
+  { src: three, width: 108, height: 36, category: "Edtech" },
+  { src: four, width: 108, height: 36, category: "Fintech" },
+  { src: nine, width: 68, height: 36, category: "Fintech" },
+  { src: five, width: 108, height: 36, category: "Consumer Tech" },
+  { src: eleven, width: 138, height: 34, category: "SAAS" },
+  { src: seven, width: 156, height: 24, category: "IoT" },
+  { src: eight, width: 108, height: 36, category: "Consumer Tech" },
+  { src: twelve, width: 108, height: 36, category: "Energy & Sustainability" },
+  { src: fourteen, width: 42, height: 48, category: "Entertainment" },
+  { src: sixteen, width: 108, height: 36, category: "AI" },
+  { src: seventeen, width: 108, height: 36, category: "AI" },
+  { src: nineteen, width: 76, height: 42, category: "IoT & SAAS" },
 ];
 
 // Helpers
 function getCategorySet(category: string) {
- return new Set(
-  category
-   .split(",")
-   .map((c) => c.trim().toLowerCase())
-   .filter(Boolean)
- );
+  return new Set(
+    category
+      .split(",")
+      .map((c) => c.trim().toLowerCase())
+      .filter(Boolean)
+  );
 }
 
 const CompaniesWeWork = () => {
- const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
- const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
- const hoveredCategories =
-  hoveredIndex !== null ? getCategorySet(imageList[hoveredIndex].category) : null;
+  const hoveredCategories =
+    hoveredIndex !== null ? getCategorySet(imageList[hoveredIndex].category) : null;
 
- return (
-  <DashedContainer leftBottom rightBottom>
-   <Wrapper>
-    <Dpara
-     fontSize="18px"
-     lineHeight="24px"
-     fontWeight="400"
-     color="#a38f8f"
-     mdFontSize="16px"
-     mdLineHeight="24px"
-     smFontSize="16px"
-     smLineHeight="24px"
-     textAlign="center"
-     className="text-Uppercase"
-    >
-     Trusted by 80+ customers, from startup to enterprise
-    </Dpara>
+  return (
+    <DashedContainer leftBottom rightBottom>
+      <Wrapper>
+        <Dpara
+          fontSize="18px"
+          lineHeight="24px"
+          fontWeight="400"
+          // color="#a38f8f"
+          color="#D6D6D6"
+          mdFontSize="16px"
+          mdLineHeight="24px"
+          smFontSize="16px"
+          smLineHeight="24px"
+          textAlign="center"
+          className="text-Uppercase"
+        >
+          Trusted by 80+ customers, from startup to enterprise
+        </Dpara>
 
-    <LogoHolder>
-     {imageList.map((image, index) => {
-      const thisCategories = getCategorySet(image.category);
-      let isBlurred = false;
-      if (hoveredCategories) {
-       const hasCommon = [...thisCategories].some((cat) =>
-        hoveredCategories.has(cat)
-       );
-       isBlurred = !hasCommon;
-      }
+        <LogoHolder>
+          {imageList.map((image, index) => {
+            const thisCategories = getCategorySet(image.category);
+            let isBlurred = false;
+            if (hoveredCategories) {
+              const hasCommon = [...thisCategories].some((cat) =>
+                hoveredCategories.has(cat)
+              );
+              isBlurred = !hasCommon;
+            }
 
-      return (
-       <StyledImage
-        key={index}
-        src={image.src}
-        alt={`icon-${index + 1}`}
-        className="company-logo"
-        width={image.width}
-        height={image.height}
-        onMouseEnter={() => setHoveredIndex(index)}
-        onMouseLeave={() => setHoveredIndex(null)}
-        onMouseMove={(e) =>
-         setCursor({ x: e.clientX + 12, y: e.clientY + 12 })
-        }
-        style={{
-         transition: "filter 0.2s",
-         cursor: "pointer",
-         filter:
-          hoveredIndex !== null && !isBlurred
-           ? "grayscale(0%)"
-           : isBlurred
-            ? "grayscale(100%) opacity(0.2)"
-            : "grayscale(100%)",
-        }}
-       />
-      );
-     })}
-    </LogoHolder>
+            return (
+              <StyledImage
+                key={index}
+                src={image.src}
+                alt={`icon-${index + 1}`}
+                className="company-logo"
+                width={image.width}
+                height={image.height}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onMouseMove={(e) =>
+                  setCursor({ x: e.clientX + 12, y: e.clientY + 12 })
+                }
+                style={{
+                  transition: "filter 0.2s",
+                  cursor: "pointer",
+                  filter:
+                    hoveredIndex !== null && !isBlurred
+                      ? "brightness(0) invert(1)"
+                      : isBlurred
+                        ? "brightness(0) invert(1) opacity(0.3)"
+                        : "brightness(0) invert(1)",
+                }}
+              />
+            );
+          })}
+        </LogoHolder>
 
-    {/* Tooltip Chip */}
-    {hoveredIndex !== null && (
-     <Tooltip style={{ top: cursor.y + 34, left: cursor.x }}>
-      {imageList[hoveredIndex].category}
-     </Tooltip>
-    )}
-   </Wrapper>
-  </DashedContainer>
- );
+        {/* Tooltip Chip */}
+        {hoveredIndex !== null && (
+          <Tooltip style={{ top: cursor.y + 34, left: cursor.x }}>
+            {imageList[hoveredIndex].category}
+          </Tooltip>
+        )}
+      </Wrapper>
+    </DashedContainer>
+  );
 };
 
 export default CompaniesWeWork;
