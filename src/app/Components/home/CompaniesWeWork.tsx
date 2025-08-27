@@ -159,7 +159,7 @@ const Tooltip = styled.div`
   font-size: 12px;
   pointer-events: none;
   white-space: nowrap;
-  z-index: 1000;
+  z-index: 1200;
   transform: translate(-50%, -100%);
   backdrop-filter: blur(8px);  /* glassy blur effect */
   -webkit-backdrop-filter: blur(8px); /* Safari support */

@@ -37,7 +37,6 @@ const VideoPlayer: React.FC = () => {
           muted
           playsInline
         />
-        {/* Gradient overlay for less opacity at bottom */}
         <BottomFade />
       </Wrapper>
     </DashedContainer >
