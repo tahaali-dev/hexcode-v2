@@ -20,6 +20,13 @@ const FAST_COLORS = [
   "#001A46", // orange (loop)
 ];
 
+const STREAK_COLORS = [
+  "linear-gradient(90deg, #fff 0%, #fff0 100%)",
+  "linear-gradient(90deg, #ffb347 0%, #ff7e5f00 100%)",
+  "linear-gradient(90deg, #fffbe6 0%, #fff0 100%)",
+  "linear-gradient(90deg, #ff7e5f 0%, #ffb34700 100%)",
+];
+
 const PrimeFold = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const bgAnimRef = useRef<HTMLDivElement>(null);
@@ -54,7 +61,7 @@ const PrimeFold = () => {
     }
   }, []);
 
-  // Animate "speed streaks" for fast effect
+  // Animate "speed streaks" for fast effect - make lines more visible
   useEffect(() => {
     if (!streaksRef.current) return;
     const streaks = streaksRef.current.querySelectorAll(".streak");
@@ -62,14 +69,14 @@ const PrimeFold = () => {
       gsap.fromTo(
         el,
         {
-          x: -200,
-          opacity: 0.18 + Math.random() * 0.12,
+          x: -320,
+          opacity: 0.45 + Math.random() * 0.25,
         },
         {
-          x: "110vw",
+          x: "120vw",
           opacity: 0,
-          duration: 0.7 + Math.random() * 0.7,
-          delay: i * 0.18 + Math.random() * 0.5,
+          duration: 0.9 + Math.random() * 0.7,
+          delay: i * 0.13 + Math.random() * 0.3,
           repeat: -1,
           ease: "power1.in",
         }
@@ -83,27 +90,49 @@ const PrimeFold = () => {
       <FastBg ref={bgAnimRef} />
       {/* Speed streaks overlay */}
       <Streaks ref={streaksRef}>
-        {Array.from({ length: 14 }).map((_, i) => (
-          <div
-            key={i}
-            className="streak"
-            style={{
-              top: `${10 + i * 5 + Math.random() * 10}%`,
-              height: `${2 + Math.random() * 2}px`,
-              width: `${120 + Math.random() * 120}px`,
-              background:
-                i % 2 === 0
-                  ? "linear-gradient(90deg, #fff6 0%, #fff0 100%)"
-                  : "linear-gradient(90deg, #ffb34799 0%, #ff7e5f00 100%)",
-              filter: "blur(1.5px)",
-              position: "absolute",
-              left: 0,
-              borderRadius: "2px",
-              pointerEvents: "none",
-              zIndex: 2,
-            }}
-          />
-        ))}
+        {Array.from({ length: 22 }).map((_, i) => {
+          // Make some lines thicker, some thinner, and vary color for visibility
+          const isThick = i % 4 === 0;
+          const isMedium = i % 4 === 1;
+          const colorIdx = i % STREAK_COLORS.length;
+          return (
+            <div
+              key={i}
+              className="streak"
+              style={{
+                top: `${6 + i * 4 + Math.random() * 8}%`,
+                height: isThick
+                  ? `${5 + Math.random() * 2}px`
+                  : isMedium
+                    ? `${3.5 + Math.random() * 1.5}px`
+                    : `${2 + Math.random() * 1.2}px`,
+                width: `${220 + Math.random() * 180}px`,
+                background: STREAK_COLORS[colorIdx],
+                filter: isThick
+                  ? "blur(0.5px) brightness(1.2)"
+                  : isMedium
+                    ? "blur(1px) brightness(1.1)"
+                    : "blur(1.5px)",
+                position: "absolute",
+                left: 0,
+                borderRadius: "3px",
+                pointerEvents: "none",
+                zIndex: 2,
+                boxShadow: isThick
+                  ? "0 0 12px 2px #fff8, 0 0 24px 4px #ffb34755"
+                  : isMedium
+                    ? "0 0 8px 1px #fff5"
+                    : "none",
+                opacity: isThick
+                  ? 0.85
+                  : isMedium
+                    ? 0.65
+                    : 0.5,
+                mixBlendMode: "screen",
+              }}
+            />
+          );
+        })}
       </Streaks>
 
       <DyTitleH1
