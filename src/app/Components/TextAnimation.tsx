@@ -7,10 +7,10 @@ import { DyTitleH1 } from "./TypSetting";
 
 type Props = {
  items?: string[];
- stepMs?: number;   // delay between moves
- slideDur?: number; // slide tween duration (sec)
- ease?: string;     // gsap ease
- gapPx?: number;    // visual gap between items
+ stepMs?: number;
+ slideDur?: number;
+ ease?: string;
+ gapPx?: number;
 };
 
 const TextAnimation: React.FC<Props> = ({
@@ -32,15 +32,16 @@ const TextAnimation: React.FC<Props> = ({
  // start in the middle copy
  const base = baseItems.length;
  const [active, setActive] = useState<number>(base); // physical index in extendedItems
-
- // keep current "truly-active" (centered/white) separate from "target"
- const trulyActiveRef = useRef<number>(base); // the one that's white right now
+ const trulyActiveRef = useRef<number>(base);        // the one that's actually centered/white
 
  // sync refs
  itemRefs.current = useMemo(
   () => Array.from({ length: extendedItems.length }, (_, i) => itemRefs.current[i] || document.createElement("div")),
   [extendedItems.length]
  );
+
+ // util: find inner <h1>
+ const labelEl = (idx: number) => itemRefs.current[idx]?.querySelector<HTMLElement>("h1") || null;
 
  // measure width of one logical copy
  const measureOneCopyWidth = () => {
@@ -55,32 +56,33 @@ const TextAnimation: React.FC<Props> = ({
   return width;
  };
 
- // dim or light helpers
- const lightItem = (idx: number, instant = false) => {
-  const wrapper = itemRefs.current[idx];
-  if (!wrapper) return;
-
-  // target the <h1> inside
-  const el = wrapper.querySelector("h1");
-  if (!el) return;
-
-  const tween = { color: "#fff", opacity: 1, scale: 1.03, ease: "power2.out" };
-  instant ? gsap.set(el, tween) : gsap.to(el, { ...tween, duration: 0.35 });
+ // opacity falloff: dist 0/1 -> 1.0, dist 2 -> 0.9, dist 3 -> 0.8, floor 0.5
+ const opacityForDistance = (dist: number) => {
+  if (dist <= 1) return 1;                 // center three stay fully opaque
+  return Math.max(0, 1 - 0.3 * (dist - 1));
  };
 
- const dimItem = (idx: number) => {
-  const wrapper = itemRefs.current[idx];
-  if (!wrapper) return;
+ // Paint EVERY item relative to the centered index.
+ // Only the center is pure white; neighbors are light-white but with full opacity at dist<=1.
+ const applyOpacityGradient = (centerIdx: number, instant = false) => {
+  itemRefs.current.forEach((wrap, i) => {
+   const h1 = labelEl(i);
 
-  const el = wrapper.querySelector("h1");
-  if (!el) return;
 
-  gsap.to(el, {
-   color: "rgba(255,255,255,0.55)",
-   opacity: 0.85,
-   scale: 1,
-   duration: 0.3,
-   ease: "power2.out",
+   if (!h1) return;
+
+   const dist = Math.abs(i - centerIdx);
+   const isCenter = dist === 0;
+
+   const vars = {
+    color: isCenter ? "#fff" : "rgba(255,255,255,0.55)", // center white, others light-white
+    opacity: opacityForDistance(dist),                   // 1.0, 1.0, 0.9, 0.8, ...
+    scale: isCenter ? 1.03 : 1,
+    ease: "power2.out",
+    duration: 0.3,
+   };
+
+   instant ? gsap.set(h1, vars) : gsap.to(h1, vars);
   });
  };
 
@@ -120,7 +122,7 @@ const TextAnimation: React.FC<Props> = ({
    const currentX = Number(gsap.getProperty(track, "x")) || 0;
    gsap.set(track, { x: currentX + copyW });
    setActive((prev) => prev - baseItems.length);
-   trulyActiveRef.current -= baseItems.length; // keep reference aligned
+   trulyActiveRef.current -= baseItems.length;
    return true;
   }
   if (active < base) {
@@ -135,24 +137,25 @@ const TextAnimation: React.FC<Props> = ({
 
  // initial layout
  useEffect(() => {
-  gsap.set(itemRefs.current, {
-   color: "rgba(255,255,255,0.55)",
-   opacity: 0.85,
-   scale: 1,
-   transformOrigin: "center",
-   willChange: "transform,color,opacity",
+  // default dim on all headings
+  itemRefs.current.forEach((_, i) => {
+   const h1 = labelEl(i);
+   if (h1) gsap.set(h1, { color: "rgba(255,255,255,0.55)", opacity: 0.85, scale: 1, transformOrigin: "center", willChange: "transform,color,opacity" });
   });
 
   requestAnimationFrame(() => {
    measureOneCopyWidth();
-   // center without animation, then mark initial active as white (instant)
-   centerOn(active, false, () => lightItem(active, true));
-   trulyActiveRef.current = active;
+   // center without animation, then apply initial gradient (instant)
+   centerOn(active, false, () => {
+    applyOpacityGradient(active, true);
+    trulyActiveRef.current = active;
+   });
   });
 
   const onResize = () => {
    measureOneCopyWidth();
    centerOn(trulyActiveRef.current, false);
+   applyOpacityGradient(trulyActiveRef.current, true);
   };
   window.addEventListener("resize", onResize);
   return () => window.removeEventListener("resize", onResize);
@@ -165,22 +168,15 @@ const TextAnimation: React.FC<Props> = ({
   return () => clearInterval(id);
  }, [stepMs]);
 
- // when target active changes: slide; color switch happens ONLY when centered
+ // when target active changes: slide; paint ONLY when centered
  useEffect(() => {
-  // if we normalized, wait for next render
   if (normalizeIfNeeded()) return;
-
-  const prevTrulyActive = trulyActiveRef.current;
   const nextTarget = active;
 
-  // run the slide
   centerOn(nextTarget, true, () => {
-   // arrived at center → now flip colors
-   dimItem(prevTrulyActive);
-   lightItem(nextTarget);
+   applyOpacityGradient(nextTarget); // center white + neighbors falloff
    trulyActiveRef.current = nextTarget;
   });
-  // Do NOT pre-dim the previous; it stays white until onComplete fires.
   // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [active]);
 
@@ -201,8 +197,7 @@ const TextAnimation: React.FC<Props> = ({
        fontStyle="normal"
        textTransform="uppercase"
        className="mt-sm"
-       // initial color is dim; GSAP takes over
-       color="rgba(255,255,255,0.55)"
+       color="rgba(255,255,255,0.55)" // initial; GSAP owns it after mount
       >
        {txt}
       </DyTitleH1>

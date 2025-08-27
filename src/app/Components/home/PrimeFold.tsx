@@ -44,19 +44,9 @@ const PrimeFold = () => {
         growing companies
       </DyTitleH1>
 
-      {/* <DyTitleH1
-        fontSize={{ base: '56px', md: '38px', sm: '34px' }}
-        lineHeight={{ base: '62px', md: '44px', sm: '42px' }}
-        fontWeight={300}
-        fontStyle="normal"
-        textTransform="uppercase"
-        color="#fff"
-        className="mt-sm"
-      >
-        Quick. Smart. Affordable.
-      </DyTitleH1> */}
-
-      <TextAnimation />
+      <div className="prime-btn">
+        <TextAnimation />
+      </div>
 
       <Dpara
         fontSize="18px"
