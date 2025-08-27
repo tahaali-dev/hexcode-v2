@@ -80,6 +80,7 @@ const Wrapper = styled.div`
 const AccordionsWrapper = styled.div`
 margin-top:48px;
 
+
   .masonry-grid {
     display: flex;
     margin-left: -24px; 

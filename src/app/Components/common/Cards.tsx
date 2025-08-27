@@ -234,6 +234,8 @@ const AccordionContainer = styled.div`
   overflow: hidden;
   background-color: var(--white-color);
   height: fit-content;
+  border: 1px dashed #d3d3d3;
+border-radius:16px;
 
   @media (max-width: 768px) {
     margin-bottom: 0px;

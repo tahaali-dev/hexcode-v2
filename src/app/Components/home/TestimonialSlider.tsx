@@ -115,15 +115,14 @@ gap:8px;
 margin-top:18px;
 }
 
-.comy-logo{
-
-}
 }
 `
 
 const SliderContainer = styled.div`
-
 margin-top:48px;
+border: 1px dashed #d3d3d3;
+border-radius:16px;
+overflow:hidden;
 
 @media (max-width: 768px) {
 margin-top:24px;
