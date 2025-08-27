@@ -14,7 +14,7 @@ type Props = {
 };
 
 const TextAnimation: React.FC<Props> = ({
- items = Array(10).fill(["Quick.", "Smart.", "Affordable.", "Trusted.", "Bold.", "Impactful."]).flat(),
+ items = Array(20).fill(["Quick.", "Smart.", "Affordable.", "Trusted.", "Bold.", "Impactful."]).flat(),
  stepMs = 1600,
  slideDur = 0.7,
  ease = "power2.inOut",
@@ -37,10 +37,10 @@ const TextAnimation: React.FC<Props> = ({
  const [active, setActive] = useState<number>(base); // physical index in extendedItems
  const trulyActiveRef = useRef<number>(base);        // the one that's actually centered/white
 
- // sync refs
+ // sync refs (avoid document.createElement on server)
  itemRefs.current = useMemo(
   () =>
-   Array.from({ length: extendedItems.length }, (_, i) => itemRefs.current[i] || document.createElement("div")),
+   Array.from({ length: extendedItems.length }, (_, i) => itemRefs.current[i] || null),
   [extendedItems.length]
  );
 
@@ -60,11 +60,11 @@ const TextAnimation: React.FC<Props> = ({
   return width;
  };
 
- // UPDATED: smoother quadratic-ish falloff; floors at 0.6
+ // UPDATED: stronger quadratic falloff; floors at 0.3
  const opacityForDistance = (dist: number) => {
   if (dist <= 1) return 1; // center three stay fully opaque
   const t = Math.max(0, dist - 1);
-  return Math.max(0.6, 1 - 0.08 * t * (t + 1)); // 2 -> .92, 3 -> .84, ...
+  return Math.max(0.1, 1 - 0.40 * t * (t + 1));
  };
 
  // UPDATED: color/opacity/scale tween that lingers slightly longer than the slide
@@ -153,6 +153,9 @@ const TextAnimation: React.FC<Props> = ({
 
  // initial layout
  useEffect(() => {
+  // Only run on client
+  if (typeof window === "undefined") return;
+
   // default dim on all headings
   itemRefs.current.forEach((_, i) => {
    const h1 = labelEl(i);
@@ -187,12 +190,14 @@ const TextAnimation: React.FC<Props> = ({
 
  // autoplay advance
  useEffect(() => {
+  if (typeof window === "undefined") return;
   const id = setInterval(() => setActive((prev) => prev + 1), stepMs);
   return () => clearInterval(id);
  }, [stepMs]);
 
  // when target active changes: slide; paint ONLY when centered
  useEffect(() => {
+  if (typeof window === "undefined") return;
   if (normalizeIfNeeded()) return;
   const nextTarget = active;
 

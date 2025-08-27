@@ -7,10 +7,10 @@ import { useTextReveal } from "@/app/Hooks/useTextReveal";
 import { useButtonReveal } from "@/app/Hooks/useButtonReveal";
 import CompaniesWeWork from "./CompaniesWeWork";
 import VideoPlayer from "./VideoPlayer";
-import TextAnimation from "../TextAnimation";
+// import TextAnimation from "../TextAnimation";
 import MobileComp from "./MobileComp";
 
-const bgImg = "/img2.png";
+const bgImg = "/img2.webp";
 
 const PrimeFold = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -45,9 +45,18 @@ const PrimeFold = () => {
         growing companies
       </DyTitleH1>
 
-      <div className="prime-btn">
-        <TextAnimation />
-      </div>
+      <DyTitleH1
+        fontSize={{ base: '56px', md: '38px', sm: '34px' }}
+        lineHeight={{ base: '62px', md: '44px', sm: '42px' }}
+        fontWeight={300}
+        fontStyle="normal"
+        textTransform="uppercase"
+        color="rgba(255,255,255,0.55)"
+        className="mt-sm prime-animated text-center"
+      >
+        Quick. Smart. Affordable.
+      </DyTitleH1>
+      {/* <TextAnimation /> */}
 
       <Dpara
         fontSize="18px"
@@ -82,7 +91,7 @@ const PrimeFold = () => {
       </div>
 
       <VideoPlayer />
-    </Wrapper>
+    </Wrapper >
   );
 };
 
@@ -92,12 +101,8 @@ export default PrimeFold;
 const Wrapper = styled.div`
   position: relative;
   padding: 180px 0px 64px 0px;
-  background-image: url(${bgImg});
-  background-repeat: repeat;
-  background-position: top;
-  // background-size: cover;
-  overflow: hidden;
   margin-top:-76px;
+
   /* Flip only the background image horizontally */
   & {
     /* This creates a pseudo-element to flip the background image */
@@ -135,7 +140,7 @@ const Wrapper = styled.div`
 
   @media (max-width: 768px) {
     margin-top:-58px;
-    padding: 120px 0px 48px 0px;
+    padding: 120px 12px 48px 12px;
     background-size: 60px 180px;
     .m-mt-lg{ margin-top:8px; }
     .m-mt-xxl{ margin-top: 24px; button{ width:50%; } }
