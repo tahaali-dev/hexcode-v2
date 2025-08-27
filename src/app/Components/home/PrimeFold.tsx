@@ -100,7 +100,7 @@ export default PrimeFold;
 // Styles unchanged…
 const Wrapper = styled.div`
   position: relative;
-  padding: 180px 0px 64px 0px;
+  padding: 180px 0px 0px 0px;
   margin-top:-76px;
 
   /* Flip only the background image horizontally */
