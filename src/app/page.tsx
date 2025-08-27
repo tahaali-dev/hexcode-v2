@@ -13,6 +13,10 @@ const page = () => {
     <>
       <PrimeFold />
       <EmptyContainer height="76px" />
+      <EmptyContainer height="76px" />
+      <EmptyContainer height="76px" />
+      <EmptyContainer height="76px" />
+      <EmptyContainer height="76px" />
       <Projects />
       <OurCapabilities />
       <EmptyContainer height="76px" />
