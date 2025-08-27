@@ -40,7 +40,7 @@ const imageList = [
   { src: fourteen, width: 42, height: 48, category: "Entertainment" },
   { src: sixteen, width: 108, height: 36, category: "AI" },
   { src: seventeen, width: 108, height: 36, category: "AI" },
-  { src: nineteen, width: 76, height: 42, category: "IoT & SAAS" },
+  { src: nineteen, width: 76, height: 42, category: "IoT" },
 ];
 
 // Helpers
