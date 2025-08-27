@@ -89,12 +89,14 @@ const PrimeFold = () => {
         />
       </div>
 
-      <VideoPlayer />
-
-
       <div className="mt-xl">
         <CompaniesWeWork />
       </div>
+
+      <VideoPlayer />
+
+
+
 
     </Wrapper>
     // </DashedContainer >
