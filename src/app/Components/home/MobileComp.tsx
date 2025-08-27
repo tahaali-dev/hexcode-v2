@@ -35,7 +35,7 @@ const MobileComp = () => {
             fontSize="18px"
             lineHeight="24px"
             fontWeight="400"
-            color="#a38f8f"
+            color="#D6D6D6"
             mdFontSize="16px"
             mdLineHeight="24px"
             smFontSize="16px"
@@ -87,7 +87,8 @@ const Wrapper = styled.div`
 const LogoWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);  /* 2 items per row */
-  border-top : 1px dashed #d3d3d3;      
+  border : 1px dashed #8F8F8F33;      
+  border-radius:8px;
 `;
 
 const LogoBox = styled.div`
@@ -95,8 +96,12 @@ const LogoBox = styled.div`
   justify-content: center;
   align-items: center;
   padding: 12px;
-  border-bottom: 1px dashed #d3d3d3;
-  border-right: 1px dashed #d3d3d3;
+  border-bottom: 1px dashed #8F8F8F33;
+  border-right: 1px dashed #8F8F8F33;
+  
+  img{
+  filter:brightness(0) invert(1);
+  }
 
   /* Remove right border for last column items */
   &:nth-of-type(2n) {

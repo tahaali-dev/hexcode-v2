@@ -65,6 +65,16 @@ const Wrapper = styled.div`
     border-radius : 22px;
     display: block;
   }
+
+    @media (max-width: 768px) {
+      margin-top:32px;
+      border-radius : 8px;
+        padding:4px;
+
+        video{
+    border-radius : 8px;
+  }
+    }
 `;
 
 // Gradient overlay for bottom fade

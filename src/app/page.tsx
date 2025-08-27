@@ -17,7 +17,6 @@ const page = () => {
     <>
       <PrimeFold />
       {/* <CompaniesWeWork /> */}
-      {/* <MobileComp /> */}
       {/* <VideoPlayer /> */}
       <EmptyContainer height="76px" />
       <Projects />

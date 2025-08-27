@@ -8,6 +8,7 @@ import { useButtonReveal } from "@/app/Hooks/useButtonReveal";
 import CompaniesWeWork from "./CompaniesWeWork";
 import VideoPlayer from "./VideoPlayer";
 import TextAnimation from "../TextAnimation";
+import MobileComp from "./MobileComp";
 
 const bgImg = "/img2.png";
 
@@ -77,6 +78,7 @@ const PrimeFold = () => {
 
       <div className="mt-xl com-wrap">
         <CompaniesWeWork />
+        <MobileComp />
       </div>
 
       <VideoPlayer />
@@ -132,7 +134,8 @@ const Wrapper = styled.div`
   > * { position: relative; z-index: 3; }
 
   @media (max-width: 768px) {
-    padding: 32px 8px;
+    margin-top:-58px;
+    padding: 120px 0px 48px 0px;
     background-size: 60px 180px;
     .m-mt-lg{ margin-top:8px; }
     .m-mt-xxl{ margin-top: 24px; button{ width:50%; } }
