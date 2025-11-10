@@ -22,6 +22,9 @@ const voltLogo = "/companies/Volt.svg";
 const munira = "/testimonials/munira.png";
 const startbriteLogo = "/companies/starbrite.svg";
 
+const mohammed = "/testimonials/moh.png";
+const ilogo = "/companies/iot.svg";
+
 export const testimonials = [
   {
     image: karun,
@@ -128,5 +131,18 @@ export const testimonials = [
     shortText: "Shabbir and the team at Hexcode did an incredible job with our brand and website refresh.",
     name: 'Dr. Munira Lokhandwala',
     title: 'Founder, Starbrite Dental',
+  },
+  {
+    image: mohammed,
+    company: 'Install IoT',
+    logo: {
+      src: ilogo,
+      width: 90,
+      height: 48,
+    },
+    text: `Hexcode has been an invaluable design partner for over five years. Their work—from branding and logo creation to website design and pitch decks—is consistently exceptional and has elevated our brand. What truly sets them apart is their ability to own projects from end to end with minimal oversight. They've had a tangible impact on our performance, helping to increase conversion rates and engagement. We highly recommend Hexcode to anyone seeking high-quality and reliable design work.`,
+    shortText: `Focus on Reliability/Quality: Hexcode delivers consistently exceptional design across branding and web, reliably owning projects end-to-end with minimal oversight.`,
+    name: 'Mohammed Khambaty',
+    title: 'Founder & CTO of Install IoT',
   },
 ];

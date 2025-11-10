@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import VoltCs from "@/app/Components/casestudy/Volt";
 import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
 import StarbriteCs from "@/app/Components/casestudy/Starbright";
+import InstallIOTCs from "@/app/Components/casestudy/Install-iot";
 
 interface ClientCaseStudyProps {
   slug: string;
@@ -14,6 +15,7 @@ const ClientCaseStudy: React.FC<ClientCaseStudyProps> = ({ slug }) => {
   if (slug === "volt") content = <VoltCs />;
   else if (slug === "sensyrtech") content = <SensytechCs />;
   else if (slug === "starbrite-dental") content = <StarbriteCs />;
+  else if (slug === "install-iot") content = <InstallIOTCs />;
 
   return <FullPageWrap>{content}</FullPageWrap>;
 };
