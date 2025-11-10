@@ -40,7 +40,7 @@ const InstallIOTCs = () => {
         <SectionCont className='px-40 py-40'>
           <div className='d-flex align-center justify-between align-start-mob g-md m-col'>
             <div className='d-flex flex-column g-start'>
-              <HexSectionName title="Sensyrtech" />
+              <HexSectionName title="Install IoT" />
 
               <DyTitleH1
                 fontSize={{ base: '48px', md: '38px', sm: '38px' }}
