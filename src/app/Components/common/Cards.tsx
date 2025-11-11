@@ -29,7 +29,7 @@ const ProjectCard = ({
   const router = useRouter();
 
   const handleClick = () => {
-    const supportedProjects = ["Volt", "Sensyrtech", "Starbrite Dental"];
+    const supportedProjects = ["Volt", "Sensyrtech", "Starbrite Dental","Install IoT"];
     const isInternalProject = supportedProjects.includes(projectName);
 
     if (isInternalProject) {
