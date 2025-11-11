@@ -31,7 +31,7 @@ const banner5M = "/casestudy/InstallIOT/6.webp";
 
 
 const InstallIOTCs = () => {
-  const projects = ["Install IoT", "ABC Studios"];
+  const projects = ["Sensyrtech", "ABC Studios"];
 
   return (
     <div>
