@@ -51,7 +51,7 @@ const InstallIOTCs = () => {
                 color="#181010"
                 className='text-left mt-md'
               >
-                Install IoT — Bridging Businesses and IoT Experts for Seamless Growth
+              Bridging Businesses and IoT Experts for Seamless Growth
               </DyTitleH1>
 
               <BtnHolder className='d-flex g-md mt-xl'>
@@ -66,9 +66,6 @@ const InstallIOTCs = () => {
                 />
               </BtnHolder>
             </div>
-
-
-
 
 
           </div>
