@@ -1,4 +1,4 @@
-const karun = "/testimonials/karun.png";
+const karun = "/testimonials/karun.webp";
 const delveLogo = "/companies/delve.svg";
 
 const ajit = "/testimonials/ajit.png";
