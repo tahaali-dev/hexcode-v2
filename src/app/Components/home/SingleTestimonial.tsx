@@ -13,7 +13,11 @@ type SingleTestimonialProps = {
 
 const OuterWrapper = styled.div`
   width: 100%;
-  padding:0px 64px;
+  padding: 0px 64px;
+  
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
 `
 
 const Wrapper = styled.div`
@@ -25,6 +29,11 @@ const Wrapper = styled.div`
   margin-top:64px;
   background: rgba(235, 235, 245, 0.4); /* very light, subtle background */
   border-radius:16px;
+
+    @media (max-width: 768px) {
+  margin-top:32px;
+    padding: 24px;
+  }
 `
 
 const normalize = (value: string) => value.trim().toLowerCase()
