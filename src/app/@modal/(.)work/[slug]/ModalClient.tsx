@@ -99,6 +99,10 @@ const ModalClient = () => {
                   {pathname === "/work/starbrite-dental" && (
                      <StarbriteCs />
                   )}
+                  
+                  {pathname === "/work/install-iot" && (
+                     <InstallIOTCs />
+                  )}
 
                   {pathname === "/work/install-iot" && (
                      <InstallIOTCs />

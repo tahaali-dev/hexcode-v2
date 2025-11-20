@@ -31,7 +31,7 @@ const banner5M = "/casestudy/InstallIOT/6.webp";
 
 
 const InstallIOTCs = () => {
-  const projects = ["Install IoT", "ABC Studios"];
+  const projects = ["Sensyrtech", "ABC Studios"];
 
   return (
     <div>
@@ -40,7 +40,7 @@ const InstallIOTCs = () => {
         <SectionCont className='px-40 py-40'>
           <div className='d-flex align-center justify-between align-start-mob g-md m-col'>
             <div className='d-flex flex-column g-start'>
-              <HexSectionName title="Sensyrtech" />
+              <HexSectionName title="Install IoT" />
 
               <DyTitleH1
                 fontSize={{ base: '48px', md: '38px', sm: '38px' }}
@@ -51,7 +51,7 @@ const InstallIOTCs = () => {
                 color="#181010"
                 className='text-left mt-md'
               >
-                Install IoT — Bridging Businesses and IoT Experts for Seamless Growth
+              Bridging Businesses and IoT Experts for Seamless Growth
               </DyTitleH1>
 
               <BtnHolder className='d-flex g-md mt-xl'>
@@ -66,9 +66,6 @@ const InstallIOTCs = () => {
                 />
               </BtnHolder>
             </div>
-
-
-
 
 
           </div>
