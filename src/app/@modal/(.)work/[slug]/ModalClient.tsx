@@ -12,6 +12,7 @@ import SensytechCs from "@/app/Components/casestudy/Sensyrtech";
 import StarbriteCs from "@/app/Components/casestudy/Starbright";
 import { DyH2 } from "@/app/Components/TypSetting";
 import { PrimaryBtn } from "@/app/Components/Buttons";
+import InstallIOTCs from "@/app/Components/casestudy/Install-iot";
 
 const CloseRd = "/icons/closeRound.svg";
 
@@ -98,6 +99,11 @@ const ModalClient = () => {
                   {pathname === "/work/starbrite-dental" && (
                      <StarbriteCs />
                   )}
+
+                  {pathname === "/work/install-iot" && (
+                     <InstallIOTCs />
+                  )}
+
 
                   <Footer />
 

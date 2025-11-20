@@ -24,6 +24,14 @@ const sixteen = "/companies/delve.svg"; // AI
 const seventeen = "/companies/biotale.svg"; // AI
 const eighteen = "/companies/logo.svg"; // saas
 const nineteen = "/companies/sensyrtech.svg"; //Iot, saas
+const twenty = "/companies/hexaclimate.svg"; //
+const twentyone = "/companies/logo.svg"; //
+const twentytwo = "/companies/fuel-cycle.svg"; //
+const twentythree = "/companies/haven.svg"; //
+const twentyfour = "/companies/30-sund.svg"; //
+const twentyfive = "/companies/oasys.svg"; //
+const twentysix = "/companies/brighterway.svg"; //
+const twentyseven = "/companies/scalix.svg"; //
 
 // Image list with width and height for each logo
 const imageList = [
@@ -45,6 +53,15 @@ const imageList = [
   { src: seventeen, width: 108, height: 36 },
   { src: eighteen, width: 108, height: 36 },
   { src: nineteen, width: 76, height: 42 },
+  // New logos
+  { src: twenty, width: 108, height: 36 },
+  { src: twentyone, width: 108, height: 36 },
+  { src: twentytwo, width: 108, height: 36 },
+  { src: twentythree, width: 108, height: 36 },
+  { src: twentyfour, width: 108, height: 36 },
+  { src: twentyfive, width: 108, height: 36 },
+  { src: twentysix, width: 108, height: 36 },
+  { src: twentyseven, width: 108, height: 36 },
 ];
 
 const CompanyMarq = () => {

@@ -43,7 +43,8 @@ const VideoPlayer: React.FC = () => {
     <Wrapper ref={wrapperRef}>
       <video
         ref={videoRef}
-        src="https://screenrepo-production-bucket.s3.ap-south-1.amazonaws.com/videos/Volt+Money+Music+V2+(1)_1.mp4"
+        // src="https://screenrepo-production-bucket.s3.ap-south-1.amazonaws.com/videos/Volt+Money+Music+V2+(1)_1.mp4"
+        src="  https://pouch.jumpshare.com/preview/qHyYE87XBk-Gv188vUjCs-u_EJGj86FGmzcmpN9M83VWjMTgxHHD_LuT3boJvtdGXjRHCTH76xn6N5UNsIF89FSB14TMcWGzd2VxCC18tOKQS8CZgP1t8eF5BoQybqKuRcqolUXGokJCG76u1G_Gbm6yjbN-I2pg_cnoHs_AmgI.mp4"
         autoPlay
         loop
         muted

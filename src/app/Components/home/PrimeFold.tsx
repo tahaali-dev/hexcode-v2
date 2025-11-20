@@ -54,7 +54,7 @@ const PrimeFold = () => {
         color="rgba(255,255,255,0.55)"
         className="mt-sm prime-animated text-center"
       >
-        Quick. Smart. Affordable.
+        Quick. Smart. Reliable.
       </DyTitleH1>
       {/* <TextAnimation /> */}
 
@@ -70,7 +70,7 @@ const PrimeFold = () => {
         textAlign="center"
         className="mt-lg m-mt-lg prime-animated"
       >
-        We strategize, executes, and help you ship faster in this fast-paced growing market.
+        We strategize, execute, and help you ship faster in this fast-paced growing market.
       </Dpara>
 
       <div className="d-flex align-center justify-center mt-xxl m-mt-xxl">

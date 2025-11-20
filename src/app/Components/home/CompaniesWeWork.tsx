@@ -25,10 +25,24 @@ const seventeen = "/companies/biotale.svg"; // AI
 // const eighteen = "/companies/logo.svg"; // saas
 const nineteen = "/companies/sensyrtech.svg"; //Iot, saas
 
+const twenty = "/companies/hexaclimate.svg"; //
+const twentyone = "/companies/logo.svg"; //
+const twentytwo = "/companies/fuel-cycle.svg"; //
+const twentythree = "/companies/haven.svg"; //
+const twentyfour = "/companies/30-sund.svg"; //
+const twentyfive = "/companies/oasys.svg"; //
+const twentysix = "/companies/Brighterway (1).svg"; //
+const twentyseven = "/companies/scalix (1).svg"; //
+
 // Image list
 const imageList = [
-  { src: one, width: 112, height: 36, category: "Fintech" },
   { src: two, width: 68, height: 36, category: "Gaming" },
+  { src: one, width: 112, height: 36, category: "Fintech" },
+  { src: sixteen, width: 108, height: 36, category: "AI" },
+  { src: twentythree, width: 108, height: 30, category: "Fintech" },
+  { src: twentyone, width: 108, height: 36, category: "AI" },
+  { src: twentytwo, width: 108, height: 18, category: "SAAS" },
+
   { src: three, width: 108, height: 36, category: "Edtech" },
   { src: four, width: 108, height: 36, category: "Fintech" },
   { src: nine, width: 68, height: 36, category: "Fintech" },
@@ -38,9 +52,15 @@ const imageList = [
   { src: eight, width: 108, height: 36, category: "Consumer Tech" },
   { src: twelve, width: 108, height: 36, category: "Energy & Sustainability" },
   { src: fourteen, width: 42, height: 48, category: "Entertainment" },
-  { src: sixteen, width: 108, height: 36, category: "AI" },
   { src: seventeen, width: 108, height: 36, category: "AI" },
   { src: nineteen, width: 76, height: 42, category: "IoT" },
+
+  // New logos - corrected categories
+  { src: twenty, width: 108, height: 36, category: "Energy & Sustainability" },
+  { src: twentyfour, width: 108, height: 36, category: "Travel" },
+  { src: twentyfive, width: 96, height: 30, category: "Healthcare" },
+  { src: twentysix, width: 108, height: 31, category: "Healthcare" },
+  { src: twentyseven, width: 108, height: 28, category: "Marketing Services" },
 ];
 
 // Helpers
@@ -82,7 +102,7 @@ const CompaniesWeWork = () => {
           textAlign="center"
           className="text-Uppercase"
         >
-          Trusted by 80+ customers, from startup to enterprise
+          Trusted by 100+ customers, from startup to enterprise
         </Dpara>
 
         <LogoHolder>
@@ -150,7 +170,8 @@ const LogoHolder = styled.div`
   margin-top: 42px;
   display: flex;
   justify-content: center;
-  gap: 48px;
+  align-items:center;
+  gap: 36px;
   flex-wrap: wrap;
   padding: 0px 64px;
 `;

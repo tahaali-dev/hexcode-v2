@@ -288,7 +288,7 @@ padding: 32px   16px 32px 16px;
   }
 `
 
-const TestimonialCard = styled.div`
+export const TestimonialCard = styled.div`
 
 .testimonial-text{
 padding-left:16px;
@@ -301,7 +301,7 @@ object-fit:cover;
 }
 `
 
-const Author = styled.div`
+export const Author = styled.div`
 color: #181010;
 font-size: 20px;
 font-weight: 400;
@@ -312,7 +312,7 @@ font-weight: 400;
   }
 `;
 
-const SubText = styled.div`
+export const SubText = styled.div`
 color:  #A38F8F;
 font-size: 18px;
 font-weight: 300;

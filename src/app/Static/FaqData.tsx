@@ -49,6 +49,16 @@ export const faqData: FaqItem[] = [
   ),
  },
  {
+  title: "How do I communicate with your team during the project?",
+  content: (
+   <p className="px-lg pb-lg color-02">
+    We make communication easy through tools like Slack, email, and
+    project management platforms. You’ll receive regular updates and have
+    direct access to our team for feedback and collaboration.
+   </p>
+  ),
+ },
+ {
   title: "Do you offer ongoing design support after the project is completed?",
   content: (
    <p className="px-lg pb-lg color-02">
@@ -65,16 +75,6 @@ export const faqData: FaqItem[] = [
     Starting is easy! Reach out to us via our contact page or schedule a
     free consultation. We’ll discuss your project, goals, and timeline,
     and begin crafting a custom solution for your business.
-   </p>
-  ),
- },
- {
-  title: "How do I communicate with your team during the project?",
-  content: (
-   <p className="px-lg pb-lg color-02">
-    We make communication easy through tools like Slack, email, and
-    project management platforms. You’ll receive regular updates and have
-    direct access to our team for feedback and collaboration.
    </p>
   ),
  },

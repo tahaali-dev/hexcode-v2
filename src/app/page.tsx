@@ -6,14 +6,17 @@ import OurCapabilities from "./Components/home/OurCapabilities"
 import PrimeFold from "./Components/home/PrimeFold"
 import Projects from "./Components/home/Projects"
 import TestimonialSlider from "./Components/home/TestimonialSlider"
+import SingleTestimonial from "./Components/home/SingleTestimonial"
+import CalendlyCta from "./Components/home/CalendlyCta"
 
 const page = () => {
 
   return (
     <>
       <PrimeFold />
-      <EmptyContainer height="76px" />
+      <SingleTestimonial testimonialName="Karun Kaushik" />
       <Projects />
+      {/* <SingleTestimonial testimonialName="Karun Kaushik" /> */}
       <OurCapabilities />
       <EmptyContainer height="76px" />
       <TestimonialSlider />
