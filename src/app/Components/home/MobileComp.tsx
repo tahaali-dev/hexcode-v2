@@ -28,7 +28,7 @@ const imageList = [
 const MobileComp = () => {
 
   return (
-    <DashedContainer leftBottom rightBottom>
+    <DashedContainer showLines={false}>
       <Wrapper>
         <div className="px-sm">
           <Dpara

@@ -31,7 +31,7 @@ const Header = () => {
         ref={headerRef}
         scrolled={scrolledPastHero}
       >
-        <DashedContainer leftBottom rightBottom>
+        <DashedContainer showLines={false}>
           <NavBar>
             <LeftNav $isHome={isHome} $scrolled={scrolledPastHero}>
               <Link className="d-flex g-xl logo" href="/">

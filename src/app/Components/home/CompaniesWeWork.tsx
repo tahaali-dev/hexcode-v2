@@ -88,7 +88,7 @@ const CompaniesWeWork = () => {
     hoveredIndex !== null ? getCategorySet(imageList[hoveredIndex].category) : null;
 
   return (
-    <DashedContainer leftBottom rightBottom>
+    <DashedContainer showLines={false}>
       <Wrapper>
         <Dpara
           fontSize="18px"

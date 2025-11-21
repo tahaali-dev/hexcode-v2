@@ -26,7 +26,6 @@ const page = () => {
       <Benefits />
       <EmptyContainer height="76px" />
       <TestimonialSlider />
-      <EmptyContainer height="76px" />
       <Faqs />
       <EmptyContainer height="76px" />
     </>

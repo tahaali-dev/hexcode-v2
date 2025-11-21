@@ -20,7 +20,7 @@ const VideoPlayer: React.FC = () => {
       const ctx = gsap.context(() => {
         // Animate width to 100vw as the wrapper approaches the top
         gsap.to(videoRef.current, {
-          width: "100vw",
+          width: "99vw",
           borderRadius: "0px",
           ease: "none",
           scrollTrigger: {

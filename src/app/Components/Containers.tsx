@@ -8,19 +8,21 @@ export const DashedContainer = ({
   leftBottom,
   rightBottom,
   children,
+  showLines = true,
 }: {
-  leftTop?: boolean;
+  leftTop?: boolean; // Not implemented, for future (or add if needed)
   leftBottom?: boolean;
-  rightTop?: boolean;
+  rightTop?: boolean; // Not implemented, for future (or add if needed)
   rightBottom?: boolean;
   children: any;
+  showLines?: boolean;
 }) => {
   return (
-    <Container>
+    <Container $showLines={showLines}>
       <div className="child">
         {children}
 
-        {/* {leftBottom && (
+        {leftBottom && (
           <StyledImage
             className="hex-left-bottom"
             src={GreyHex}
@@ -28,9 +30,9 @@ export const DashedContainer = ({
             height={24}
             alt="Hex Left Bottom"
           />
-        )} */}
+        )}
 
-        {/* {rightBottom && (
+        {rightBottom && (
           <StyledImage
             className="hex-right-bottom"
             src={GreyHex}
@@ -38,47 +40,51 @@ export const DashedContainer = ({
             height={24}
             alt="Hex Right Bottom"
           />
-        )} */}
+        )}
       </div>
     </Container>
   );
 };
 
-export const Container = styled.section`
+interface ContainerProps {
+  $showLines?: boolean;
+}
+
+export const Container = styled.section<ContainerProps>`
   display: flex;
   justify-content: center;
-  // background-color: var(--clr-light);
-  // background-color: #fff;
   background-color: transparent;
-  // border-bottom: 1px dashed #d3d3d3;
+  border-bottom: ${({ $showLines }) =>
+    $showLines ? "1px dashed #d3d3d3" : "none"};
 
-.child{
-   position: relative;
-    // border-left: 1px dashed #d3d3d3;
-    // border-right: 1px dashed #d3d3d3;
+  .child {
+    position: relative;
+    border-left: ${({ $showLines }) =>
+      $showLines ? "1px dashed #d3d3d3" : "none"};
+    border-right: ${({ $showLines }) =>
+      $showLines ? "1px dashed #d3d3d3" : "none"};
     width: 1240px;
 
-  .hex-left-bottom {
-    position: absolute;
-    bottom: -12px;
-    left: -12px;
-    z-index: 1;
+    .hex-left-bottom {
+      position: absolute;
+      bottom: -12px;
+      left: -12px;
+      z-index: 1;
+    }
+
+    .hex-right-bottom {
+      position: absolute;
+      bottom: -12px;
+      right: -12px;
+      z-index: 1;
+    }
   }
 
-  .hex-right-bottom {
-    position: absolute;
-    bottom: -12px;
-    right: -12px;
-    z-index: 1;
-  }
-  }
-
-    @media (max-width: 1240px) {
+  @media (max-width: 1240px) {
     .child {
       max-width: 94vw;
     }
-    }
-
+  }
 `;
 
 
