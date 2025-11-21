@@ -1,14 +1,15 @@
-"use client"
+'use client'
 
 import styled from "@emotion/styled"
 import { DashedContainer, StyledImage } from "../Containers"
 import { Author, SubText } from "../ServicePage/Content"
 import { Dpara } from "../TypSetting"
 import { testimonials } from "../../Static/testimonials"
-import CalendlyCta from "./CalendlyCta"
 
 type SingleTestimonialProps = {
   testimonialName: string
+  marginTop?: string
+  mobileMarginTop?: string
 }
 
 const OuterWrapper = styled.div`
@@ -20,25 +21,29 @@ const OuterWrapper = styled.div`
   }
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ $marginTop: string; $mobileMarginTop: string }>`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   padding: 32px;
-  margin-top:64px;
+  margin-top:${({ $marginTop }) => $marginTop};
   background: rgba(235, 235, 245, 0.4); /* very light, subtle background */
   border-radius:16px;
 
     @media (max-width: 768px) {
-  margin-top:32px;
+  margin-top:${({ $mobileMarginTop }) => $mobileMarginTop};
     padding: 24px;
   }
 `
 
 const normalize = (value: string) => value.trim().toLowerCase()
 
-const SingleTestimonial = ({ testimonialName }: SingleTestimonialProps) => {
+const SingleTestimonial = ({
+  testimonialName,
+  marginTop = "64px",
+  mobileMarginTop = "32px",
+}: SingleTestimonialProps) => {
   if (!testimonialName) return null
 
   const filteredTestimonials = testimonials.filter(
@@ -52,7 +57,7 @@ const SingleTestimonial = ({ testimonialName }: SingleTestimonialProps) => {
   return (
     <DashedContainer leftBottom rightBottom >
       <OuterWrapper>
-        <Wrapper>
+        <Wrapper $marginTop={marginTop} $mobileMarginTop={mobileMarginTop}>
           {filteredTestimonials.map((t, index) => (
             <TestimonialCard key={`${t.name}-${index}`}>
               <Dpara

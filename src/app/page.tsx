@@ -14,9 +14,9 @@ const page = () => {
   return (
     <>
       <PrimeFold />
-      <SingleTestimonial testimonialName="Karun Kaushik" />
+      <SingleTestimonial testimonialName="Karun Kaushik" marginTop="64px" mobileMarginTop="32px" />
       <Projects />
-      {/* <SingleTestimonial testimonialName="Karun Kaushik" /> */}
+      <SingleTestimonial testimonialName="Michael Brod" marginTop="0px" mobileMarginTop="0px" />
       <OurCapabilities />
       <EmptyContainer height="76px" />
       <TestimonialSlider />

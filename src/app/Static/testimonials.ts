@@ -1,4 +1,4 @@
-const karun = "/testimonials/karun.webp";
+const karun = "/testimonials/karun.png";
 const delveLogo = "/companies/delve.svg";
 
 const ajit = "/testimonials/ajit.png";
@@ -24,6 +24,11 @@ const startbriteLogo = "/companies/starbrite.svg";
 
 const mohammed = "/testimonials/moh.png";
 const ilogo = "/companies/iot.svg";
+
+const mach = "/testimonials/mich.png";
+const havenlogo = "/companies/haven.svg";
+
+
 
 export const testimonials = [
   {
@@ -144,5 +149,18 @@ export const testimonials = [
     shortText: `Focus on Reliability/Quality: Hexcode delivers consistently exceptional design across branding and web, reliably owning projects end-to-end with minimal oversight.`,
     name: 'Mohammed Khambaty',
     title: 'Founder & CTO of Install IoT',
+  },
+  {
+    image: mach,
+    company: 'Haven',
+    logo: {
+      src: havenlogo,
+      width: 120,
+      height: 32,
+    },
+    text: `I churned through 7 Framer / Web Dev / Design agencies before finding Shabbir & Hexcode. For the first time - we are able to get high quality work done at startup speed. It is a legitimate breathe of fresh air - could not recommend more`,
+    shortText: `I churned through 7 Framer / Web Dev / Design agencies before finding Shabbir & Hexcode. For the first time - we are able to get high quality work done at startup speed. It is a legitimate breathe of fresh air - could not recommend more`,
+    name: 'Michael Brod',
+    title: 'Co-Founder at Haven',
   },
 ];

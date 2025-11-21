@@ -100,11 +100,17 @@ export default function TestimonialSlider({ activeIndex }: TestimonialSliderProp
 const Wrapper = styled.div`
   padding: 80px 0px 0px 0px;
 
+  .testimonial-image{
+border-radius:16px;
+}
+
+
 @media (max-width: 768px) {
 padding : 32px 0px 0px 0px;
 
 .testimonial-image{
 width:100%;
+border-radius:16px;
 }
 
 .mob-flex{
