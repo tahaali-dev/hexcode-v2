@@ -46,7 +46,7 @@ const Header = () => {
                 $isHome={isHome}
                 $scrolled={scrolledPastHero}
               >
-                <Image src={ProjectsIcon} alt="projects-icon" width={24} height={24} />
+                {/* <Image src={ProjectsIcon} alt="projects-icon" width={24} height={24} /> */}
                 <Link href="/work">Projects</Link>
               </NavItem>
 
@@ -56,7 +56,7 @@ const Header = () => {
                 $isHome={isHome}
                 $scrolled={scrolledPastHero}
               >
-                <Image src={ServicesIcon} alt="services-icon" width={24} height={24} />
+                {/* <Image src={ServicesIcon} alt="services-icon" width={24} height={24} /> */}
                 <Link href="/our-services">Services</Link>
               </NavItem>
 
@@ -66,7 +66,7 @@ const Header = () => {
                 $isHome={isHome}
                 $scrolled={scrolledPastHero}
               >
-                <Image src={AboutIcon} alt="about-icon" width={24} height={24} />
+                {/* <Image src={AboutIcon} alt="about-icon" width={24} height={24} /> */}
                 <Link href="/about-us">About</Link>
               </NavItem>
             </CenterNav>
