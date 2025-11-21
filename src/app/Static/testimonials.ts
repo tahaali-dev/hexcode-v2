@@ -1,5 +1,7 @@
 const karun = "/testimonials/karun.png";
+const selin = "/testimonials/selin.png";
 const delveLogo = "/companies/delve.svg";
+
 
 const ajit = "/testimonials/ajit.png";
 const aylaLogo = "/companies/ayla.svg";
@@ -28,6 +30,12 @@ const ilogo = "/companies/iot.svg";
 const mach = "/testimonials/mich.png";
 const havenlogo = "/companies/haven.svg";
 
+const ksh = "/testimonials/ksh.png";
+const sunds = "/companies/30-sund.svg";
+
+
+const waqas = "/testimonials/waqas.png";
+const scalix = "/companies/scalix.svg";
 
 
 export const testimonials = [
@@ -162,5 +170,47 @@ export const testimonials = [
     shortText: `I churned through 7 Framer / Web Dev / Design agencies before finding Shabbir & Hexcode. For the first time - we are able to get high quality work done at startup speed. It is a legitimate breathe of fresh air - could not recommend more`,
     name: 'Michael Brod',
     title: 'Co-Founder at Haven',
+  },
+
+  {
+    image: selin,
+    company: 'Delve',
+    logo: {
+      src: delveLogo,
+      width: 124,
+      height: 26,
+    },
+    text: `Shabbir and the entire Hexcode team are incredible! Wouldn't be where we are without them. 10/10 support, speed, and quality.`,
+    shortText: "Shabbir and the entire Hexcode team are incredible! Wouldn't be where we are without them. 10/10 support, speed, and quality.",
+    name: 'Selin Kocalar',
+    title: 'Cofounder/COO at Delve',
+  },
+
+  {
+    image: ksh,
+    company: '30 Sundays',
+    logo: {
+      src: sunds,
+      width: 116,
+      height: 38,
+    },
+    text: `Finding a good UI/UX agency is tough. Especially the UX part - because it needs a deep understanding of the consumer and their pain points. I recently worked with Hexcode Designs for 30 Sundays and was super impressed with their user-first thinking. They work less like an agency and more like a plug-and-play product & design partner.`,
+    shortText: "Finding a good UI/UX agency is tough. Especially the UX part - because it needs a deep understanding of the consumer and their pain points. I recently worked with Hexcode Designs for 30 Sundays and was super impressed with their user-first thinking. They work less like an agency and more like a plug-and-play product & design partner.",
+    name: 'Kshitij Chaudhary',
+    title: 'Co-Founder & CEO at 30 Sundays',
+  },
+
+  {
+    image: waqas,
+    company: 'ScalixAI',
+    logo: {
+      src: scalix,
+      width: 116,
+      height: 28,
+    },
+    text: `In my nine years of experience working with multiple agencies and speaking with hundreds of design and website firms, Hexcode has been the most impressive. They're communicative, responsive, and consistently goes above and beyond.  I wouldn't hesitate to refer them to any of my clients looking for world-class design work.`,
+    shortText: `In my nine years of experience working with multiple agencies and speaking with hundreds of design and website firms, Hexcode has been the most impressive. They're communicative, responsive, and consistently goes above and beyond.  I wouldn't hesitate to refer them to any of my clients looking for world-class design work.`,
+    name: 'Waqas Khokhar',
+    title: 'Founder at ScalixAI',
   },
 ];

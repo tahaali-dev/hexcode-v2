@@ -13,16 +13,19 @@ const page = () => {
   return (
     <>
       <PrimeFold />
-      <SingleTestimonial testimonialName="Karun Kaushik" marginTop="64px" mobileMarginTop="32px" />
+      <SingleTestimonial testimonialName="Selin Kocalar" marginTop="64px" mobileMarginTop="32px" />
       <Projects />
       <SingleTestimonial testimonialName="Michael Brod" marginTop="0px" mobileMarginTop="0px" />
       <OurCapabilities />
       <EmptyContainer height="76px" />
-      <TestimonialSlider />
+      <SingleTestimonial testimonialName="Kshitij Chaudhary" marginTop="0px" mobileMarginTop="0px" />
       <EmptyContainer height="76px" />
       <AboutUs />
       <EmptyContainer height="76px" />
+      <SingleTestimonial testimonialName="Waqas Khokhar" marginTop="0px" mobileMarginTop="0px" />
       <Benefits />
+      <EmptyContainer height="76px" />
+      <TestimonialSlider />
       <EmptyContainer height="76px" />
       <Faqs />
       <EmptyContainer height="76px" />
