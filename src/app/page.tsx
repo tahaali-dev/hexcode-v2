@@ -7,7 +7,6 @@ import PrimeFold from "./Components/home/PrimeFold"
 import Projects from "./Components/home/Projects"
 import TestimonialSlider from "./Components/home/TestimonialSlider"
 import SingleTestimonial from "./Components/home/SingleTestimonial"
-import CalendlyCta from "./Components/home/CalendlyCta"
 
 const page = () => {
 
