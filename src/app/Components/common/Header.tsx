@@ -12,9 +12,9 @@ import Image from "next/image";
 
 // ats
 const Logo = "/Logo.svg";
-const ProjectsIcon = "/icons/navIconActive1.svg";
-const AboutIcon = "/icons/navIconActive2.svg";
-const ServicesIcon = "/icons/navIconActive3.svg";
+// const ProjectsIcon = "/icons/navIconActive1.svg";
+// const AboutIcon = "/icons/navIconActive2.svg";
+// const ServicesIcon = "/icons/navIconActive3.svg";
 
 const Header = () => {
   const pathname = usePathname();
@@ -103,7 +103,7 @@ const HeaderSticky = styled.section<HeaderStickyProps>`
   background-color: ${({ scrolled }) => (scrolled ? "#fff" : "transparent")};
   transition: background-color 0.3s ease;
   will-change: transform;
-  border-bottom: 1px solid #8F8F8F33;
+  border-bottom: 1px dashed #8F8F8F33;
 `;
 
 const NavBar = styled.div`
