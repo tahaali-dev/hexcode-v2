@@ -51,7 +51,7 @@ const page = () => {
                 countsData={[
                     {
                         icon: CustomerIcon,
-                        value: "80+",
+                        value: "100+",
                         label: "Satisfied Customers"
                     },
                     {

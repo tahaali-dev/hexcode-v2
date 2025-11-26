@@ -44,7 +44,7 @@ const MobileComp = () => {
             className="text-Uppercase"
           >
             {/* our partners */}
-            Trusted by 80+ customers, from startup to enterprise
+            Trusted by 100+ customers, from startup to enterprise
           </Dpara>
         </div>
 
