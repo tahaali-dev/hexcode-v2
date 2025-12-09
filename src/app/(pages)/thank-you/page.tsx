@@ -11,7 +11,10 @@ const page = () => {
   return (
     <Wrapper>
       <Content>
-        <div className="icon"></div>
+        <div className="icon">
+          <img src="./icons/thumb.svg
+          " alt="" />
+        </div>
 
         <h1 className="title">
           THANK YOU FOR<br />SCHEDULING A CALL
@@ -101,7 +104,7 @@ const Content = styled.div`
 
   .subtitle {
     font-size: 18px;
-    font-weight: 300;
+    font-weight: bold;
     max-width: 700px;
     opacity: 0.9;
 

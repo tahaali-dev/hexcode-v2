@@ -69,7 +69,7 @@ const Page = () => {
         <Dpara
           fontSize="18px"
           lineHeight="24px"
-          fontWeight="200"
+          fontWeight="300"
           color="#E0E0E0"
           textAlign="center"
           className="mw-85"
@@ -220,7 +220,7 @@ const WrapperDemo = styled.div`
   *********************************/
 .top-cont {
   margin-left: 20px;
-  width: 30%;
+  width: 35%;
   max-width: 1300px;
   display: flex;
   flex-direction: column;

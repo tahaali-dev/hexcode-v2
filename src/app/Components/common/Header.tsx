@@ -18,7 +18,7 @@ const Logo = "/Logo.svg";
 
 const Header = () => {
   const pathname = usePathname();
-  const isHome = pathname === "/" || pathname.includes("/book-call")||pathname.includes("/thank-you"); // ← route check
+  const isHome = pathname === "/" || pathname.includes("/book-a-call")||pathname.includes("/thank-you"); // ← route check
 
   const headerRef = useRef<HTMLDivElement>(null);
 
