@@ -1,0 +1,95 @@
+/* ---------------------- Text Colors ---------------------- */
+
+.text-primary {
+ color: var(--tertiary-color) !important;
+}
+
+.text-secondary {
+ color: var(--clr-primary) !important;
+}
+
+.text-tertiary {
+ color: var(--grey-b1) !important;
+}
+
+.text-white {
+ color: var(--white-color) !important;
+}
+
+.text-23 {
+ color: var(--secondary-color) !important;
+}
+
+.text-4e {
+ color: var(--grey-4e) !important;
+}
+
+.clr-dark {
+ color: var(--clr-dark);
+}
+
+.clr-dark3 {
+ color: var(--clr-dark3);
+}
+
+/* Indicator text */
+.text-success {
+ color: var(--success-color);
+}
+
+.text-danger {
+ color: var(--danger-color);
+}
+
+.text-warning {
+ color: var(--warning-color);
+}
+
+.text-info {
+ color: var(--info-color);
+}
+
+/* ------------- Background Colors ------------- */
+.bg-primary {
+ background-color: var(--primary-color);
+}
+
+.bg-dark {
+ background-color: var(--dark-color);
+}
+
+.ed-bg-light {
+ background-color: var(--ed-light-color) !important;
+}
+
+.f8-bg-light {
+ background-color: var(--f8-light-color);
+}
+
+.l6-bg-light {
+ background-color: var(--l6-light-color) !important;
+}
+
+.l9-bg-light {
+ background-color: var(--l9-light-color);
+}
+
+.bg-success {
+ background-color: var(--success-color);
+}
+
+.bg-danger {
+ background-color: var(--danger-color);
+}
+
+.bg-warning {
+ background-color: var(--warning-color);
+}
+
+.bg-info {
+ background-color: var(--info-color);
+}
+
+.bg-color {
+ background-color: var(--background-color);
+}

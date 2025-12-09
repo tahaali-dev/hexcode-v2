@@ -1,0 +1,100 @@
+/* ----------- Border ------------  */
+.border-primary {
+ border: 1px solid var(--primary-color);
+}
+
+.border-light {
+ border: 1px solid var(--ed-light-color);
+}
+
+.b-t {
+ border-top: 1px solid var(--ed-light-color);
+}
+
+.b-l {
+ border-left: 1px solid var(--ed-light-color);
+}
+
+.b-r {
+ border-right: 1px solid var(--ed-light-color);
+}
+
+.b-b {
+ border-bottom: 1px solid var(--ed-light-color);
+}
+
+.b-none {
+ border: none;
+}
+
+/* ------------ Border Radius ------------ */
+.rounded-sm {
+ border-radius: var(--border-radius-sm);
+}
+
+.rounded-md {
+ border-radius: var(--border-radius-md);
+}
+
+.rounded-lg {
+ border-radius: var(--border-radius-lg);
+}
+
+.rounded-50 {
+ border-radius: 50%;
+}
+
+/* ------------ Transition ------------ */
+.transition-fast {
+ transition: var(--transition-fast);
+}
+
+.transition-medium {
+ transition: var(--transition-medium);
+}
+
+.transition-slow {
+ transition: var(--transition-slow);
+}
+
+.transition-ease {
+ transition: var(--transition-ease);
+}
+
+/* ------------ Cursor ------------ */
+.pointer {
+ cursor: pointer;
+}
+
+/* ------------ Over flow scroll ------------ */
+.of-y {
+ overflow-y: scroll;
+}
+
+.of-x {
+ overflow-x: scroll;
+}
+
+/* ------------ Other classes  ------------ */
+
+/* Webkit scroll disable */
+.scroll-none::-webkit-scrollbar {
+ display: none;
+}
+
+/* custom scroll bar */
+/* width */
+.c-scroll::-webkit-scrollbar {
+ width: 4px;
+}
+
+/* Track */
+.c-scroll::-webkit-scrollbar-track {
+ background: var(--ed-light-color);
+}
+
+/* Handle */
+.c-scroll::-webkit-scrollbar-thumb {
+ border-radius: 2px;
+ background: #eae1e1;
+}

@@ -1,0 +1,136 @@
+/* Font Loading Optimization */
+@font-face {
+  font-family: 'Museo-Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100;
+  src: url('/fonts/MuseoSans100.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Museo-Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/MuseoSans300.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Museo-Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/MuseoSans500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Museo-Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/MuseoSans700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Museo-Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 900;
+  src: url('/fonts/MuseoSans900.woff2') format('woff2');
+}
+
+/* Global Variables */
+:root {
+  /* Primary red colors with shades of red */
+  --clr-primary: #ee232a;
+  --clr-primary-l1: #fff1f1;
+  --clr-primary-l2: #ffdfe0;
+  --clr-primary-l3: #ffc5c7;
+  --clr-primary-l1: #ff6469;
+  --clr-primary-d1: #881418;
+
+  /* dark colors */
+  --clr-dark: #181010;
+  --clr-dark2: #352727;
+  --clr-dark3: #a38f8f;
+
+  /* light colors */
+  --white-color: #fff;
+  --clr-light: #fbf9f9;
+  --clr-light2: #eae1e1;
+  --clr-light3: #d3c5c5;
+
+  /* Vibrant colors */
+  --clr-purple: #c3abff;
+  --clr-yellow: #fed35b;
+  --clr-pink: #fbc1d4;
+  --clr-blue: #81d0ff;
+  --clr-green: #aff9d1;
+
+  /* Color Variables */
+  --secondary-color: #232a2f;
+  --grey-b1: #b1a7a6;
+  --grey-4e: #4e5f6a;
+
+  /* Indicator colors */
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+
+  /* Font Variables */
+  --font-primary: var(--font-museo-sans), "Museo-Sans", sans-serif;
+  --font-secondary: var(--font-museo-sans), "Museo-Sans";
+  --font-size-xsm: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-d: 64px;
+  --font-size-m: 38px;
+
+  /* Spacing Variables */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-mmd: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 42px;
+
+  /* font weights */
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+
+  /* Border Radius */
+  --border-radius-xsm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-re: 16px;
+  --border-radius-lg: 24px;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  color: var(--clr-dark);
+  /* background-color: var(--clr-light); */
+  /* background-color: red; */
+  scrollbar-width: none;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
