@@ -3,22 +3,41 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { DyTitleH1, Dpara } from "@/app/Components/TypSetting";
-import { testimonials } from "../../Static/testimonials"
+import { testimonials } from "../../Static/testimonials";
 import { useEffect } from "react";
 
 const bgImg = "/img2.webp";
 
-
 const imageList = [
-  { src: "/companies/hexaclimate.svg", width: 108, height: 36, category: "Energy & Sustainability" },
-  { src: "/companies/fuel-cycle.svg", width: 108, height: 18, category: "SAAS" },
+  {
+    src: "/companies/hexaclimate.svg",
+    width: 108,
+    height: 36,
+    category: "Energy & Sustainability",
+  },
+  {
+    src: "/companies/fuel-cycle.svg",
+    width: 108,
+    height: 18,
+    category: "SAAS",
+  },
   { src: "/companies/haven.svg", width: 108, height: 30, category: "Fintech" },
   { src: "/companies/30-sund.svg", width: 108, height: 36, category: "Travel" },
   { src: "/companies/MPL.svg", width: 68, height: 36, category: "Gaming" },
   { src: "/companies/delve.svg", width: 108, height: 36, category: "AI" },
-  { src: "/companies/Brighterway (1).svg", width: 108, height: 31, category: "Healthcare" },
-  { src: "/companies/scalix (1).svg", width: 108, height: 28, category: "Marketing Services" },
-]
+  {
+    src: "/companies/Brighterway (1).svg",
+    width: 108,
+    height: 31,
+    category: "Healthcare",
+  },
+  {
+    src: "/companies/scalix (1).svg",
+    width: 108,
+    height: 28,
+    category: "Marketing Services",
+  },
+];
 
 const getCategorySet = (category: string) => {
   return new Set(
@@ -32,16 +51,19 @@ const getCategorySet = (category: string) => {
 const Page = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const normalize = (value: string) => value.trim().toLowerCase()
+  const normalize = (value: string) => value.trim().toLowerCase();
   const filteredTestimonials = testimonials.filter(
-    (testimonial) => testimonial.name && normalize(testimonial.name) === normalize("Michael Brod")
-  )
+    (testimonial) =>
+      testimonial.name &&
+      normalize(testimonial.name) === normalize("Michael Brod")
+  );
 
-  const t = filteredTestimonials[0]
-
+  const t = filteredTestimonials[0];
 
   const hoveredCategories =
-    hoveredIndex !== null ? getCategorySet(imageList[hoveredIndex].category) : null;
+    hoveredIndex !== null
+      ? getCategorySet(imageList[hoveredIndex].category)
+      : null;
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -50,14 +72,12 @@ const Page = () => {
     document.body.appendChild(script);
   }, []);
 
-
   return (
     <WrapperDemo>
-
       <div className="top-cont">
         <DyTitleH1
-          fontSize={{ base: "56px", md: "38px", sm: "34px" }}
-          lineHeight={{ base: "62px", md: "44px", sm: "42px" }}
+          fontSize={{ base: "64px", md: "48px", sm: "32px" }}
+          lineHeight={{ base: "74px", md: "56px", sm: "40px" }}
           fontWeight={700}
           textTransform="uppercase"
           color="#fff"
@@ -79,71 +99,69 @@ const Page = () => {
         </Dpara>
       </div>
 
-
       {/* LOGO SECTION */}
       <div className="main">
         <div className="inner">
-          <Dpara
-            fontSize="18px"
-            lineHeight="24px"
-            fontWeight="400"
-            color="#D6D6D6"
-            textAlign="center"
-            className="text-uppercase"
-          >
-            Trusted by 100+ customers, from startup to enterprise
-          </Dpara>
+          
+            <Dpara
+              fontSize="18px"
+              lineHeight="24px"
+              fontWeight="400"
+              color="#D6D6D6"
+              textAlign="center"
+              className="text-uppercase"
+            >
+              Trusted by 100+ customers, from startup to enterprise
+            </Dpara>
 
-          <div className="logo-container">
-            {imageList.map((image, index) => {
-              const thisCategories = getCategorySet(image.category);
+            <div className="logo-container">
+              {imageList.map((image, index) => {
+                const thisCategories = getCategorySet(image.category);
 
-              let isBlurred = false;
+                let isBlurred = false;
 
-              if (hoveredCategories) {
-                const hasCommon = [...thisCategories].some((cat) =>
-                  hoveredCategories.has(cat)
+                if (hoveredCategories) {
+                  const hasCommon = [...thisCategories].some((cat) =>
+                    hoveredCategories.has(cat)
+                  );
+                  isBlurred = !hasCommon;
+                }
+
+                return (
+                  <div
+                    key={index}
+                    className={`logo-item ${isBlurred ? "blurred" : ""}`}
+                  >
+                    <img
+                      src={image.src}
+                      width={image.width}
+                      height={image.height}
+                      className={`logo-img ${
+                        hoveredIndex === index ? "active" : ""
+                      }`}
+                    />
+                  </div>
                 );
-                isBlurred = !hasCommon;
-              }
-
-              return (
-                <div
-                  key={index}
-                  className={`logo-item ${isBlurred ? "blurred" : ""}`}
-
-                >
-                  <img
-                    src={image.src}
-
-                    width={image.width}
-                    height={image.height}
-                    className={`logo-img ${hoveredIndex === index ? "active" : ""}`}
-                  />
-                </div>
-              );
-            })}
-          </div>
-
+              })}
+            </div>
+         
 
           {/* ⭐ TESTIMONIAL SECTION ⭐ */}
+            
           <div className="testimonial">
+     
             <p className="text-block">{t.text}</p>
 
             <div className="author">
-              <img
-                src={t.image}
-                alt={t.name}
-                width={60}
-                height={60}
-              />
+              <img src={t.image} alt={t.name} width={60} height={60} className="image" />
 
               <div className="identity">
                 <p className="name">{t.name}</p>
                 <p className="role">{t.title}</p>
               </div>
 
-              <img className="brand"
+              <img
+                className="brand"
                 src={t.logo.src}
                 alt={t.company}
                 width={t.logo.width}
@@ -151,18 +169,15 @@ const Page = () => {
               />
             </div>
           </div>
-
         </div>
 
         {/* ⭐ CALENDLY INLINE EMBED ⭐ */}
         <div
           className="calendly-inline-widget"
           data-url="https://calendly.com/shabbir-hexcode/30min"
-          style={{ }}
+          style={{}}
         ></div>
       </div>
-
-
     </WrapperDemo>
   );
 };
@@ -181,12 +196,12 @@ const WrapperDemo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top:-76px;
+  margin-top: -76px;
   z-index: 0;
 
   /* BG IMAGE */
   &::after {
-      content: "";
+    content: "";
     position: absolute;
     opacity: 0.9;
     top: 0;
@@ -205,7 +220,7 @@ const WrapperDemo = styled.div`
     position: absolute;
     inset: 0;
     backdrop-filter: blur(6px);
-    background: rgba(0,0,0,0.45);
+    background: rgba(0, 0, 0, 0.45);
     z-index: 5;
   }
 
@@ -218,45 +233,63 @@ const WrapperDemo = styled.div`
   /*********************************
       TOP HEADING
   *********************************/
-.top-cont {
+ .top-cont {
   margin-left: 20px;
-  width: 35%;
+  width: 40%;
   max-width: 1300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin-top: 80px;
+  margin-top: 120px;
   margin-bottom: 60px;
 }
 
-/* Tablet (max-width: 1024px) */
+/* =============================
+      LARGE TABLET (≤ 1024px)
+============================= */
 @media (max-width: 1024px) {
   .top-cont {
-    width: 50%;
+    width: 45%;
     margin-left: 0;
-    margin-top: 60px;
+    margin-top: 90px;
+    gap: 14px;
   }
 }
 
-/* Mobile (max-width: 768px) */
+/* =============================
+      TABLET / SMALL LAPTOP (≤ 768px)
+============================= */
 @media (max-width: 768px) {
   .top-cont {
     width: 70%;
     margin-left: 0;
-    margin-top: 50px;
+    margin-top: 70px;
     gap: 12px;
   }
 }
 
-/* Small Mobile (max-width: 480px) */
+/* =============================
+      MOBILE (≤ 480px)
+============================= */
 @media (max-width: 480px) {
   .top-cont {
     width: 90%;
     margin-left: 0;
-    margin-top: 40px;
+    margin-top: 45px;
     margin-bottom: 40px;
     gap: 10px;
+  }
+}
+
+/* =============================
+      SMALL MOBILE (≤ 360px)
+============================= */
+@media (max-width: 360px) {
+  .top-cont {
+    width: 95%;
+    margin-top: 35px;
+    gap: 8px;
   }
 }
 
@@ -264,152 +297,151 @@ const WrapperDemo = styled.div`
   /*********************************
       MAIN TWO-COLUMN LAYOUT
   *********************************/
-/* =========================
+  /* =========================
       DESKTOP (DEFAULT)
 ========================= */
-.main {
-  width: 100%;
-  max-width: 1400px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 80px;
-  margin-top: 50px;
-  flex-direction: row;
-  margin-bottom: -85px;
-}
-
-.inner {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 60px;
-  gap: 30px;
-}
-
-/* =========================
-      TABLET (max-width: 1024px)
-========================= */
-@media (max-width: 1024px) {
   .main {
-    gap: 50px;
-    margin-bottom: -40px;
-  }
-
-  .inner {
-    width: 55%;
-    margin-top: 30px;
-    gap: 24px;
-  }
-}
-
-/* =========================
-      SMALL TABLET (max-width: 768px)
-========================= */
-@media (max-width: 768px) {
-  .main {
-    flex-direction: column;   /* stack vertically */
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 0;
-  }
-
-  /* RIGHT div comes above LEFT div */
-  .calendly-inline-widget {
-    order: -1;
-  }
-
-  .inner {
-    width: 80%;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    gap: 22px;
-  }
-}
-
-/* =========================
-      MOBILE (max-width: 480px)
-========================= */
-@media (max-width: 480px) {
-  .main {
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 30px;
-  }
-
-  .calendly-inline-widget {
-    order: -1;
-  }
-
-  .inner {
     width: 100%;
-    gap: 18px;
-    margin-top: 15px;
-    margin-bottom: 30px;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px;
+    margin-top: 50px;
+    margin-bottom: -85px;
+    height: 525px;
+    flex-direction: row; /* Desktop layout */
   }
-}
 
-/* =========================
-      SMALL MOBILE (max-width: 360px)
-========================= */
-@media (max-width: 360px) {
   .inner {
-    gap: 14px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-}
 
+  /* =========================
+      TABLET (≤ 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .main {
+      gap: 50px;
+      margin-bottom: -40px;
+      flex-direction: column-reverse;
+      height: auto;
+    }
 
+    .inner {
+      width: 55%;
+      margin-top: 30px;
+      gap: 24px;
+    }
+  }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 28px 60px; /* row-gap column-gap */
-  margin-top: 15px;
-}
+  /* =========================
+      SMALL TABLET (≤ 768px)
+========================= */
 
-/* Large Tablet (max-width: 1024px) */
-@media (max-width: 1024px) {
+  @media (max-width: 768px) {
+    .main {
+      flex-direction: column-reverse; /* ⭐ Calendly goes ABOVE inner */
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 0;
+      margin-top: 40px;
+      height: auto;
+    }
+
+    .calendly-inline-widget {
+      width: 100% !important; /* ⭐ IMPORTANT (makes it visible) */
+      height: auto !important;
+    }
+
+    .inner {
+      width: 80%;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      gap: 22px;
+    }
+  }
+
+  /* =========================
+      MOBILE (≤ 480px)
+========================= */
+  @media (max-width: 480px) {
+    .main {
+      flex-direction: column-reverse; /* ⭐ KEEP REVERSED */
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .calendly-inline-widget {
+      width: 100% !important; /* ⭐ MUST */
+      height: auto !important;
+    }
+
+    .inner {
+      width: 100%;
+      margin-top: 15px;
+      margin-bottom: 30px;
+      gap: 18px;
+    }
+  }
+
+  /* =========================
+      SMALL MOBILE (≤ 360px)
+========================= */
+  @media (max-width: 360px) {
+    .inner {
+      gap: 14px;
+    }
+  }
+
+  /* =========================
+      LOGO CONTAINER
+========================= */
   .logo-container {
-    gap: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 28px 60px;
+    margin-top: 15px;
   }
-}
 
-/* Tablet (max-width: 768px) */
-@media (max-width: 768px) {
-  .logo-container {
-    gap: 20px 28px;
-    margin-top: 10px;
-   
+  @media (max-width: 1024px) {
+    .logo-container {
+      gap: 24px 40px;
+      margin-top: 12px;
+    }
   }
-}
 
-/* Mobile (max-width: 480px) */
-@media (max-width: 480px) {
-  .logo-container {
-    gap: 16px 16px; /* tighter spacing for small screens */
-    margin-top: 8px;
+  @media (max-width: 768px) {
+    .logo-container {
+      gap: 20px 28px;
+      margin-top: 10px;
+    }
   }
-}
 
-/* Extra Small Mobile (max-width: 360px) */
-@media (max-width: 360px) {
-  .logo-container {
-    gap: 12px;
-    margin-top: 5px;
+  @media (max-width: 480px) {
+    .logo-container {
+      gap: 16px 18px;
+      margin-top: 8px;
+    }
   }
-}
 
+  @media (max-width: 360px) {
+    .logo-container {
+      gap: 12px 14px;
+      margin-top: 5px;
+    }
+  }
 
   .logo-img {
     filter: brightness(0) invert(1);
     opacity: 1;
-    transition: 0.3s ease;
+    transition: opacity 0.3s ease;
   }
 
   .logo-item.blurred .logo-img {
@@ -419,15 +451,35 @@ const WrapperDemo = styled.div`
   /*********************************
       TESTIMONIAL BOX
   *********************************/
- /* ============================
+  /* ============================
    BASE DESKTOP STYLES
 ============================ */
+  /* =======================
+   TESTIMONIAL BOX
+======================= */
 .testimonial {
-  padding: 24px 28px;
-  margin-top: 130px;
+  position: relative;
+  padding: 20px 24px;
+  margin-top: 160px;
   border-radius: 12px;
   color: #fff;
   margin-left: 50px;
+}
+
+/* White Vertical Line */
+.testimonial::before {
+  content: "";
+  position: absolute;
+  left: 12px;                /* responsive relative position */
+  top: 20px;                 /* start from top */
+  width: 4px;
+  height: calc(65% - 40px); /* auto height based on content */
+  background: #fff;
+ 
+}
+
+.image {
+  border-radius: 10%;
 }
 
 .text-block {
@@ -439,7 +491,8 @@ const WrapperDemo = styled.div`
 .author {
   display: flex;
   align-items: center;
-  gap: 20px;
+  margin-top: 20px;
+  gap: 24px;
 }
 
 .identity {
@@ -465,12 +518,17 @@ const WrapperDemo = styled.div`
 }
 
 /* ============================
-   LARGE TABLET (max-width: 1024px)
+   LARGE TABLET  (≤ 1024px)
 ============================ */
 @media (max-width: 1024px) {
   .testimonial {
     margin-left: 30px;
-    padding: 22px 24px;
+    padding-left: 70px;     /* adjust for line */
+  }
+
+  .testimonial::before {
+    left: 32px;
+    height: calc(100% - 32px);
   }
 
   .brand {
@@ -479,13 +537,20 @@ const WrapperDemo = styled.div`
 }
 
 /* ============================
-   TABLET (max-width: 768px)
+   TABLET (≤ 768px)
 ============================ */
 @media (max-width: 768px) {
   .testimonial {
     margin-left: 0;
-    margin-top: 90px;
+    margin-top: 100px;
     padding: 20px 22px;
+    padding-left: 60px;
+  }
+
+  .testimonial::before {
+    left: 26px;
+    top: 18px;
+    height: calc(100% - 36px);
   }
 
   .text-block {
@@ -511,23 +576,28 @@ const WrapperDemo = styled.div`
 }
 
 /* ============================
-   MOBILE (max-width: 480px)
+   MOBILE (≤ 480px)
 ============================ */
 @media (max-width: 480px) {
   .testimonial {
-    margin-top: 60px;
+    margin-top: 70px;
     padding: 16px 18px;
+    padding-left: 50px;
     border-radius: 10px;
+  }
+
+  .testimonial::before {
+    left: 22px;
+    top: 16px;
+    height: calc(100% - 32px);
   }
 
   .text-block {
     font-size: 14px;
     line-height: 22px;
-    margin-bottom: 10px;
   }
 
   .author {
-    flex-direction: row;
     gap: 10px;
   }
 
@@ -545,11 +615,22 @@ const WrapperDemo = styled.div`
 }
 
 /* ============================
-   SMALL MOBILE (max-width: 360px)
+   SMALL MOBILE (≤ 360px)
 ============================ */
 @media (max-width: 360px) {
   .testimonial {
     padding: 14px 16px;
+    padding-left: 45px;
+  }
+
+  .testimonial::before {
+    left: 20px;
+    height: calc(100% - 28px);
+  }
+
+  .text-block {
+    font-size: 13px;
+    line-height: 20px;
   }
 
   .brand {
@@ -557,35 +638,95 @@ const WrapperDemo = styled.div`
   }
 }
 
+
   /*********************************
       CALENDLY RIGHT-SIDE CARD
   *********************************/
   .calendly-inline-widget {
-    width: 42%;
-    height: 700px !important;
+    width: 40%;
+    height: 525px !important;
+    
     border-radius: 18px;
     overflow: hidden;
     background: white;
-    box-shadow:
-      0 10px 25px rgba(0,0,0,0.18),
-      0 20px 50px rgba(0,0,0,0.35);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18), 0 20px 50px rgba(0, 0, 0, 0.35);
   }
 
   /*********************************
-      RESPONSIVE FIXES
-  *********************************/
+        LARGE LAPTOP (≤ 1200px)
+*********************************/
   @media (max-width: 1200px) {
     .main {
       flex-direction: column;
       align-items: center;
+      gap: 40px;
     }
-    .inner, .calendly-inline-widget {
+
+    .inner,
+    .calendly-inline-widget {
       width: 100%;
     }
+
     .calendly-inline-widget {
       height: 760px !important;
     }
   }
+
+  /*********************************
+        TABLET (≤ 1024px)
+*********************************/
+  @media (max-width: 1024px) {
+    .calendly-inline-widget {
+      height: 820px !important;
+      border-radius: 16px;
+    }
+  }
+
+  /*********************************
+        SMALL TABLET (≤ 768px)
+*********************************/
+  @media (max-width: 768px) {
+    .main {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .calendly-inline-widget {
+      width: 100%;
+      height: 900px !important;
+      order: -1; /* calendly goes ABOVE content */
+    }
+
+    .inner {
+      width: 80%;
+      margin-top: 20px;
+    }
+  }
+
+  /*********************************
+        MOBILE (≤ 480px)
+*********************************/
+  @media (max-width: 480px) {
+    .calendly-inline-widget {
+      height: 900px !important;
+      border-radius: 12px;
+     width: 90% !important;
+    }
+
+    .inner {
+      width: 90%;
+    }
+  }
+
+  /*********************************
+        SMALL MOBILE (≤ 360px)
+*********************************/
+  @media (max-width: 360px) {
+    .calendly-inline-widget {
+      height: 1050px !important;
+      border-radius: 10px;
+    }
+  }
 `;
-
-
