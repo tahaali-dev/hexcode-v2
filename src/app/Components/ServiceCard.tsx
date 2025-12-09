@@ -64,12 +64,7 @@ export const ServiceCard = ({
                   margin="0"
                   borderRadius="8px"
                   btnContent="Book a call"
-                  onClick={() =>
-                    window.open(
-                      "https://calendly.com/shabbir-hexcode/30min",
-                      "_blank"
-                    )
-                  }
+                  onClick={() => window.location.href = "/book-a-call"}
                 />
               </div>
             )}
@@ -102,12 +97,7 @@ export const ServiceCard = ({
               margin="0"
               borderRadius="8px"
               btnContent="Book a call"
-              onClick={() =>
-                window.open(
-                  "https://calendly.com/shabbir-hexcode/30min",
-                  "_blank"
-                )
-              }
+               onClick={() => window.location.href = "/book-a-call"}
             />
           </div>
         )}
