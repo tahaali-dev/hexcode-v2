@@ -17,6 +17,8 @@ const nakiya = "/team/nakiya.png"
 const sakina = "/team/sakina.png"
 const suyash = "/team/suyash.png"
 const ashish = "/team/ashish.png"
+const huzaifa = "/team/huzaifa.png"
+
 
 const teamMembers = [
   {
@@ -29,24 +31,30 @@ const teamMembers = [
     name: "Ashish",
     title: "Frontend Intern",
     image: ashish,
-    bgColor: "#FBC1D4"
+    bgColor: "#FED35B"
   },
   {
     name: "Burhanuddin",
     title: "Sr. Product Designer",
     image: Burhan,
-    bgColor: "#AFF9D1"
+    bgColor: "#FBC1D4"
   },
   {
     name: "Husain",
     title: "Sr. Product Designer",
     image: Husain,
-    bgColor: "#C3ABFF"
+    bgColor: "#AFF9D1"
   },
   {
     name: "Husain",
     title: "Head of Finance",
     image: HusainSaifee,
+    bgColor: "#C3ABFF"
+  },
+  {
+    name: "Huzaifa",
+    title: "Frontend Developer",
+    image: huzaifa,
     bgColor: "#FED35B"
   },
   {
@@ -68,24 +76,25 @@ const teamMembers = [
     bgColor: "#C3ABFF"
   },
   {
-    name: "Suyash",
-    title: "Product Designer",
-    image: suyash,
-    bgColor: "#FED35B"
-  },
-  {
     name: "Shabbir",
     title: "Co-founder",
     image: ShabbirBhai,
     bgColor: "#FED35B"
   },
   {
+    name: "Suyash",
+    title: "Product Designer",
+    image: suyash,
+    bgColor: "#FBC1D4"
+  },
+  {
     name: "Taha",
     title: "Full Stack Developer",
     image: Taha,
-    bgColor: "#FBC1D4"
+    bgColor: "#AFF9D1"
   }
 ];
+
 
 
 
