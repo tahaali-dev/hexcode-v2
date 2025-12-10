@@ -296,7 +296,7 @@ z-index: 0;
   }
 
   .inner {
-    width: 80%;
+    width: 100%;
     margin-bottom: 20px;
   }
 
