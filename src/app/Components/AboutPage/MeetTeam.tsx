@@ -81,12 +81,12 @@ const teamMembers = [
     image: ShabbirBhai,
     bgColor: "#FED35B"
   },
-  // {
-  //   name: "Suyash",
-  //   title: "Product Designer",
-  //   image: suyash,
-  //   bgColor: "#FBC1D4"
-  // },
+  {
+    name: "Suyash",
+    title: "Product Designer",
+    image: suyash,
+    bgColor: "#FBC1D4"
+  },
   {
     name: "Taha",
     title: "Full Stack Developer",

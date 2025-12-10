@@ -37,6 +37,9 @@ const sunds = "/companies/30-sund.svg";
 const waqas = "/testimonials/waqas.png";
 const scalix = "/companies/scalix.svg";
 
+const surbhit = "/testimonials/surbhit.png";
+const MPLLogo = "/companies/MPL.svg";
+
 
 export const testimonials = [
   {
@@ -212,5 +215,19 @@ export const testimonials = [
     shortText: `In my nine years of experience working with multiple agencies and speaking with hundreds of design and website firms, Hexcode has been the most impressive. They're communicative, responsive, and consistently goes above and beyond.  I wouldn't hesitate to refer them to any of my clients looking for world-class design work.`,
     name: 'Waqas Khokhar',
     title: 'Founder at ScalixAI',
+  },
+
+  {
+    image: surbhit,
+    company: 'MPL',
+    logo: {
+      src: MPLLogo,
+      width: 80,
+      height: 28,
+    },
+    text: `The website work directly boosted our conversion metrics. Both visit-to-install and install-to-download numbers improved significantly. But what really stood out was the ability to move at startup speed while keeping quality high. The kind of designer every gaming startup needs on their roster.`,
+    shortText: `The website work directly boosted our conversion metrics. Both visit-to-install and install-to-download numbers improved significantly. But what really stood out was the ability to move at startup speed while keeping quality high. The kind of designer every gaming startup needs on their roster.`,
+    name: 'Surbhit Varma',
+    title: 'Product and Design leader at MPL',
   },
 ];

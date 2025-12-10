@@ -18,7 +18,7 @@ const page = () => {
       <SingleTestimonial testimonialName="Michael Brod" marginTop="0px" mobileMarginTop="0px" />
       <OurCapabilities />
       <EmptyContainer height="76px" />
-      <SingleTestimonial testimonialName="Kshitij Chaudhary" marginTop="0px" mobileMarginTop="0px" />
+      <SingleTestimonial testimonialName="Surbhit Varma" marginTop="0px" mobileMarginTop="0px" />
       <EmptyContainer height="76px" />
       <AboutUs />
       <EmptyContainer height="76px" />
@@ -27,7 +27,7 @@ const page = () => {
       <EmptyContainer height="76px" />
       <TestimonialSlider />
       <Faqs />
-      <EmptyContainer height="76px" />
+      <SingleTestimonial testimonialName="Kshitij Chaudhary" marginTop="0px" mobileMarginTop="0px" />
     </>
   )
 }
