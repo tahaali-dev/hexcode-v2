@@ -23,6 +23,12 @@ const teamMembers = [
     bgColor: "#C3ABFF"
   },
   {
+    name: "Shabbir",
+    title: "Co-founder",
+    image: ShabbirBhai,
+    bgColor: "#FED35B"
+  },
+  {
     name: "Burhanuddin",
     title: "Sr Product Designer",
     image: Burhan,
@@ -58,12 +64,7 @@ const teamMembers = [
     image: Qaid,
     bgColor: "#81D0FF"
   },
-  {
-    name: "Shabbir",
-    title: "Co-founder",
-    image: ShabbirBhai,
-    bgColor: "#FED35B"
-  },
+
   {
     name: "Taha",
     title: "Developer",
