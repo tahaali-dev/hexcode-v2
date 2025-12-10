@@ -40,12 +40,12 @@ const teamMembers = [
     image: HusainSaifee,
     bgColor: "#AFF9D1"
   },
-  {
-    name: "Mufaddal",
-    title: "Creative Head",
-    image: MuffuBhai,
-    bgColor: "#C3ABFF "
-  },
+  // {
+  //   name: "Mufaddal",
+  //   title: "Creative Head",
+  //   image: MuffuBhai,
+  //   bgColor: "#C3ABFF "
+  // },
   {
     name: "Naqiya",
     title: "UI/UX Intern",
