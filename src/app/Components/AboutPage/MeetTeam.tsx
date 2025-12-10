@@ -14,6 +14,9 @@ const Qaid = "/team/qaid.png"
 const ShabbirBhai = "/team/shabbir-bhai.png"
 const Taha = "/team/taha.png"
 const nakiya = "/team/nakiya.png"
+const sakina = "/team/sakina.png"
+const suyash = "/team/suyash.png"
+const ashish = "/team/ashish.png"
 
 const teamMembers = [
   {
@@ -23,55 +26,67 @@ const teamMembers = [
     bgColor: "#C3ABFF"
   },
   {
+    name: "Ashish",
+    title: "Frontend Intern",
+    image: ashish,
+    bgColor: "#FBC1D4"
+  },
+  {
+    name: "Burhanuddin",
+    title: "Sr. Product Designer",
+    image: Burhan,
+    bgColor: "#AFF9D1"
+  },
+  {
+    name: "Husain",
+    title: "Sr. Product Designer",
+    image: Husain,
+    bgColor: "#C3ABFF"
+  },
+  {
+    name: "Husain",
+    title: "Head of Finance",
+    image: HusainSaifee,
+    bgColor: "#FED35B"
+  },
+  {
+    name: "Naqiya",
+    title: "Product Designer",
+    image: nakiya,
+    bgColor: "#FBC1D4"
+  },
+  {
+    name: "Quaid",
+    title: "Product Designer",
+    image: Qaid,
+    bgColor: "#AFF9D1"
+  },
+  {
+    name: "Sakina",
+    title: "Motion Designer",
+    image: sakina,
+    bgColor: "#C3ABFF"
+  },
+  {
+    name: "Suyash",
+    title: "Product Designer",
+    image: suyash,
+    bgColor: "#FED35B"
+  },
+  {
     name: "Shabbir",
     title: "Co-founder",
     image: ShabbirBhai,
     bgColor: "#FED35B"
   },
   {
-    name: "Burhanuddin",
-    title: "Sr Product Designer",
-    image: Burhan,
-    bgColor: "#FBC1D4"
-  },
-  {
-    name: "Husain",
-    title: "Sr UI/UX Designer",
-    image: Husain,
-    bgColor: "#FED35B"
-  },
-  {
-    name: "Husain",
-    title: "CFO",
-    image: HusainSaifee,
-    bgColor: "#AFF9D1"
-  },
-  // {
-  //   name: "Mufaddal",
-  //   title: "Creative Head",
-  //   image: MuffuBhai,
-  //   bgColor: "#C3ABFF "
-  // },
-  {
-    name: "Naqiya",
-    title: "UI/UX Intern",
-    image: nakiya,
-    bgColor: "#FBC1D4"
-  },
-  {
-    name: "Quaid",
-    title: "UI/UX Designer",
-    image: Qaid,
-    bgColor: "#81D0FF"
-  },
-
-  {
     name: "Taha",
-    title: "Developer",
+    title: "Full Stack Developer",
     image: Taha,
-    bgColor: "#81D0FF"
-  },
+    bgColor: "#FBC1D4"
+  }
 ];
+
 
 
 

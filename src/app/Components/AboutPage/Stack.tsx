@@ -19,7 +19,7 @@ const Stack = () => {
           color="#181010"
           className="text-center mt-md"
         >
-          What we stand for at hexcode design
+          What we stand for at hexcode designs
         </DyH2>
 
         {/* card */}

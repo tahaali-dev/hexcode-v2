@@ -208,7 +208,7 @@ const Content = () => {
               color="#181010"
               className="text-left"
             >
-              What We Stand For at Hexcode Design
+              What We Stand For at Hexcode Designs
             </DyH2>
 
 
