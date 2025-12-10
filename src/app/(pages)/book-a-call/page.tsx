@@ -189,52 +189,54 @@ export default Page;
 ----------------------------------------------------------- */
 
 const WrapperDemo = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  padding: 20px 0 120px 0;
+ /* ---------------------------------------------------------
+   GENERAL WRAPPER
+--------------------------------------------------------- */
+width: 100%;
+min-height: 100vh;
+padding: 20px 0 120px 0;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: -76px;
+z-index: 0;
+
+/* BG IMAGE */
+&::after {
+  content: "";
+  position: absolute;
+  opacity: 0.9;
+  top: 0;
+  inset: 0;
+  background-image: url(${bgImg});
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  transform: scaleX(-1);
+  z-index: 1;
+}
+
+/* DARK OVERLAY */
+&::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 5;
+}
+
+/* Content above overlay */
+> * {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: -76px;
-  z-index: 0;
+  z-index: 5;
+}
 
-  /* BG IMAGE */
-  &::after {
-    content: "";
-    position: absolute;
-    opacity: 0.9;
-    top: 0;
-    inset: 0;
-    background-image: url(${bgImg});
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    transform: scaleX(-1);
-    z-index: 1;
-  }
-
-  /* DARK OVERLAY */
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(6px);
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 5;
-  }
-
-  /* All content above bg */
-  > * {
-    position: relative;
-    z-index: 5;
-  }
-
-  /*********************************
-      TOP HEADING
-  *********************************/
- .top-cont {
-  margin-left: 20px;
+/* ---------------------------------------------------------
+   TOP CONTENT (BOOK A CALL)
+--------------------------------------------------------- */
+.top-cont {
   width: 40%;
   max-width: 1300px;
   display: flex;
@@ -245,237 +247,155 @@ const WrapperDemo = styled.div`
   margin-bottom: 60px;
 }
 
-/* =============================
-      LARGE TABLET (≤ 1024px)
-============================= */
-@media (max-width: 1024px) {
-  .top-cont {
-    width: 45%;
-    margin-left: 0;
-    margin-top: 90px;
-    gap: 14px;
-  }
-}
-
-/* =============================
-      TABLET / SMALL LAPTOP (≤ 768px)
-============================= */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .top-cont {
     width: 70%;
-    margin-left: 0;
     margin-top: 70px;
-    gap: 12px;
   }
 }
 
-/* =============================
-      MOBILE (≤ 480px)
-============================= */
 @media (max-width: 480px) {
   .top-cont {
     width: 90%;
-    margin-left: 0;
     margin-top: 45px;
-    margin-bottom: 40px;
-    gap: 10px;
   }
 }
 
-/* =============================
-      SMALL MOBILE (≤ 360px)
-============================= */
-@media (max-width: 360px) {
-  .top-cont {
-    width: 95%;
-    margin-top: 35px;
-    gap: 8px;
-  }
+/* ---------------------------------------------------------
+   MAIN TWO-COLUMN LAYOUT
+--------------------------------------------------------- */
+.main {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+  margin-top: 50px;
+  margin-bottom: -85px;
+  height: 525px;
 }
 
+/* LEFT SIDE */
+.inner {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
-  /*********************************
-      MAIN TWO-COLUMN LAYOUT
-  *********************************/
-  /* =========================
-      DESKTOP (DEFAULT)
-========================= */
+/* ---------------------------------------------------------
+   BREAKPOINT → STACK BELOW 900px
+--------------------------------------------------------- */
+@media (max-width: 900px) {
   .main {
-    width: 100%;
-    max-width: 1400px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 80px;
-    margin-top: 50px;
-    margin-bottom: -85px;
-    height: 525px;
-    flex-direction: row; /* Desktop layout */
+    flex-direction: column-reverse; /* Calendly goes ABOVE */
+    align-items: center;
+    gap: 40px;
+    height: auto;
+    margin-top: 40px;
   }
 
   .inner {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 20px;
   }
 
-  /* =========================
-      TABLET (≤ 1024px)
-========================= */
-  @media (max-width: 1024px) {
-    .main {
-      gap: 50px;
-      margin-bottom: -40px;
-      flex-direction: column-reverse;
-      height: auto;
-    }
+  .calendly-inline-widget {
+    width: 90% !important;
+    height: 800px !important;
+  }
+}
 
-    .inner {
-      width: 55%;
-      margin-top: 30px;
-      gap: 24px;
-    }
+@media (max-width: 480px) {
+  .inner {
+    width: 100%;
   }
 
-  /* =========================
-      SMALL TABLET (≤ 768px)
-========================= */
+  .calendly-inline-widget {
+    height: 900px !important;
 
-  @media (max-width: 768px) {
-    .main {
-      flex-direction: column-reverse; /* ⭐ Calendly goes ABOVE inner */
-      align-items: center;
-      gap: 40px;
-      margin-bottom: 0;
-      margin-top: 40px;
-      height: auto;
-    }
 
-    .calendly-inline-widget {
-      width: 100% !important; /* ⭐ IMPORTANT (makes it visible) */
-      height: auto !important;
-    }
-
-    .inner {
-      width: 80%;
-      margin-top: 20px;
-      margin-bottom: 40px;
-      gap: 22px;
-    }
   }
+}
 
-  /* =========================
-      MOBILE (≤ 480px)
-========================= */
-  @media (max-width: 480px) {
-    .main {
-      flex-direction: column-reverse; /* ⭐ KEEP REVERSED */
-      gap: 30px;
-      margin-top: 30px;
-    }
+/* ---------------------------------------------------------
+   LOGO SECTION
+--------------------------------------------------------- */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px 60px;
+  margin-top: 15px;
+}
 
-    .calendly-inline-widget {
-      width: 100% !important; /* ⭐ MUST */
-      height: auto !important;
-    }
-
-    .inner {
-      width: 100%;
-      margin-top: 15px;
-      margin-bottom: 30px;
-      gap: 18px;
-    }
-  }
-
-  /* =========================
-      SMALL MOBILE (≤ 360px)
-========================= */
-  @media (max-width: 360px) {
-    .inner {
-      gap: 14px;
-    }
-  }
-
-  /* =========================
-      LOGO CONTAINER
-========================= */
+@media (max-width: 900px) {
   .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 28px 60px;
-    margin-top: 15px;
+    gap: 20px 28px;
   }
+}
 
-  @media (max-width: 1024px) {
-    .logo-container {
-      gap: 24px 40px;
-      margin-top: 12px;
-    }
+@media (max-width: 480px) {
+  .logo-container {
+    gap: 14px 18px;
   }
+}
 
-  @media (max-width: 768px) {
-    .logo-container {
-      gap: 20px 28px;
-      margin-top: 10px;
-    }
-  }
+.logo-img {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
 
-  @media (max-width: 480px) {
-    .logo-container {
-      gap: 16px 18px;
-      margin-top: 8px;
-    }
-  }
+.logo-item.blurred .logo-img {
+  opacity: 0.25;
+}
 
-  @media (max-width: 360px) {
-    .logo-container {
-      gap: 12px 14px;
-      margin-top: 5px;
-    }
-  }
-
-  .logo-img {
-    filter: brightness(0) invert(1);
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  .logo-item.blurred .logo-img {
-    opacity: 0.25;
-  }
-
-  /*********************************
-      TESTIMONIAL BOX
-  *********************************/
-  /* ============================
-   BASE DESKTOP STYLES
-============================ */
-  /* =======================
+/* ---------------------------------------------------------
    TESTIMONIAL BOX
-======================= */
+--------------------------------------------------------- */
 .testimonial {
   position: relative;
   padding: 20px 24px;
-  margin-top: 160px;
+  margin-top: 120px;
   border-radius: 12px;
   color: #fff;
   margin-left: 50px;
 }
 
-/* White Vertical Line */
+/* WHITE VERTICAL LINE */
 .testimonial::before {
   content: "";
   position: absolute;
-  left: 12px;                /* responsive relative position */
-  top: 20px;                 /* start from top */
+  left: 16px;
+  top: 20px;
   width: 4px;
-  height: calc(65% - 40px); /* auto height based on content */
+  height: calc(65% - 40px);
   background: #fff;
  
+}
+
+@media (max-width: 900px) {
+  .testimonial {
+    margin-left: 0;
+    padding-left: 50px;
+  }
+
+  .testimonial::before {
+    left: 24px;
+    height: calc(65% - 32px);
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial {
+    padding-left: 40px;
+  }
+
+  .testimonial::before {
+    left: 18px;
+  }
 }
 
 .image {
@@ -491,8 +411,8 @@ const WrapperDemo = styled.div`
 .author {
   display: flex;
   align-items: center;
+  gap: 20px;
   margin-top: 20px;
-  gap: 24px;
 }
 
 .identity {
@@ -517,216 +437,39 @@ const WrapperDemo = styled.div`
   filter: brightness(0) invert(1);
 }
 
-/* ============================
-   LARGE TABLET  (≤ 1024px)
-============================ */
-@media (max-width: 1024px) {
-  .testimonial {
-    margin-left: 30px;
-    padding-left: 70px;     /* adjust for line */
-  }
-
-  .testimonial::before {
-    left: 32px;
-    height: calc(100% - 32px);
-  }
-
-  .brand {
-    width: 95px;
-  }
-}
-
-/* ============================
-   TABLET (≤ 768px)
-============================ */
-@media (max-width: 768px) {
-  .testimonial {
-    margin-left: 0;
-    margin-top: 100px;
-    padding: 20px 22px;
-    padding-left: 60px;
-  }
-
-  .testimonial::before {
-    left: 26px;
-    top: 18px;
-    height: calc(100% - 36px);
-  }
-
-  .text-block {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .author {
-    gap: 14px;
-  }
-
-  .name {
-    font-size: 16px;
-  }
-
-  .role {
-    font-size: 12px;
-  }
-
-  .brand {
-    width: 85px;
-  }
-}
-
-/* ============================
-   MOBILE (≤ 480px)
-============================ */
 @media (max-width: 480px) {
-  .testimonial {
-    margin-top: 70px;
-    padding: 16px 18px;
-    padding-left: 50px;
-    border-radius: 10px;
-  }
-
-  .testimonial::before {
-    left: 22px;
-    top: 16px;
-    height: calc(100% - 32px);
-  }
-
-  .text-block {
-    font-size: 14px;
-    line-height: 22px;
-  }
-
-  .author {
-    gap: 10px;
-  }
-
-  .name {
-    font-size: 15px;
-  }
-
-  .role {
-    font-size: 11px;
-  }
-
   .brand {
-    width: 70px;
+    width: 80px;
   }
 }
 
-/* ============================
-   SMALL MOBILE (≤ 360px)
-============================ */
-@media (max-width: 360px) {
-  .testimonial {
-    padding: 14px 16px;
-    padding-left: 45px;
-  }
+/* ---------------------------------------------------------
+   CALENDLY WIDGET
+--------------------------------------------------------- */
+.calendly-inline-widget {
+  width: 40%;
+  height: 525px !important;
+  border-radius: 18px;
+  overflow: hidden;
 
-  .testimonial::before {
-    left: 20px;
-    height: calc(100% - 28px);
-  }
-
-  .text-block {
-    font-size: 13px;
-    line-height: 20px;
-  }
-
-  .brand {
-    width: 60px;
-  }
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.18),
+    0 20px 50px rgba(0,0,0,0.35);
 }
 
-
-  /*********************************
-      CALENDLY RIGHT-SIDE CARD
-  *********************************/
+@media (max-width: 900px) {
   .calendly-inline-widget {
-    width: 40%;
-    height: 525px !important;
-    
-    border-radius: 18px;
-    overflow: hidden;
-    background: white;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18), 0 20px 50px rgba(0, 0, 0, 0.35);
+    width: 80%;
+    height: 820px !important;
   }
+}
 
-  /*********************************
-        LARGE LAPTOP (≤ 1200px)
-*********************************/
-  @media (max-width: 1200px) {
-    .main {
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-    }
-
-    .inner,
-    .calendly-inline-widget {
-      width: 100%;
-    }
-
-    .calendly-inline-widget {
-      height: 760px !important;
-    }
+@media (max-width: 480px) {
+  .calendly-inline-widget {
+    height: 900px !important;
+    width: 80%;
+    border-radius: 12px;
   }
+}
 
-  /*********************************
-        TABLET (≤ 1024px)
-*********************************/
-  @media (max-width: 1024px) {
-    .calendly-inline-widget {
-      height: 820px !important;
-      border-radius: 16px;
-    }
-  }
-
-  /*********************************
-        SMALL TABLET (≤ 768px)
-*********************************/
-  @media (max-width: 768px) {
-    .main {
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-      margin-top: 40px;
-    }
-
-    .calendly-inline-widget {
-      width: 100%;
-      height: 900px !important;
-      order: -1; /* calendly goes ABOVE content */
-    }
-
-    .inner {
-      width: 80%;
-      margin-top: 20px;
-    }
-  }
-
-  /*********************************
-        MOBILE (≤ 480px)
-*********************************/
-  @media (max-width: 480px) {
-    .calendly-inline-widget {
-      height: 900px !important;
-      border-radius: 12px;
-     width: 90% !important;
-    }
-
-    .inner {
-      width: 90%;
-    }
-  }
-
-  /*********************************
-        SMALL MOBILE (≤ 360px)
-*********************************/
-  @media (max-width: 360px) {
-    .calendly-inline-widget {
-      height: 1050px !important;
-      border-radius: 10px;
-    }
-  }
 `;
