@@ -68,10 +68,10 @@ const page = () => {
                 heading="Hexcode is a studio for bold builders and 
 zero-to-one thinkers."
                 paragraphs={[
-                    "At Hexcode Design, we partner with founders, startups, and teams who are building the future—often from scratch. We bring clarity to chaos, direction to ideas, and design that actually moves the needle.",
-                    "We don’t just work on projects—we shape them. Our process is fast, sharp, and deeply collaborative. We love being early, scrappy, and essential.",
+                    "At Hexcode Design, we partner with founders, startups, and teams who are building the future, often from scratch. We bring clarity to chaos, direction to ideas, and design that actually moves the needle.",
+                    "We don’t just work on projects, we shape them. Our process is fast, sharp, and deeply collaborative. We love being early, scrappy, and essential.",
                     "But Hexcode isn’t just about client work. It’s a space where talented designers, thinkers, and creators can grow. We give people the trust and platform to lead, contribute, and evolve.",
-                    "Some stay for the long haul. Others move on to build their own path. That’s okay. We celebrate both—with open hands and open hearts.",
+                    "Some stay for the long haul. Others move on to build their own path. That’s okay. We celebrate both, with open hands and open hearts.",
                     "We’re here to make meaningful work with good people. That’s our compass.",
                 ]}
                 showCounts={false}
