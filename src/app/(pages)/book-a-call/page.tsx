@@ -11,7 +11,7 @@ const bgImg = "/img2.webp";
 const imageList = [
   {
     src: "/companies/hexaclimate.svg",
-    width: 108,
+    width: 88,
     height: 36,
     category: "Energy & Sustainability",
   },
@@ -74,102 +74,106 @@ const Page = () => {
 
   return (
     <WrapperDemo>
-      <div className="top-cont">
-        <DyTitleH1
-          fontSize={{ base: "64px", md: "48px", sm: "32px" }}
-          lineHeight={{ base: "74px", md: "56px", sm: "40px" }}
-          fontWeight={700}
-          textTransform="uppercase"
-          color="#fff"
-          className="mt-md prime-animated"
-        >
-          BOOK A CALL
-        </DyTitleH1>
-
-        <Dpara
-          fontSize="18px"
-          lineHeight="24px"
-          fontWeight="300"
-          color="#E0E0E0"
-          textAlign="center"
-          className="mw-85"
-        >
-          Your go-to solution for web and mobile apps, like many founders,
-          startups, and agencies do.
-        </Dpara>
-      </div>
-
-      {/* LOGO SECTION */}
+      {/* TWO COLUMN LAYOUT */}
       <div className="main">
+        {/* LEFT SIDE - Heading, Logos, Testimonial */}
         <div className="inner">
-          
+          <div className="top-cont">
+            <DyTitleH1
+              fontSize={{ base: "56px", md: "48px", sm: "32px" }}
+              lineHeight={{ base: "64px", md: "56px", sm: "40px" }}
+              fontWeight={700}
+              textTransform="uppercase"
+              color="#fff"
+              textAlign="left"
+              className="prime-animated"
+            >
+              BOOK A CALL
+            </DyTitleH1>
+
             <Dpara
               fontSize="18px"
-              lineHeight="24px"
-              fontWeight="400"
-              color="#D6D6D6"
-              textAlign="center"
-              className="text-uppercase"
+              lineHeight="26px"
+              fontWeight="300"
+              color="#E0E0E0"
+              className="mw-85"
             >
-              Trusted by 100+ customers, from startup to enterprise
+              Your go-to solution for web and mobile apps, like many founders,
+              startups, and agencies do.
             </Dpara>
+          </div>
 
-            <div className="logo-container">
-              {imageList.map((image, index) => {
-                const thisCategories = getCategorySet(image.category);
+          {/* BOTTOM GROUP - Logos and Testimonial */}
+          <div className="bottom-group">
+            <div className="logo-section">
+              <Dpara
+                fontSize="16px"
+                lineHeight="24px"
+                fontWeight="400"
+                color="#D6D6D6"
+                className="text-uppercase"
+                textAlign={{ base: "center", md: "left", sm: "left" }}
+              >
+                Trusted by 100+ customers, from startup to enterprise
+              </Dpara>
 
-                let isBlurred = false;
+              <div className="logo-container">
+                {imageList.map((image, index) => {
+                  const thisCategories = getCategorySet(image.category);
 
-                if (hoveredCategories) {
-                  const hasCommon = [...thisCategories].some((cat) =>
-                    hoveredCategories.has(cat)
+                  let isBlurred = false;
+
+                  if (hoveredCategories) {
+                    const hasCommon = [...thisCategories].some((cat) =>
+                      hoveredCategories.has(cat)
+                    );
+                    isBlurred = !hasCommon;
+                  }
+
+                  return (
+                    <div
+                      key={index}
+                      className={`logo-item ${isBlurred ? "blurred" : ""}`}
+                    >
+                      <img
+                        src={image.src}
+                        width={image.width}
+                        height={image.height}
+                        className={`logo-img ${
+                          hoveredIndex === index ? "active" : ""
+                        }`}
+                      />
+                    </div>
                   );
-                  isBlurred = !hasCommon;
-                }
-
-                return (
-                  <div
-                    key={index}
-                    className={`logo-item ${isBlurred ? "blurred" : ""}`}
-                  >
-                    <img
-                      src={image.src}
-                      width={image.width}
-                      height={image.height}
-                      className={`logo-img ${
-                        hoveredIndex === index ? "active" : ""
-                      }`}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-         
-
-          {/* ⭐ TESTIMONIAL SECTION ⭐ */}
-            
-          <div className="testimonial">
-     
-            <p className="text-block">{t.text}</p>
-
-            <div className="author">
-              <img src={t.image} alt={t.name} width={60} height={60} className="image" />
-
-              <div className="identity">
-                <p className="name">{t.name}</p>
-                <p className="role">{t.title}</p>
+                })}
               </div>
+            </div>
 
-              <img
-                className="brand"
-                src={t.logo.src}
-                alt={t.company}
-                width={t.logo.width}
-                height={t.logo.height}
-              />
+            {/* TESTIMONIAL SECTION */}
+            <div className="testimonial">
+              <p className="text-block">{t.text}</p>
+
+              <div className="author">
+                <img src={t.image} alt={t.name} width={60} height={60} className="image" />
+
+                <div className="identity">
+                  <p className="name">{t.name}</p>
+                  <p className="role">{t.title}</p>
+                </div>
+
+                <img
+                  className="brand"
+                  src={t.logo.src}
+                  alt={t.company}
+                  width={t.logo.width}
+                  height={t.logo.height}
+                />
+              </div>
             </div>
           </div>
         </div>
+
+        
 
         {/* ⭐ CALENDLY INLINE EMBED ⭐ */}
         <div
@@ -177,6 +181,32 @@ const Page = () => {
           data-url="https://calendly.com/shabbir-hexcode/30min"
           style={{}}
         ></div>
+
+        <div className="top-cont-mobile">
+            <DyTitleH1
+              fontSize={{ base: "56px", md: "48px", sm: "32px" }}
+              lineHeight={{ base: "64px", md: "56px", sm: "40px" }}
+              fontWeight={700}
+              textTransform="uppercase"
+              color="#fff"
+              textAlign="left"
+              className="prime-animated"
+            >
+              BOOK A CALL
+            </DyTitleH1>
+
+            <Dpara
+              fontSize="18px"
+              lineHeight="26px"
+              fontWeight="300"
+              color="#E0E0E0"
+              className="mw-85"
+              textAlign="center"
+            >
+              Your go-to solution for web and mobile apps, like many founders,
+              startups, and agencies do.
+            </Dpara>
+          </div>
       </div>
     </WrapperDemo>
   );
@@ -185,7 +215,7 @@ const Page = () => {
 export default Page;
 
 /* -----------------------------------------------------------
-   STYLES (unchanged EXCEPT logo color part)
+   STYLES
 ----------------------------------------------------------- */
 
 const WrapperDemo = styled.div`
@@ -194,12 +224,14 @@ const WrapperDemo = styled.div`
 --------------------------------------------------------- */
 width: 100%;
 min-height: 100vh;
-padding: 20px 0 120px 0;
+padding: 0;
 position: relative;
 display: flex;
 flex-direction: column;
 align-items: center;
+justify-content: center;
 margin-top: -76px;
+padding-top: 76px;
 z-index: 0;
 
 /* BG IMAGE */
@@ -234,112 +266,59 @@ z-index: 0;
 }
 
 /* ---------------------------------------------------------
-   TOP CONTENT (BOOK A CALL)
---------------------------------------------------------- */
-.top-cont {
-  width: 40%;
-  max-width: 1300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  margin-top: 120px;
-  margin-bottom: 60px;
-}
-
-@media (max-width: 900px) {
-  .top-cont {
-    width: 70%;
-    margin-top: 70px;
-  }
-}
-
-@media (max-width: 480px) {
-  .top-cont {
-    width: 90%;
-    margin-top: 45px;
-  }
-}
-
-/* ---------------------------------------------------------
    MAIN TWO-COLUMN LAYOUT
 --------------------------------------------------------- */
 .main {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1280px;
   display: flex;
+  align-items: stretch;
   justify-content: space-between;
-  gap: 80px;
-  margin-top: 50px;
-  margin-bottom: -85px;
-  height: 525px;
+  gap: 60px;
+  padding: 60px 40px;
+  
+}
+
+.top-cont-mobile{
+  display: none;
 }
 
 /* LEFT SIDE */
 .inner {
-  width: 50%;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  justify-content: space-between;
+  // gap: 40px;
+  max-width: 520px;
 }
 
-/* ---------------------------------------------------------
-   BREAKPOINT → STACK BELOW 900px
---------------------------------------------------------- */
-@media (max-width: 900px) {
-  .main {
-    flex-direction: column-reverse; /* Calendly goes ABOVE */
-    align-items: center;
-    gap: 40px;
-    height: auto;
-    margin-top: 40px;
-  }
-
-  .inner {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .calendly-inline-widget {
-    width: 90% !important;
-    height: 800px !important;
-  }
+/* TOP CONTENT - HEADING */
+.top-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-@media (max-width: 480px) {
-  .inner {
-    width: 100%;
-  }
-
-  .calendly-inline-widget {
-    height: 900px !important;
-
-
-  }
+/* BOTTOM GROUP - Logos and Testimonial */
+.bottom-group {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-/* ---------------------------------------------------------
-   LOGO SECTION
---------------------------------------------------------- */
+/* LOGO SECTION */
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .logo-container {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 28px 60px;
-  margin-top: 15px;
-}
-
-@media (max-width: 900px) {
-  .logo-container {
-    gap: 20px 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo-container {
-    gap: 14px 18px;
-  }
+  gap: 24px 28px;
 }
 
 .logo-img {
@@ -357,45 +336,22 @@ z-index: 0;
 --------------------------------------------------------- */
 .testimonial {
   position: relative;
-  padding: 20px 24px;
-  margin-top: 120px;
+  padding: 15px;
+  // padding-left: 32px;
   border-radius: 12px;
   color: #fff;
-  margin-left: 50px;
 }
 
 /* WHITE VERTICAL LINE */
 .testimonial::before {
   content: "";
   position: absolute;
-  left: 16px;
+  left: 0;
   top: 20px;
   width: 4px;
   height: calc(65% - 40px);
   background: #fff;
- 
-}
-
-@media (max-width: 900px) {
-  .testimonial {
-    margin-left: 0;
-    padding-left: 50px;
-  }
-
-  .testimonial::before {
-    left: 24px;
-    height: calc(65% - 32px);
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonial {
-    padding-left: 40px;
-  }
-
-  .testimonial::before {
-    left: 18px;
-  }
+  border-radius: 2px;
 }
 
 .image {
@@ -404,7 +360,7 @@ z-index: 0;
 
 .text-block {
   font-size: 18px;
-  line-height: 26px;
+  line-height: 28px;
   margin-bottom: 14px;
 }
 
@@ -437,39 +393,121 @@ z-index: 0;
   filter: brightness(0) invert(1);
 }
 
-@media (max-width: 480px) {
-  .brand {
-    width: 80px;
-  }
-}
-
 /* ---------------------------------------------------------
-   CALENDLY WIDGET
+   CALENDLY WIDGET - FULL HEIGHT
 --------------------------------------------------------- */
 .calendly-inline-widget {
-  width: 40%;
-  height: 525px !important;
+  flex-shrink: 0;
+  width: 540px;
+  min-height: 830px;
   border-radius: 18px;
   overflow: hidden;
 
-  box-shadow: 
-    0 10px 25px rgba(0,0,0,0.18),
-    0 20px 50px rgba(0,0,0,0.35);
+  // box-shadow: 
+  //   0 10px 25px rgba(0,0,0,0.18),
+  //   0 20px 50px rgba(0,0,0,0.35);
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+--------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .main {
+    gap: 40px;
+    padding: 40px 24px;
+  }
+
+  .inner {
+    max-width: 450px;
+  }
+
+  .calendly-inline-widget {
+    width: 420px;
+  }
 }
 
 @media (max-width: 900px) {
+  .main {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 40px;
+    padding: 80px 24px 70px 24px;
+  }
+
+  .top-cont-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .inner {
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .top-cont {
+    display: none;
+  }
+
+  .logo-section {
+    align-items: center;
+  }
+
+  .logo-container {
+    justify-content: center;
+    gap: 20px 28px;
+  }
+
+  .testimonial {
+    padding-left: 50px;
+    text-align: left;
+  }
+
+  .testimonial::before {
+    left: 24px;
+  }
+
   .calendly-inline-widget {
-    width: 80%;
-    height: 820px !important;
+    width: 100%;
+    max-width: 500px;
+    height: 700px !important;
   }
 }
 
 @media (max-width: 480px) {
+  .main {
+    padding: 32px 16px 100px 16px;
+  }
+
+  .inner {
+    gap: 30px;
+  }
+
+  .logo-container {
+    gap: 14px 18px;
+  }
+
+  .testimonial {
+    padding-left: 30px;
+  }
+
+  .testimonial::before {
+    left: 18px;
+  }
+
+  .brand {
+    width: 80px;
+  }
+
   .calendly-inline-widget {
-    height: 900px !important;
-    width: 80%;
+    min-height: unset;
+    height: 700px !important;
     border-radius: 12px;
   }
 }
 
 `;
+

@@ -148,10 +148,11 @@ interface DynamicTitleProps {
   fontWeight?: number | string;
   textTransform?: string;
   color?: string;
+  textAlign?: string;
 }
 
 export const DyTitleH1 = styled.h1<DynamicTitleProps>`
-  text-align: center;
+  text-align: ${(props) => props.textAlign || 'center'};
   font-style: ${(props) => props.fontStyle || 'normal'};
   font-weight: ${(props) => props.fontWeight || 400};
   text-transform: ${(props) => props.textTransform || 'none'};
@@ -394,7 +395,7 @@ export const Dpara = styled.p<{
   lineHeight: string;
   fontWeight: string;
   color?: string;
-  textAlign?: string;
+  textAlign?: string | { base: string; md: string; sm: string };
   mdFontSize?: string;
   mdLineHeight?: string;
   smFontSize?: string;
