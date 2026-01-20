@@ -69,9 +69,19 @@ export const PrimaryBtn = ({
     };
   }, []);
 
+  const getShortcut = (text: string) => {
+    const lowerText = text.toLowerCase();
+    if (lowerText === "book a call") return "C";
+    if (lowerText === "let's talk") return "T";
+    return null;
+  };
+
+  const shortcut = getShortcut(btnContent);
+
   return (
     <ButtonWrapper padding={padding} fontSize={fontSize} className={`w-full ${className}`} onClick={onClick} disabled={disabled}>
       <span>{btnContent}</span>
+      {shortcut && <span className="span-shortcut">{shortcut}</span>}
       <GradientContainer
         ref={shadeContainerRef}
         margin={margin}
@@ -122,6 +132,14 @@ const ButtonWrapper = styled.button<{
     cursor: not-allowed;
     box-shadow: none;
     pointer-events: none;
+  }
+
+  .span-shortcut{
+  // background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding:2px 6px;
+  border-radius:4px;
+  margin-left:6px;
   }
 
   @media (max-width: 768px) {

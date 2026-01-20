@@ -27,7 +27,7 @@ const page = () => {
       <EmptyContainer height="76px" />
       <TestimonialSlider />
       <Faqs />
-      <SingleTestimonial testimonialName="Kshitij Chaudhary" marginTop="0px" mobileMarginTop="0px" />
+      {/* <SingleTestimonial testimonialName="Kshitij Chaudhary" marginTop="0px" mobileMarginTop="0px" /> */}
     </>
   )
 }

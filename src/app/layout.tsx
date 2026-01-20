@@ -15,6 +15,7 @@ import localFont from "next/font/local";
 import MobileNav from "./Components/MobileNav";
 import ClarityProvider from "./Components/Clarity";
 import CallHover from "./Components/CallHover";
+import PrimeButtonKeyboard from "./Components/PrimeButtonKeyboard";
 const museoSans = localFont({
   src: [
     { path: "../../public/fonts/MuseoSans100.woff2", weight: "100", style: "normal" },
@@ -66,6 +67,7 @@ export default function RootLayout({
             <ClarityProvider />
           </Suspense>
           <Header />
+          <PrimeButtonKeyboard />
           {children}
           <Footer />
           <MobileNav />
