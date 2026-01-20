@@ -10,7 +10,11 @@ import VideoPlayer from "./VideoPlayer";
 // import TextAnimation from "../TextAnimation";
 import MobileComp from "./MobileComp";
 
-const bgImg = "/img2.webp";
+// const bgImg = "/img2.webp";
+const bgImgMob = "/hero-20-jan.webp";
+const bgImg = "/hero-bg-jan-20.webp";
+
+
 
 const PrimeFold = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -119,7 +123,7 @@ const Wrapper = styled.div`
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
-    transform: scaleX(-1);
+    // transform: scaleX(-1);
     pointer-events: none;
   }
 
@@ -128,8 +132,8 @@ const Wrapper = styled.div`
     position: absolute;
     inset: 0;
     z-index: 2;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(2px);
+    // -webkit-backdrop-filter: blur(0px);
     pointer-events: none;
     background:
       url("data:image/svg+xml;utf8,<svg width='200' height='200' xmlns='http://www.w3.org/2000/svg'><filter id='n' x='0' y='0'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.18'/></svg>") repeat,
@@ -142,6 +146,9 @@ const Wrapper = styled.div`
     margin-top:-58px;
     padding: 80px 12px 12px 12px;
     background-size: 60px 180px;
+    &::after {
+      background-image: url(${bgImgMob});
+    }
     .m-mt-lg{ margin-top:8px; }
     .m-mt-xxl{ margin-top: 24px; button{ width:50%; } }
   }
