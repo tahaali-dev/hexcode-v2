@@ -10,10 +10,8 @@ import VideoPlayer from "./VideoPlayer";
 // import TextAnimation from "../TextAnimation";
 import MobileComp from "./MobileComp";
 
-// const bgImg = "/img2.webp";
-const bgImgMob = "/hero-20-jan.webp";
-const bgImg = "/hero-bg-jan-20.webp";
-
+const bgImgMob = "/bg-new-mob-21.webp";
+const bgImg = "/bg-new-21.webp";
 
 
 const PrimeFold = () => {
@@ -121,7 +119,7 @@ const Wrapper = styled.div`
     z-index: 1;
     background-image: url(${bgImg});
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: center -100px;
     background-size: cover;
     // transform: scaleX(-1);
     pointer-events: none;
@@ -132,7 +130,7 @@ const Wrapper = styled.div`
     position: absolute;
     inset: 0;
     z-index: 2;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(10px);
     // -webkit-backdrop-filter: blur(0px);
     pointer-events: none;
     background:
