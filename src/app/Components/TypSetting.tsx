@@ -148,10 +148,14 @@ interface DynamicTitleProps {
   fontWeight?: number | string;
   textTransform?: string;
   color?: string;
+  textAlign?: string | ResponsiveValue;
 }
 
 export const DyTitleH1 = styled.h1<DynamicTitleProps>`
-  text-align: center;
+  text-align: ${(props) =>
+    typeof props.textAlign === 'string'
+      ? props.textAlign
+      : props.textAlign?.base || 'center'};
   font-style: ${(props) => props.fontStyle || 'normal'};
   font-weight: ${(props) => props.fontWeight || 400};
   text-transform: ${(props) => props.textTransform || 'none'};
@@ -177,6 +181,11 @@ export const DyTitleH1 = styled.h1<DynamicTitleProps>`
       : typeof props.lineHeight === 'string'
         ? props.lineHeight
         : props.lineHeight.base};
+
+    ${(props) =>
+      typeof props.textAlign === 'object' && props.textAlign.md
+        ? `text-align: ${props.textAlign.md};`
+        : ''}
   }
 
   @media (max-width: 768px) {
@@ -193,6 +202,11 @@ export const DyTitleH1 = styled.h1<DynamicTitleProps>`
       : typeof props.lineHeight === 'string'
         ? props.lineHeight
         : props.lineHeight.base};
+
+    ${(props) =>
+      typeof props.textAlign === 'object' && props.textAlign.sm
+        ? `text-align: ${props.textAlign.sm};`
+        : ''}
   }
 `;
 
@@ -394,7 +408,7 @@ export const Dpara = styled.p<{
   lineHeight: string;
   fontWeight: string;
   color?: string;
-  textAlign?: string;
+  textAlign?: string | ResponsiveValue;
   mdFontSize?: string;
   mdLineHeight?: string;
   smFontSize?: string;
@@ -405,11 +419,18 @@ export const Dpara = styled.p<{
   font-weight: ${(props) => props.fontWeight};
   font-style: normal;
   color: ${(props) => props.color || "#000"};
-  text-align: ${(props) => props.textAlign || "left"};
+  text-align: ${(props) =>
+    typeof props.textAlign === 'string'
+      ? props.textAlign
+      : props.textAlign?.base || 'left'};
 
   @media (max-width: 1024px) {
     font-size: ${(props) => props.mdFontSize || props.fontSize};
     line-height: ${(props) => props.mdLineHeight || props.lineHeight};
+    ${(props) =>
+      typeof props.textAlign === 'object' && props.textAlign.md
+        ? `text-align: ${props.textAlign.md};`
+        : ''}
   }
 
   @media (max-width: 768px) {
@@ -417,5 +438,9 @@ export const Dpara = styled.p<{
     props.smFontSize || props.mdFontSize || props.fontSize};
     line-height: ${(props) =>
     props.smLineHeight || props.mdLineHeight || props.lineHeight};
+    ${(props) =>
+      typeof props.textAlign === 'object' && props.textAlign.sm
+        ? `text-align: ${props.textAlign.sm};`
+        : ''}
   }
 `;
