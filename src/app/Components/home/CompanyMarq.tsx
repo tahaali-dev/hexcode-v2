@@ -74,7 +74,7 @@ const CompanyMarq = () => {
           fontSize="18px"
           lineHeight="24px"
           fontWeight="400"
-          color="#a38f8f"
+          color="#000"
           mdFontSize="16px"
           mdLineHeight="24px"
           smFontSize="16px"
