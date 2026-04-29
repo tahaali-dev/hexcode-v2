@@ -143,7 +143,7 @@ const Footer = () => {
 
       <DashedContainer leftBottom={false} rightBottom={false}>
         <CopyWriteWrapper className="d-flex align-center justify-between px-lg py-sm">
-          <LightCopyText>© 2025 Hexcode. All Rights Reserved.</LightCopyText>
+          <LightCopyText>© 2026 Hexcode. All Rights Reserved.</LightCopyText>
 
           {/* <div className="d-flex align-center g-lg ">
             <LightCopyText>Terms</LightCopyText>
