@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import styled from "@emotion/styled";
 import { DashedContainer, StyledImage } from "../Containers";
@@ -58,7 +58,7 @@ const imageList = [
   // New logos - corrected categories
   { src: twenty, width: 108, height: 36, category: "Energy & Sustainability" },
   { src: twentyfour, width: 108, height: 36, category: "Travel" },
-  { src: twentyfive, width: 96, height: 30, category: "Healthcare" },
+  // { src: twentyfive, width: 96, height: 30, category: "Healthcare" },
   { src: twentysix, width: 108, height: 31, category: "Healthcare" },
   { src: twentyseven, width: 108, height: 28, category: "Marketing Services" },
 ];
@@ -69,87 +69,92 @@ function getCategorySet(category: string) {
     category
       .split(",")
       .map((c) => c.trim().toLowerCase())
-      .filter(Boolean)
+      .filter(Boolean),
   );
 }
 
 // Small helper so we don’t portal on the server
-const TooltipPortal: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const TooltipPortal: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   if (typeof window === "undefined") return null;
   return createPortal(children, document.body);
 };
-
 
 const CompaniesWeWork = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
   const hoveredCategories =
-    hoveredIndex !== null ? getCategorySet(imageList[hoveredIndex].category) : null;
+    hoveredIndex !== null
+      ? getCategorySet(imageList[hoveredIndex].category)
+      : null;
 
   return (
-    <DashedContainer showLines={false}>
-      <Wrapper>
-        <Dpara
-          fontSize="18px"
-          lineHeight="24px"
-          fontWeight="400"
-          color="#000"
-          mdFontSize="16px"
-          mdLineHeight="24px"
-          smFontSize="16px"
-          smLineHeight="24px"
-          textAlign="center"
-          className="text-Uppercase"
-        >
-          Trusted by 100+ customers, from startup to enterprise
-        </Dpara>
+    // <DashedContainer showLines={false}>
+    <Wrapper>
+      <Dpara
+        fontSize="18px"
+        lineHeight="24px"
+        fontWeight="400"
+        color="#000"
+        mdFontSize="16px"
+        mdLineHeight="24px"
+        smFontSize="16px"
+        smLineHeight="24px"
+        textAlign="center"
+        className="text-Uppercase"
+      >
+        Trusted by 100+ customers, from startup to enterprise
+      </Dpara>
 
-        <LogoHolder>
-          {imageList.map((image, index) => {
-            const thisCategories = getCategorySet(image.category);
-            let isBlurred = false;
-            if (hoveredCategories) {
-              const hasCommon = [...thisCategories].some((cat) => hoveredCategories.has(cat));
-              isBlurred = !hasCommon;
-            }
-
-            return (
-              <StyledImage
-                key={index}
-                src={image.src}
-                alt={`icon-${index + 1}`}
-                className="company-logo"
-                width={image.width}
-                height={image.height}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
-                style={{
-                  transition: "filter 0.2s",
-                  cursor: "pointer",
-                  filter:
-                    hoveredIndex !== null && !isBlurred
-                      ? "brightness(0) invert(1)"
-                      : isBlurred
-                        ? "brightness(0) invert(1) opacity(0.3)"
-                        : "brightness(0) invert(1)",
-                }}
-              />
+      <LogoHolder>
+        {imageList.map((image, index) => {
+          const thisCategories = getCategorySet(image.category);
+          let isBlurred = false;
+          if (hoveredCategories) {
+            const hasCommon = [...thisCategories].some((cat) =>
+              hoveredCategories.has(cat),
             );
-          })}
-        </LogoHolder>
+            isBlurred = !hasCommon;
+          }
 
-        {/* Tooltip in a portal so it's above overlays & not clipped */}
-        {hoveredIndex !== null && (
-          <TooltipPortal>
-            <Tooltip style={{ top: cursor.y + 16, left: cursor.x + 16 }}>
-              {imageList[hoveredIndex].category}
-            </Tooltip>
-          </TooltipPortal>
-        )}
-      </Wrapper>
-    </DashedContainer>
+          return (
+            <StyledImage
+              key={index}
+              src={image.src}
+              alt={`icon-${index + 1}`}
+              className="company-logo"
+              width={image.width}
+              height={image.height}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
+              style={{
+                transition: "filter 0.2s",
+                cursor: "pointer",
+                // filter:
+                //   hoveredIndex !== null && !isBlurred
+                //     ? "brightness(0) invert(1)"
+                //     : isBlurred
+                //       ? "brightness(0) invert(1) opacity(0.3)"
+                //       : "brightness(0) invert(1)",
+              }}
+            />
+          );
+        })}
+      </LogoHolder>
+
+      {/* Tooltip in a portal so it's above overlays & not clipped */}
+      {hoveredIndex !== null && (
+        <TooltipPortal>
+          <Tooltip style={{ top: cursor.y + 16, left: cursor.x + 16 }}>
+            {imageList[hoveredIndex].category}
+          </Tooltip>
+        </TooltipPortal>
+      )}
+    </Wrapper>
+    // </DashedContainer>
   );
 };
 
@@ -170,15 +175,15 @@ const LogoHolder = styled.div`
   margin-top: 42px;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   gap: 36px;
   flex-wrap: wrap;
   padding: 0px 64px;
 `;
 
 const Tooltip = styled.div`
-  position: fixed;          /* relative to viewport */
-  z-index: 99999;           /* above your blur overlays */
+  position: fixed; /* relative to viewport */
+  z-index: 99999; /* above your blur overlays */
   background: rgba(255, 255, 255, 0.7);
   color: #111;
   padding: 6px 12px;
@@ -190,5 +195,5 @@ const Tooltip = styled.div`
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;

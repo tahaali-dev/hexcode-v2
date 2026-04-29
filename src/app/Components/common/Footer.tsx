@@ -7,7 +7,6 @@ import useScrollToTop from "@/app/Hooks/useScrollToTop";
 import { FooterMarquee } from "../FooterMarq";
 const GetInTouchIcon = "/icons/getintouchicon.svg";
 
-
 const Footer = () => {
   const shades = ["#4A0507", "#881418", "#A50F14", "#C80D13", "#EE232A"];
 
@@ -15,15 +14,10 @@ const Footer = () => {
 
   return (
     <>
-      <DashedContainer
-        leftBottom={true}
-        rightBottom={true}
-      >
+      <DashedContainer leftBottom={true} rightBottom={true}>
         <FooterContainerDesktop className="m-none">
           <div>
-            <AnchorLink href="/">
-              Possibilities Beyond Limits
-            </AnchorLink>
+            <AnchorLink href="/">Possibilities Beyond Limits</AnchorLink>
 
             <ParaLight className="mt-md">
               Let’s make something awesome together
@@ -31,24 +25,36 @@ const Footer = () => {
           </div>
 
           <div className="d-flex flex-column g-md">
-            <LightHeading className="text-Uppercase" >Explore</LightHeading>
+            <LightHeading className="text-Uppercase">Explore</LightHeading>
             <AnchorLink href="/work">Projects</AnchorLink>
             <AnchorLink href="/our-services">Services</AnchorLink>
             <AnchorLink href="/about-us">About</AnchorLink>
           </div>
 
           <div className="d-flex flex-column g-md">
-            <LightHeading className="text-Uppercase" >say hello!</LightHeading>
-            <AnchorLink href="https://www.instagram.com/teamhexcode/" target="_blank">instagram</AnchorLink>
-            <AnchorLink href="https://x.com/teamhexcode" target="_blank">Twitter (X)</AnchorLink>
-            <AnchorLink href="https://www.linkedin.com/company/hexcodedesign/posts/?feedView=all" target="_blank">Linkedin</AnchorLink>
+            <LightHeading className="text-Uppercase">say hello!</LightHeading>
+            <AnchorLink
+              href="https://www.instagram.com/teamhexcode/"
+              target="_blank"
+            >
+              instagram
+            </AnchorLink>
+            <AnchorLink href="https://x.com/teamhexcode" target="_blank">
+              Twitter (X)
+            </AnchorLink>
+            <AnchorLink
+              href="https://www.linkedin.com/company/hexcodedesign/posts/?feedView=all"
+              target="_blank"
+            >
+              Linkedin
+            </AnchorLink>
           </div>
 
           <div className="d-flex flex-column g-md">
             <LightHeading className="text-Uppercase">Got an idea?</LightHeading>
 
             <GetInTouchWrap className="d-flex align-center g-md">
-              <AnchorLink href="https://calendly.com/shabbir-hexcode/30min" target="_blank">Get in touch</AnchorLink>
+              <AnchorLink href="/book-a-call">Get in touch</AnchorLink>
               <StyledImage
                 src={GetInTouchIcon}
                 width={32}
@@ -81,9 +87,21 @@ const Footer = () => {
             <LightHeading className="text-Uppercase">Say hello</LightHeading>
 
             <div className="d-flex flex-column g-md align-end">
-              <AnchorLink href="https://www.linkedin.com/company/hexcodedesign/posts/?feedView=all" target="_blank">Linkedin</AnchorLink>
-              <AnchorLink href="https://www.instagram.com/teamhexcode/" target="_blank">Instagram</AnchorLink>
-              <AnchorLink href="https://x.com/teamhexcode" target="_blank">Twitter (X)</AnchorLink>
+              <AnchorLink
+                href="https://www.linkedin.com/company/hexcodedesign/posts/?feedView=all"
+                target="_blank"
+              >
+                Linkedin
+              </AnchorLink>
+              <AnchorLink
+                href="https://www.instagram.com/teamhexcode/"
+                target="_blank"
+              >
+                Instagram
+              </AnchorLink>
+              <AnchorLink href="https://x.com/teamhexcode" target="_blank">
+                Twitter (X)
+              </AnchorLink>
             </div>
           </div>
 
@@ -96,12 +114,13 @@ const Footer = () => {
                 margin="0"
                 borderRadius="8px"
                 btnContent="get in touch"
-                onClick={() => window.open("https://calendly.com/shabbir-hexcode/30min", "_blank")}
+                onClick={() => window.open("/book-a-call")}
               />
             </div>
           </div>
 
-          <LightHeading className="text-Uppercase mt-sm text-center"
+          <LightHeading
+            className="text-Uppercase mt-sm text-center"
             onClick={scrollToTop}
           >
             BAck to top ⇡
@@ -122,10 +141,7 @@ const Footer = () => {
         </div>
       </DashedContainer>
 
-      <DashedContainer
-        leftBottom={false}
-        rightBottom={false}
-      >
+      <DashedContainer leftBottom={false} rightBottom={false}>
         <CopyWriteWrapper className="d-flex align-center justify-between px-lg py-sm">
           <LightCopyText>© 2025 Hexcode. All Rights Reserved.</LightCopyText>
 
@@ -174,7 +190,7 @@ const LightHeading = styled.h2`
   @media (max-width: 768px) {
     font-size: 12px;
     line-height: 14px;
-    text-transform: ;
+    text-transform:;
   }
 `;
 
@@ -212,7 +228,6 @@ const LightCopyText = styled.p`
   font-weight: 400;
   line-height: 24px;
 `;
-
 
 const GetInTouchWrap = styled.div`
   img {

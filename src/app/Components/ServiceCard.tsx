@@ -26,8 +26,6 @@ export const ServiceCard = ({
   tagBg?: string;
   tagBorder?: string;
 }) => {
-
-
   return (
     <ScrollCardWrapper bgcolor={bgcolor}>
       <LeftBox type={type}>
@@ -49,9 +47,15 @@ export const ServiceCard = ({
             </p>
 
             {type === "default" && (
-              <TagsWrapper className="flex-wrap" >
+              <TagsWrapper className="flex-wrap">
                 {tags.map((tag: string) => (
-                  <ProjectTypeTag key={tag} title={tag} isHover={false} borderColor={tagBorder || "#fff"} tagBg={tagBg} />
+                  <ProjectTypeTag
+                    key={tag}
+                    title={tag}
+                    isHover={false}
+                    borderColor={tagBorder || "#fff"}
+                    tagBg={tagBg}
+                  />
                 ))}
               </TagsWrapper>
             )}
@@ -64,12 +68,7 @@ export const ServiceCard = ({
                   margin="0"
                   borderRadius="8px"
                   btnContent="Book a call"
-                  onClick={() =>
-                    window.open(
-                      "https://calendly.com/shabbir-hexcode/30min",
-                      "_blank"
-                    )
-                  }
+                  onClick={() => window.open("/book-a-call")}
                 />
               </div>
             )}
@@ -102,12 +101,7 @@ export const ServiceCard = ({
               margin="0"
               borderRadius="8px"
               btnContent="Book a call"
-              onClick={() =>
-                window.open(
-                  "https://calendly.com/shabbir-hexcode/30min",
-                  "_blank"
-                )
-              }
+              onClick={() => window.open("/book-a-call")}
             />
           </div>
         )}
@@ -133,7 +127,8 @@ const LeftBox = styled.div<{ type?: string }>`
   padding: 48px;
 
   .card-heading {
-    color: ${({ type }) => (type === "consulting" ? "#fff" : "var(--clr-dark)")};
+    color: ${({ type }) =>
+      type === "consulting" ? "#fff" : "var(--clr-dark)"};
     font-size: 38px;
     font-weight: 300;
     line-height: 48px;
@@ -144,7 +139,8 @@ const LeftBox = styled.div<{ type?: string }>`
     font-size: 18px;
     font-weight: 300;
     line-height: 24px;
-    color: ${({ type }) => (type === "consulting" ? "#fff" : "var(--clr-dark)")};
+    color: ${({ type }) =>
+      type === "consulting" ? "#fff" : "var(--clr-dark)"};
   }
 
   @media (max-width: 768px) {
@@ -166,19 +162,17 @@ const LeftBox = styled.div<{ type?: string }>`
     .w-full {
       width: 100%;
     }
-
-
   }
 `;
 
 const RightBox = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.mobile-illustration{
-border-radius: 16px;
-}
+  .mobile-illustration {
+    border-radius: 16px;
+  }
 
   @media (max-width: 768px) {
     padding: 16px;
@@ -188,17 +182,16 @@ border-radius: 16px;
       width: 100%;
     }
 
-    .mobile-illustration{
-    width:100%;
-    height:100%;
+    .mobile-illustration {
+      width: 100%;
+      height: 100%;
     }
   }
 `;
 
-
 export const TagsWrapper = styled.div`
-display:flex;
-justify-content: start;
-gap:8px;
-margin-top:24px;
-`
+  display: flex;
+  justify-content: start;
+  gap: 8px;
+  margin-top: 24px;
+`;
