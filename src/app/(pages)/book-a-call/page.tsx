@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { DyTitleH1, Dpara } from "@/app/Components/TypSetting";
 import { testimonials } from "../../Static/testimonials";
 import { useEffect } from "react";
+import { DashedContainer } from "@/app/Components/Containers";
 
 const bgImg = "/img2.webp";
 
@@ -73,122 +74,118 @@ const Page = () => {
   }, []);
 
   return (
-    <WrapperDemo>
+    <>
       {/* TWO COLUMN LAYOUT */}
-      <div className="main">
-        {/* LEFT SIDE - Heading, Logos, Testimonial */}
-        <div className="inner">
-          <div className="top-cont">
-            <DyTitleH1
-              fontSize={{ base: "56px", md: "48px", sm: "32px" }}
-              lineHeight={{ base: "64px", md: "56px", sm: "40px" }}
-              fontWeight={700}
-              textTransform="uppercase"
-              color="#fff"
-              textAlign="left"
-              className="prime-animated"
-            >
-              BOOK A CALL
-            </DyTitleH1>
-
-            <Dpara
-              fontSize="18px"
-              lineHeight="26px"
-              fontWeight="300"
-              color="#E0E0E0"
-              className="mw-85"
-            >
-              Your go-to solution for web and mobile apps, like many founders,
-              startups, and agencies do.
-            </Dpara>
-          </div>
-
-          {/* BOTTOM GROUP - Logos and Testimonial */}
-          <div className="bottom-group">
-            <div className="logo-section">
-              <Dpara
-                fontSize="16px"
-                lineHeight="24px"
-                fontWeight="400"
-                color="#D6D6D6"
-                className="text-uppercase"
-                textAlign={{ base: "center", md: "left", sm: "left" }}
+      <DashedContainer showLines={true} leftBottom rightBottom>
+        <WrapperDemo>
+          <div className="inner">
+            <div className="top-cont">
+              <DyTitleH1
+                fontSize={{ base: "56px", md: "48px", sm: "32px" }}
+                lineHeight={{ base: "64px", md: "56px", sm: "40px" }}
+                fontWeight={700}
+                textTransform="uppercase"
+                color="#000"
+                textAlign="left"
+                className="prime-animated"
               >
-                Trusted by 100+ customers, from startup to enterprise
+                BOOK A CALL
+              </DyTitleH1>
+
+              <Dpara
+                fontSize="18px"
+                lineHeight="26px"
+                fontWeight="300"
+                color="#000"
+                className="mw-85"
+              >
+                Your go-to solution for web and mobile apps, like many founders,
+                startups, and agencies do.
               </Dpara>
-
-              <div className="logo-container">
-                {imageList.map((image, index) => {
-                  const thisCategories = getCategorySet(image.category);
-
-                  let isBlurred = false;
-
-                  if (hoveredCategories) {
-                    const hasCommon = [...thisCategories].some((cat) =>
-                      hoveredCategories.has(cat)
-                    );
-                    isBlurred = !hasCommon;
-                  }
-
-                  return (
-                    <div
-                      key={index}
-                      className={`logo-item ${isBlurred ? "blurred" : ""}`}
-                    >
-                      <img
-                        src={image.src}
-                        width={image.width}
-                        height={image.height}
-                        className={`logo-img ${
-                          hoveredIndex === index ? "active" : ""
-                        }`}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
             </div>
 
-            {/* TESTIMONIAL SECTION */}
-            <div className="testimonial">
-              <p className="text-block">{t.text}</p>
+            {/* BOTTOM GROUP - Logos and Testimonial */}
+            <div className="bottom-group">
+              <div className="logo-section">
+                <Dpara
+                  fontSize="16px"
+                  lineHeight="24px"
+                  fontWeight="400"
+                  color="#000"
+                  className="text-uppercase"
+                  textAlign={{ base: "center", md: "center", sm: "center" }}
+                >
+                  Trusted by 100+ customers, from startup to enterprise
+                </Dpara>
 
-              <div className="author">
-                <img src={t.image} alt={t.name} width={60} height={60} className="image" />
+                <div className="logo-container">
+                  {imageList.map((image, index) => {
+                    const thisCategories = getCategorySet(image.category);
 
-                <div className="identity">
-                  <p className="name">{t.name}</p>
-                  <p className="role">{t.title}</p>
+                    let isBlurred = false;
+
+                    if (hoveredCategories) {
+                      const hasCommon = [...thisCategories].some((cat) =>
+                        hoveredCategories.has(cat)
+                      );
+                      isBlurred = !hasCommon;
+                    }
+
+                    return (
+                      <div
+                        key={index}
+                        className={`logo-item ${isBlurred ? "blurred" : ""}`}
+                      >
+                        <img
+                          src={image.src}
+                          width={image.width}
+                          height={image.height}
+                          className={`logo-img ${hoveredIndex === index ? "active" : ""
+                            }`}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
+              </div>
 
-                <img
-                  className="brand"
-                  src={t.logo.src}
-                  alt={t.company}
-                  width={t.logo.width}
-                  height={t.logo.height}
-                />
+              <div className="testimonial">
+                <p className="text-block">{t.text}</p>
+
+                <div className="author">
+                  <img src={t.image} alt={t.name} width={60} height={60} className="image" />
+
+                  <div className="identity">
+                    <p className="name">{t.name}</p>
+                    <p className="role">{t.title}</p>
+                  </div>
+
+                  <img
+                    className="brand"
+                    src={t.logo.src}
+                    alt={t.company}
+                    width={t.logo.width}
+                    height={t.logo.height}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        
+          <div
+            className="calendly-inline-widget"
+            data-url="https://calendly.com/shabbir-hexcode/30min"
+            style={{}}
+          ></div>
 
-      
-        <div
-          className="calendly-inline-widget"
-          data-url="https://calendly.com/shabbir-hexcode/30min"
-          style={{}}
-        ></div>
 
-        <div className="top-cont-mobile">
+          <div className="top-cont-mobile">
             <DyTitleH1
               fontSize={{ base: "56px", md: "48px", sm: "32px" }}
               lineHeight={{ base: "64px", md: "56px", sm: "40px" }}
               fontWeight={700}
               textTransform="uppercase"
-              color="#fff"
+              color="#000"
               textAlign="left"
               className="prime-animated"
             >
@@ -199,7 +196,7 @@ const Page = () => {
               fontSize="18px"
               lineHeight="26px"
               fontWeight="300"
-              color="#E0E0E0"
+              color="#000"
               className="mw-85"
               textAlign="center"
             >
@@ -207,8 +204,13 @@ const Page = () => {
               startups, and agencies do.
             </Dpara>
           </div>
-      </div>
-    </WrapperDemo>
+
+        </WrapperDemo>
+
+
+
+      </DashedContainer>
+    </>
   );
 };
 
@@ -223,61 +225,17 @@ const WrapperDemo = styled.div`
    GENERAL WRAPPER
 --------------------------------------------------------- */
 width: 100%;
-min-height: 100vh;
-padding: 0;
-position: relative;
 display: flex;
-flex-direction: column;
-align-items: center;
 justify-content: center;
-margin-top: -76px;
-padding-top: 76px;
-z-index: 0;
+gap:48px;
+// background:red;
+padding:48px;
 
-/* BG IMAGE */
-&::after {
-  content: "";
-  position: absolute;
-  opacity: 0.9;
-  top: 0;
-  inset: 0;
-  background-image: url(${bgImg});
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-  transform: scaleX(-1);
-  z-index: 1;
-}
 
-/* DARK OVERLAY */
-&::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  backdrop-filter: blur(6px);
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 5;
-}
-
-/* Content above overlay */
-> * {
-  position: relative;
-  z-index: 5;
-}
 
 /* ---------------------------------------------------------
    MAIN TWO-COLUMN LAYOUT
 --------------------------------------------------------- */
-.main {
-  width: 100%;
-  max-width: 1280px;
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 60px;
-  padding: 60px 40px;
-  
-}
 
 .top-cont-mobile{
   display: none;
@@ -289,8 +247,6 @@ z-index: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // gap: 40px;
-  max-width: 520px;
 }
 
 /* TOP CONTENT - HEADING */
@@ -311,18 +267,20 @@ z-index: 0;
 .logo-section {
   display: flex;
   flex-direction: column;
+  justify-content:center;
+  align-items:center;
   gap: 20px;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
+  justify-content:center;
   flex-wrap: wrap;
   gap: 24px 28px;
 }
 
 .logo-img {
-  filter: brightness(0) invert(1);
   opacity: 1;
   transition: opacity 0.3s ease;
 }
@@ -336,10 +294,10 @@ z-index: 0;
 --------------------------------------------------------- */
 .testimonial {
   position: relative;
-  padding: 15px;
-  // padding-left: 32px;
+  padding: 24px;
   border-radius: 12px;
-  color: #fff;
+  color: #000;
+box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 /* WHITE VERTICAL LINE */
@@ -399,23 +357,19 @@ z-index: 0;
 .calendly-inline-widget {
   flex-shrink: 0;
   width: 540px;
-  min-height: 830px;
+  height: 830px;
   border-radius: 18px;
   overflow: hidden;
-
-  // box-shadow: 
-  //   0 10px 25px rgba(0,0,0,0.18),
-  //   0 20px 50px rgba(0,0,0,0.35);
+  border: 1px dashed #8f8f8f33;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 /* ---------------------------------------------------------
    RESPONSIVE BREAKPOINTS
 --------------------------------------------------------- */
 @media (max-width: 1100px) {
-  .main {
     gap: 40px;
-    padding: 40px 24px;
-  }
+    padding: 40px;
 
   .inner {
     max-width: 450px;
@@ -427,13 +381,10 @@ z-index: 0;
 }
 
 @media (max-width: 900px) {
-  .main {
     flex-direction: column-reverse;
     align-items: center;
     gap: 40px;
-    padding: 80px 24px 70px 24px;
-  }
-
+  
   .top-cont-mobile{
     display: flex;
     flex-direction: column;
@@ -478,9 +429,7 @@ z-index: 0;
 }
 
 @media (max-width: 480px) {
-  .main {
-    padding: 32px 16px 100px 16px;
-  }
+    padding: 24px;
 
   .inner {
     gap: 30px;
@@ -500,6 +449,7 @@ z-index: 0;
 
   .brand {
     width: 80px;
+    display:none;
   }
 
   .calendly-inline-widget {

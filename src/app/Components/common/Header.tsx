@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <>
       <HeaderSticky ref={headerRef} scrolled={scrolledPastHero}>
-        <DashedContainer showLines={false}>
+        <DashedContainer showLines={true} leftBottom rightBottom>
           <NavBar>
             <LeftNav $isHome={isHome} $scrolled={scrolledPastHero}>
               <Link className="d-flex g-xl logo" href="/">
@@ -108,7 +108,7 @@ const HeaderSticky = styled.section<HeaderStickyProps>`
   background-color: white;
   transition: background-color 0.3s ease;
   will-change: transform;
-  border-bottom: 1px dashed #8f8f8f33;
+  // border-bottom: 1px dashed #8f8f8f33;
 `;
 
 const NavBar = styled.div`
@@ -133,11 +133,11 @@ const LeftNav = styled.div<RouteAware>`
     margin-right: 10px;
 
     filter: ${({ $isHome, $scrolled }) => {
-      if ($isHome && !$scrolled) {
-        return "brightness(0) invert(1)"; // white on home when top
-      }
-      return "none"; // normal everywhere else
-    }};
+    if ($isHome && !$scrolled) {
+      return "brightness(0) invert(1)"; // white on home when top
+    }
+    return "none"; // normal everywhere else
+  }};
     transition: filter 0.3s ease;
   }
 `;
@@ -181,15 +181,15 @@ const NavItem = styled.div<NavItemProps>`
        - Else: dark (#181010)
     */
     color: ${({ $scrolled, $isHome, active }) =>
-      $scrolled
-        ? "#181010"
-        : $isHome
-          ? active
-            ? "#EE232A"
-            : "#fff"
-          : active
-            ? "#EE232A"
-            : "#181010"};
+    $scrolled
+      ? "#181010"
+      : $isHome
+        ? active
+          ? "#EE232A"
+          : "#fff"
+        : active
+          ? "#EE232A"
+          : "#181010"};
   }
 
   &:hover {
@@ -200,9 +200,9 @@ const NavItem = styled.div<NavItemProps>`
 
     a {
       color: ${({ $isHome, $scrolled }) =>
-        $isHome && !$scrolled
-          ? "#f2f2f2"
-          : "#C80D13"}; /* 👈 dynamic hover color */
+    $isHome && !$scrolled
+      ? "#f2f2f2"
+      : "#C80D13"}; /* 👈 dynamic hover color */
 
       &::before {
         transform: scaleX(1);
