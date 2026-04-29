@@ -1,13 +1,14 @@
-"use client"
+"use client";
 
-import { PrimaryBtn } from "../Buttons"
+import { PrimaryBtn } from "../Buttons";
 
-const calendlyUrl = "https://calendly.com/shabbir-hexcode/30min"
+const calendlyUrl = "https://calendly.com/shabbir-hexcode/30min";
 
 const CalendlyCta = () => {
   const handleClick = () => {
-    window.open(calendlyUrl, "_blank", "noopener,noreferrer")
-  }
+    // window.open(calendlyUrl, "_blank", "noopener,noreferrer")
+    window.open("/book-a-call");
+  };
 
   return (
     <PrimaryBtn
@@ -19,8 +20,7 @@ const CalendlyCta = () => {
       btnContent="Let’s talk"
       onClick={handleClick}
     />
-  )
-}
+  );
+};
 
-export default CalendlyCta
-
+export default CalendlyCta;

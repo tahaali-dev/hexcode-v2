@@ -22,18 +22,26 @@ const ProjectCard = ({
   projectDetails: string;
   banner: string;
   tags: string[];
-  url: string
-  marginTag?: string
-  mode?: any
+  url: string;
+  marginTag?: string;
+  mode?: any;
 }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    const supportedProjects = ["Volt", "Sensyrtech", "Starbrite Dental", "Install IoT", "Install IoT"];
+    const supportedProjects = [
+      "Volt",
+      "Sensyrtech",
+      "Starbrite Dental",
+      "Install IoT",
+      "Install IoT",
+    ];
     const isInternalProject = supportedProjects.includes(projectName);
 
     if (isInternalProject) {
-      const slug = encodeURIComponent(projectName.toLowerCase().replace(/\s+/g, "-"));
+      const slug = encodeURIComponent(
+        projectName.toLowerCase().replace(/\s+/g, "-"),
+      );
       router.push(`/work/${slug}`);
     } else if (url) {
       window.open(url, "_blank", "noopener,noreferrer");
@@ -43,7 +51,14 @@ const ProjectCard = ({
   return (
     <div>
       <ProjectCardWrapper as="div" onClick={handleClick}>
-        <StyledImage src={banner} alt="project-banner" className="project-banner" width={400} height={400} priority />
+        <StyledImage
+          src={banner}
+          alt="project-banner"
+          className="project-banner"
+          width={400}
+          height={400}
+          priority
+        />
         <p className="project-details mt-md">
           <span className="project-name">{projectName}</span> - {projectDetails}
         </p>
@@ -68,14 +83,13 @@ const ProjectCardWrapper = styled.a`
   border-radius: 16px;
   text-decoration: none;
   transition: box-shadow 0.3s ease;
-  
 
   .project-banner {
     border-radius: 16px;
     overflow: hidden;
   }
 
-  .project-banner{
+  .project-banner {
     transition: transform 0.4s ease;
     display: block;
     width: 100%;
@@ -84,7 +98,7 @@ const ProjectCardWrapper = styled.a`
     overflow: hidden;
   }
 
-  &:hover .project-banner{
+  &:hover .project-banner {
     transform: scale(1.01);
   }
 
@@ -104,7 +118,6 @@ const ProjectCardWrapper = styled.a`
   }
 
   @media (max-width: 768px) {
-
     .project-details {
       font-size: 18px;
       line-height: 28px;
@@ -117,7 +130,6 @@ const ProjectCardWrapper = styled.a`
   }
 `;
 
-
 interface TagsWrapperProps {
   margin?: string;
 }
@@ -126,15 +138,14 @@ export const TagsWrapper = styled.div<TagsWrapperProps>`
   display: flex;
   justify-content: start;
   gap: 8px;
-  margin: ${({ margin }) => margin || '16px 0px 64px 0px'};
+  margin: ${({ margin }) => margin || "16px 0px 64px 0px"};
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
     gap: 8px;
-    margin: ${({ margin }) => margin || '16px 0px 32px 0px'};
+    margin: ${({ margin }) => margin || "16px 0px 32px 0px"};
   }
 `;
-
 
 // Benefit card --------------------------------
 export const BenefitCard = ({ icon, title, subtitle }: any) => {
@@ -203,7 +214,6 @@ const BenefitCardWrapper = styled.div`
   }
 `;
 
-
 // Accordion card ------------
 export const AccordionCard = ({ title, children }: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -235,7 +245,7 @@ const AccordionContainer = styled.div`
   background-color: var(--white-color);
   height: fit-content;
   border: 1px dashed #d3d3d3;
-border-radius:16px;
+  border-radius: 16px;
 
   @media (max-width: 768px) {
     margin-bottom: 0px;
@@ -275,7 +285,7 @@ export const ScrollCard = ({
   image,
   mobileImage,
   icon,
-  type
+  type,
 }: {
   title: string;
   bgcolor: string;
@@ -304,7 +314,6 @@ export const ScrollCard = ({
         <div className="content-box">
           {/* text left */}
 
-
           <div>
             <p className="text-left">
               {para1.split("\n").map((line, index) => (
@@ -316,17 +325,15 @@ export const ScrollCard = ({
             </p>
 
             {/* Mobile image */}
-            {
-              type == "consulting" && <StyledImage
+            {type == "consulting" && (
+              <StyledImage
                 src={mobileImage}
                 alt={`image`}
                 className="mobile-illustration d-none"
               />
-            }
+            )}
 
-            {
-
-              type == "consulting" &&
+            {type == "consulting" && (
               <div className="mt-lg w-full">
                 <PrimaryBtn
                   padding="16px"
@@ -334,17 +341,15 @@ export const ScrollCard = ({
                   margin="0"
                   borderRadius="8px"
                   btnContent="Book a call"
-                  onClick={() => window.open("https://calendly.com/shabbir-hexcode/30min", "_blank")}
+                  onClick={() => window.open("/book-a-call")}
                 />
               </div>
-            }
+            )}
           </div>
 
-
-
           {/* text right */}
-          {
-            type == "default" && <p className="text-right">
+          {type == "default" && (
+            <p className="text-right">
               {para2.split("\n").map((line, index) => (
                 <span key={index}>
                   {line}
@@ -352,138 +357,124 @@ export const ScrollCard = ({
                 </span>
               ))}
             </p>
-          }
+          )}
 
           {/* Mobile image */}
-          {
-            type == "default" && <StyledImage
+          {type == "default" && (
+            <StyledImage
               src={mobileImage}
               alt={`image`}
               className="mobile-illustration d-none"
             />
-          }
-
+          )}
         </div>
       </LeftBox>
-
 
       <RightBox bgcolor={bgcolor} className="m-none">
         <div className="half-color"></div>
         <StyledImage src={image} alt={`image`} className="illustration" />
       </RightBox>
-
-
     </ScrollCardWrapper>
-  )
-}
-
+  );
+};
 
 // styles
 const ScrollCardWrapper = styled.div`
- // border: 1px solid #000;
- display: flex;
- 
- 
-   @media (max-width: 768px) {
-     flex-direction: column;
-   }
- `
+  // border: 1px solid #000;
+  display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
 
 const LeftBox = styled.div<{
-  bgcolor: string,
-  type: string,
+  bgcolor: string;
+  type: string;
 }>`
- width: 65%;
- display: flex;
- flex-direction: column;
- justify-content: space-between;
- padding: 32px 24px;
- background-color: ${({ bgcolor }) => bgcolor || "#fff"};
- border-radius: 16px 0 0 16px;
- 
- .card-heading {
-   color: ${({ type }) => type == "consulting" ? "#fff" : "var(--clr-dark)"};
-   font-size: 54px;
-   font-weight: 500;
-   line-height: 64px;
-   text-transform: uppercase;
- }
- 
- 
-  .content-box {
-   display: flex;
-   justify-content: space-between;
- 
-     .text-left {
-         // color: var(--clr-dark2);
-         font-size: 18px;
-         font-weight: 300;
-         line-height: 24px;
-         color: ${({ type }) => type == "consulting" ? "#fff" : "var(--clr-dark)"};
-       }
- 
-         .text-right {
-         color: var(--clr-dark);
-         font-size: 18px;
-         font-weight: 400;
-         line-height: 24px;
-         text-align: left;
-       }
-  }
- 
- 
-    @media (max-width: 768px) {
-      width: 100%;
-       padding: 16px;
-       gap: 16px;
-       border-radius: 16px;
- 
-         .card-heading {
-         font-size: 32px;
-         line-height: 42px;
-       }
- 
-       .content-box {
-         flex-direction: column;
-         gap: 24px;
- 
-         .text-left,
-         .text-right {
-           font-size: 16px;
-           line-height: 24px;
-         }
-       }
- 
- 
-         .w-full {
-       width: 100%;
-     }
-    
-    }
- 
- `
-const RightBox = styled.div<{ bgcolor: string }>`
- width: 35%;
- position: relative;
- 
-   .half-color {
-   position: absolute;
-       background-color: ${({ bgcolor }) => bgcolor || "#fff"};
-       // background-color: red;
-       width: 50%;
-       height: 100%;
-       left: 0px;
-       top: 0px;
- z-index: 0;
-     }
- 
- 
-   .illustration {
-       object-fit: contain;
-       position :relative;
-       z-index: 1;
-     }
- 
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 24px;
+  background-color: ${({ bgcolor }) => bgcolor || "#fff"};
+  border-radius: 16px 0 0 16px;
 
-  
- `
+  .card-heading {
+    color: ${({ type }) => (type == "consulting" ? "#fff" : "var(--clr-dark)")};
+    font-size: 54px;
+    font-weight: 500;
+    line-height: 64px;
+    text-transform: uppercase;
+  }
+
+  .content-box {
+    display: flex;
+    justify-content: space-between;
+
+    .text-left {
+      // color: var(--clr-dark2);
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 24px;
+      color: ${({ type }) =>
+        type == "consulting" ? "#fff" : "var(--clr-dark)"};
+    }
+
+    .text-right {
+      color: var(--clr-dark);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 16px;
+    gap: 16px;
+    border-radius: 16px;
+
+    .card-heading {
+      font-size: 32px;
+      line-height: 42px;
+    }
+
+    .content-box {
+      flex-direction: column;
+      gap: 24px;
+
+      .text-left,
+      .text-right {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    .w-full {
+      width: 100%;
+    }
+  }
+`;
+const RightBox = styled.div<{ bgcolor: string }>`
+  width: 35%;
+  position: relative;
+
+  .half-color {
+    position: absolute;
+    background-color: ${({ bgcolor }) => bgcolor || "#fff"};
+    // background-color: red;
+    width: 50%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+  }
+
+  .illustration {
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+  }
+`;

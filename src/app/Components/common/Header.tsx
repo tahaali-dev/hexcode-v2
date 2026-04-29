@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import styled from "@emotion/styled";
 import { PrimaryBtn } from "../Buttons";
 import { useRef } from "react";
@@ -18,7 +18,7 @@ const Logo = "/Logo.svg";
 
 const Header = () => {
   const pathname = usePathname();
-  const isHome = pathname === "/"; // ← route check
+  const isHome = pathname === ""; // ← route check
 
   const headerRef = useRef<HTMLDivElement>(null);
 
@@ -27,10 +27,7 @@ const Header = () => {
 
   return (
     <>
-      <HeaderSticky
-        ref={headerRef}
-        scrolled={scrolledPastHero}
-      >
+      <HeaderSticky ref={headerRef} scrolled={scrolledPastHero}>
         <DashedContainer showLines={false}>
           <NavBar>
             <LeftNav $isHome={isHome} $scrolled={scrolledPastHero}>
@@ -41,7 +38,9 @@ const Header = () => {
 
             <CenterNav>
               <NavItem
-                active={activeHash === "#projects" || pathname.includes("/work")}
+                active={
+                  activeHash === "#projects" || pathname.includes("/work")
+                }
                 className="m-none nav-item"
                 $isHome={isHome}
                 $scrolled={scrolledPastHero}
@@ -51,7 +50,10 @@ const Header = () => {
               </NavItem>
 
               <NavItem
-                active={activeHash === "#services" || pathname.includes("/our-services")}
+                active={
+                  activeHash === "#services" ||
+                  pathname.includes("/our-services")
+                }
                 className="m-none nav-item"
                 $isHome={isHome}
                 $scrolled={scrolledPastHero}
@@ -61,7 +63,9 @@ const Header = () => {
               </NavItem>
 
               <NavItem
-                active={activeHash === "#about" || pathname.includes("/about-us")}
+                active={
+                  activeHash === "#about" || pathname.includes("/about-us")
+                }
                 className="m-none nav-item"
                 $isHome={isHome}
                 $scrolled={scrolledPastHero}
@@ -100,10 +104,11 @@ const HeaderSticky = styled.section<HeaderStickyProps>`
   position: sticky;
   top: 0;
   z-index: 5;
-  background-color: ${({ scrolled }) => (scrolled ? "#fff" : "transparent")};
+  // background-color: ${({ scrolled }) => (scrolled ? "#fff" : "transparent")};
+  background-color: white;
   transition: background-color 0.3s ease;
   will-change: transform;
-  border-bottom: 1px dashed #8F8F8F33;
+  border-bottom: 1px dashed #8f8f8f33;
 `;
 
 const NavBar = styled.div`
@@ -128,20 +133,20 @@ const LeftNav = styled.div<RouteAware>`
     margin-right: 10px;
 
     filter: ${({ $isHome, $scrolled }) => {
-    if ($isHome && !$scrolled) {
-      return "brightness(0) invert(1)"; // white on home when top
-    }
-    return "none"; // normal everywhere else
-  }};
+      if ($isHome && !$scrolled) {
+        return "brightness(0) invert(1)"; // white on home when top
+      }
+      return "none"; // normal everywhere else
+    }};
     transition: filter 0.3s ease;
   }
 `;
 
 const CenterNav = styled.div`
-  display:flex;
-  align-items:center;
-  gap:24px;
-`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+`;
 
 interface NavItemProps extends RouteAware {
   active?: boolean;
@@ -160,7 +165,8 @@ const NavItem = styled.div<NavItemProps>`
     transition: all 0.3s ease;
   }
 
-  a, p {
+  a,
+  p {
     position: relative;
     text-decoration: none;
     font-size: 16px;
@@ -175,15 +181,15 @@ const NavItem = styled.div<NavItemProps>`
        - Else: dark (#181010)
     */
     color: ${({ $scrolled, $isHome, active }) =>
-    $scrolled
-      ? "#181010"
-      : $isHome
-        ? active
-          ? "#EE232A"
-          : "#fff"
-        : active
-          ? "#EE232A"
-          : "#181010"};
+      $scrolled
+        ? "#181010"
+        : $isHome
+          ? active
+            ? "#EE232A"
+            : "#fff"
+          : active
+            ? "#EE232A"
+            : "#181010"};
   }
 
   &:hover {
@@ -194,8 +200,10 @@ const NavItem = styled.div<NavItemProps>`
 
     a {
       color: ${({ $isHome, $scrolled }) =>
-    $isHome && !$scrolled ? "#f2f2f2" : "#C80D13"};  /* 👈 dynamic hover color */
-      
+        $isHome && !$scrolled
+          ? "#f2f2f2"
+          : "#C80D13"}; /* 👈 dynamic hover color */
+
       &::before {
         transform: scaleX(1);
       }

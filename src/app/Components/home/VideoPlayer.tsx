@@ -45,7 +45,7 @@ const VideoPlayer: React.FC = () => {
         ref={videoRef}
         // src="https://screenrepo-production-bucket.s3.ap-south-1.amazonaws.com/videos/Volt+Money+Music+V2+(1)_1.mp4"
         // src="https://go.screenpal.com/player/stream/cTXrh9nqbXk"
-        src="/vid.mp4"
+        src="/home.mp4"
         autoPlay
         loop
         muted

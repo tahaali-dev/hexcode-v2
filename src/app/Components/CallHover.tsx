@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { StyledImage } from "./Containers";
@@ -10,7 +10,8 @@ const CallHover = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = scrollTop / docHeight;
 
       if (scrollPercent >= 0.03) {
@@ -30,12 +31,13 @@ const CallHover = () => {
 
   return (
     <Wrapper visible={show}>
-      <CallIconBtn
-        onClick={() =>
-          window.open("https://calendly.com/shabbir-hexcode/30min", "_blank")
-        }
-      >
-        <StyledImage src={BookCallIcon} alt="Book a call" width={28} height={28} />
+      <CallIconBtn onClick={() => (window.location.href = "/book-a-call")}>
+        <StyledImage
+          src={BookCallIcon}
+          alt="Book a call"
+          width={28}
+          height={28}
+        />
       </CallIconBtn>
     </Wrapper>
   );
@@ -58,7 +60,7 @@ const Wrapper = styled.div<WrapperProps>`
     width: 52px;
     height: 52px;
     border-radius: 100%;
-    background: var(--Brand-red-red-500, #EE232A);
+    background: var(--Brand-red-red-500, #ee232a);
     justify-content: center;
     align-items: center;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
@@ -74,12 +76,9 @@ const CallIconBtn = styled.button`
   border: none;
   background: transparent;
   cursor: pointer;
-display:none;
+  display: none;
 
-
-      @media (max-width: 768px) {
-          display: flex;
-      }
-
-
+  @media (max-width: 768px) {
+    display: flex;
+  }
 `;
