@@ -10,8 +10,8 @@ import VideoPlayer from "./VideoPlayer";
 // import TextAnimation from "../TextAnimation";
 import MobileComp from "./MobileComp";
 
-const bgImgMob = "/bg-new-mob-21.webp";
-const bgImg = "/bg-new-21.webp";
+// const bgImgMob = "/bg-new-mob-21.webp";
+// const bgImg = "/bg-new-21.webp";
 
 
 const PrimeFold = () => {
@@ -29,7 +29,7 @@ const PrimeFold = () => {
         fontWeight={300}
         fontStyle="normal"
         textTransform="uppercase"
-        color="#fff"
+        color="#000"
         className="mt-md prime-animated"
       >
         UX/UI for fast
@@ -41,7 +41,7 @@ const PrimeFold = () => {
         fontWeight={300}
         fontStyle="normal"
         textTransform="uppercase"
-        color="#fff"
+        color="#000"
         className="prime-animated text-center"
       >
         growing companies
@@ -53,7 +53,7 @@ const PrimeFold = () => {
         fontWeight={300}
         fontStyle="normal"
         textTransform="uppercase"
-        color="rgba(255,255,255,0.55)"
+        color="rgba(0,0,0,0.55)"
         className="mt-sm prime-animated text-center"
       >
         Quick. Smart. Reliable.
@@ -64,7 +64,7 @@ const PrimeFold = () => {
         fontSize="18px"
         lineHeight="24px"
         fontWeight="300"
-        color="#E0E0E0"
+        color="#000"
         mdFontSize="16px"
         mdLineHeight="24px"
         smFontSize="16px"
@@ -105,49 +105,5 @@ const Wrapper = styled.div`
   padding: 180px 0px 0px 0px;
   margin-top:-76px;
 
-  /* Flip only the background image horizontally */
-  & {
-    /* This creates a pseudo-element to flip the background image */
-    --bg-flip: scaleX(-1);
-    background-image: none;
-    position: relative;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background-image: url(${bgImg});
-    background-repeat: no-repeat;
-    background-position: center -100px;
-    background-size: cover;
-    // transform: scaleX(-1);
-    pointer-events: none;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    backdrop-filter: blur(10px);
-    // -webkit-backdrop-filter: blur(0px);
-    pointer-events: none;
-    background:
-      url("data:image/svg+xml;utf8,<svg width='200' height='200' xmlns='http://www.w3.org/2000/svg'><filter id='n' x='0' y='0'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.18'/></svg>") repeat,
-      rgba(0,0,0,0.08);
-  }
-
-  > * { position: relative; z-index: 3; }
-
-  @media (max-width: 768px) {
-    margin-top:-58px;
-    padding: 80px 12px 12px 12px;
-    background-size: 60px 180px;
-    &::after {
-      background-image: url(${bgImgMob});
-    }
-    .m-mt-lg{ margin-top:8px; }
-    .m-mt-xxl{ margin-top: 24px; button{ width:50%; } }
-  }
+ 
 `;

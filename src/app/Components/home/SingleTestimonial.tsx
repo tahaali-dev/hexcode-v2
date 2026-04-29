@@ -24,7 +24,6 @@ const Wrapper = styled.div<{ $marginTop: string; $mobileMarginTop: string }>`
   margin:32px;
   background: rgba(235, 235, 245, 0.4); /* very light, subtle background */
   border-radius:16px;
-
     @media (max-width: 768px) {
   margin-top:${({ $mobileMarginTop }) => $mobileMarginTop};
     padding: 24px;

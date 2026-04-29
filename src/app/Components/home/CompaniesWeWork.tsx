@@ -94,7 +94,7 @@ const CompaniesWeWork = () => {
           fontSize="18px"
           lineHeight="24px"
           fontWeight="400"
-          color="#D6D6D6"
+          color="#000"
           mdFontSize="16px"
           mdLineHeight="24px"
           smFontSize="16px"
