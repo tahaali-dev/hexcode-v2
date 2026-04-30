@@ -32,6 +32,21 @@ export default function ContactForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const now = new Date();
+
+  const formattedDate = now.toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+
+  const formattedTime = now.toLocaleTimeString("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -42,6 +57,8 @@ export default function ContactForm({
     formData.append("Email", other);
     formData.append("Company", company);
     formData.append("Message", message);
+    formData.append("Date", formattedDate);
+    formData.append("Time", formattedTime);
 
     try {
       await axios.post(
