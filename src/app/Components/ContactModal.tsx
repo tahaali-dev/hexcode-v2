@@ -135,7 +135,7 @@ export default function ContactForm({
             onChange={(e) => setMessage(e.target.value)}
           />
         </div>
-        <div className="d-flex justify-end" style={{ marginTop: "0px" }}>
+        <div className="d-flex justify-end" style={{ marginTop: "16px" }}>
           <PrimaryBtn
             padding="12px 16px"
             fontSize="16px"
@@ -170,7 +170,7 @@ export default function ContactForm({
 const InlineContainer = styled.div`
   flex-shrink: 0;
   width: 540px;
-  height: 800px;
+  height: 820px;
   border-radius: 18px;
   border: 1px dashed #8f8f8f33;
   box-shadow:
