@@ -82,7 +82,7 @@ const Header = () => {
                 margin="0"
                 borderRadius="8px"
                 btnContent="Let's Talk"
-                onClick={() => setFormVisible(true)}
+                onClick={() => (window.location.href = "/lets-talk")}
               />
             </div>
           </NavBar>

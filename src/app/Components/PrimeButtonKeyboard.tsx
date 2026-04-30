@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 export default function PrimeButtonKeyboard() {
  useEffect(() => {
   const handleKeyDown = (e: KeyboardEvent) => {
+   if (!e.key) return;
    const key = e.key.toLowerCase();
    if (key !== 't' && key !== 'c') return;
 
@@ -19,10 +20,10 @@ export default function PrimeButtonKeyboard() {
 
    buttons.forEach((btn) => {
     const span = btn.querySelector('span');
-    if (!span) return;
+    if (!span || !span.textContent) return;
 
     const text = span.textContent
-     ?.toLowerCase()
+     .toLowerCase()
      .replace(/['’]/g, '')
      .replace(/\s+/g, ' ')
      .trim();

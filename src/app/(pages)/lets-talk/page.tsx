@@ -6,6 +6,7 @@ import { DyTitleH1, Dpara } from "@/app/Components/TypSetting";
 import { testimonials } from "../../Static/testimonials";
 import { useEffect } from "react";
 import { DashedContainer } from "@/app/Components/Containers";
+import ContactForm from "@/app/Components/ContactModal";
 
 const bgImg = "/img2.webp";
 
@@ -56,7 +57,7 @@ const Page = () => {
   const filteredTestimonials = testimonials.filter(
     (testimonial) =>
       testimonial.name &&
-      normalize(testimonial.name) === normalize("Michael Brod")
+      normalize(testimonial.name) === normalize("Waqas Khokhar")
   );
 
   const t = filteredTestimonials[0];
@@ -89,7 +90,7 @@ const Page = () => {
                 textAlign="left"
                 className="prime-animated"
               >
-                BOOK A CALL
+               LET'S TALK
               </DyTitleH1>
 
               <Dpara
@@ -99,7 +100,7 @@ const Page = () => {
                 color="#000"
                 className="mw-85"
               >
-                We strategize, execute, and help you ship faster in this fast-paced
+               We strategize, execute, and help you ship faster in this fast-paced
           growing market.
               </Dpara>
             </div>
@@ -172,13 +173,8 @@ const Page = () => {
             </div>
           </div>
 
-          <div
-            className="calendly-inline-widget"
-            data-url="https://calendly.com/shabbir-hexcode/30min"
-            style={{}}
-          ></div>
-
-
+          <ContactForm inline={true}  />
+          
           <div className="top-cont-mobile">
             <DyTitleH1
               fontSize={{ base: "56px", md: "48px", sm: "32px" }}
@@ -189,7 +185,7 @@ const Page = () => {
               textAlign="left"
               className="prime-animated"
             >
-              BOOK A CALL
+                LET'S TALK
             </DyTitleH1>
 
             <Dpara
@@ -452,7 +448,7 @@ box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
     display:none;
   }
 
-  .calendly-inline-widget {
+  .contact-form{
     min-height: unset;
     height: 700px !important;
     border-radius: 12px;
