@@ -90,7 +90,7 @@ const Page = () => {
                 textAlign="left"
                 className="prime-animated"
               >
-               LET'S TALK
+                LET'S TALK
               </DyTitleH1>
 
               <Dpara
@@ -98,10 +98,10 @@ const Page = () => {
                 lineHeight="26px"
                 fontWeight="300"
                 color="#000"
-                className="mw-85"
+                className=""
               >
-               We strategize, execute, and help you ship faster in this fast-paced
-          growing market.
+                We strategize, execute, and help you ship faster in this fast-paced
+                growing market.
               </Dpara>
             </div>
 
@@ -173,8 +173,8 @@ const Page = () => {
             </div>
           </div>
 
-          <ContactForm inline={true}  />
-          
+          <ContactForm inline={true} />
+
           <div className="top-cont-mobile">
             <DyTitleH1
               fontSize={{ base: "56px", md: "48px", sm: "32px" }}
@@ -185,7 +185,7 @@ const Page = () => {
               textAlign="left"
               className="prime-animated"
             >
-                LET'S TALK
+              LET'S TALK
             </DyTitleH1>
 
             <Dpara
