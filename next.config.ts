@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
             // "style-src 'self' https://fonts.googleapis.com",
             // "script-src 'self' https://www.clarity.ms 'unsafe-inline' 'unsafe-eval'",
             "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
-            "connect-src 'self' https://*.clarity.ms https://script.google.com",
+            "connect-src 'self' https://*.clarity.ms https://script.google.com https://script.googleusercontent.com",
             "img-src 'self' data: https://i.ibb.co https://images.unsplash.com https://*.clarity.ms https://c.bing.com",
             "object-src 'none'",
             "frame-ancestors 'self'",
