@@ -318,7 +318,7 @@ const TagButton = styled.button<{ selected?: boolean }>`
   }
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   width: 100%;
   padding: 12px 16px;
   margin-bottom: 1rem;

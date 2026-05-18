@@ -1,0 +1,322 @@
+[
+  {
+    "severity": "CRITICAL",
+    "category": "Security",
+    "title": "Authentication Bypass on Registration Failure",
+    "impact": "Any visitor can gain authenticated access by deliberately triggering a server error during sign-up &mdash; bypassing all login checks and gaining full user privileges without a real account. No credential is needed.",
+    "problem": "When the registration API returns a 500 status, the front-end silently logs the user in using unverified data. A malicious actor can intentionally trigger this error condition and gain authenticated status with arbitrary credentials they invented.",
+    "recommendation": "Remove the error-path login fallback entirely. Authentication must only succeed via a verified server response. Migrate to Auth.js session handling where session state is established server-side and cannot be influenced by client-side error branches."
+  },
+  {
+    "severity": "CRITICAL",
+    "category": "Security",
+    "title": "Sanity Write Token Exposed in Browser Bundle",
+    "impact": "The CMS write token is embedded in every page&rsquo;s JavaScript bundle. Any visitor who opens DevTools can extract it and use it to read, modify, or delete all CMS content &mdash; products, configurations, and stored user data.",
+    "problem": "The NEXT_PUBLIC_ prefix forces Next.js to include this variable in the client-side bundle at build time. This design-level misconfiguration makes the secret permanently public for every deployed build and cannot be patched without a variable rename and full redeployment.",
+    "recommendation": "Rename the variable to remove the NEXT_PUBLIC_ prefix immediately and move all Sanity write operations to server-only API routes. Client components must receive read-only content through server-rendered props, never through a privileged write token."
+  },
+  {
+    "severity": "CRITICAL",
+    "category": "Cart / Checkout",
+    "title": "Cart Never Clears & Persistent Ghost Cart Bug",
+    "impact": "After checkout or manual clear, the cart retains all items permanently. Customers see stale items from previous sessions, leading to incorrect order totals and a completely broken post-purchase experience that destroys trust.",
+    "problem": "The clearCart reducer uses an Immer no-op pattern. Reassigning the local state parameter has no effect because Immer only responds to direct mutations or explicit return values. The same bug exists in both the cart and favourites slices simultaneously.",
+    "recommendation": "Refactor both reducers to return the initial state object directly instead of reassigning the parameter. As part of the PRD migration to Zustand, replace the Redux cart slice with a Zustand store that handles persistence and reset correctly from the outset."
+  },
+  {
+    "severity": "CRITICAL",
+    "category": "Cart / Checkout",
+    "title": "Order Button Links to Homepage, No Checkout Flow Exists",
+    "impact": "Clicking &ldquo;Place Order&rdquo; returns customers to the homepage. There is no payment step, no order confirmation, and no actual transaction &mdash; the platform cannot generate any revenue in its current state.",
+    "problem": "The order summary component routes to &ldquo;/&rdquo; on click rather than a checkout route. No checkout page, Stripe integration, or order confirmation flow has been implemented, making the entire commerce functionality non-operational for every visitor.",
+    "recommendation": "Build a dedicated checkout flow with a Stripe Payment Intent API route, a client-side payment form, and a webhook handler to confirm orders server-side. The PRD explicitly requires webhook-confirmed payment status before any order is considered complete."
+  },
+  {
+    "severity": "CRITICAL",
+    "category": "Security",
+    "title": "API Key Hardcoded in Source Code",
+    "impact": "A live third-party API key committed in source code is permanently in git history. Anyone with repository access can extract it and incur costs or access rate-limited data on behalf of the business. The live exchange rate fetch is also disabled, meaning customers see a permanently stale currency rate.",
+    "problem": "The ExchangeRate API key is embedded as a plain string constant in the application code. Even if removed from the latest commit, it remains in git history indefinitely. The disabled fetch means currency conversion uses a hardcoded fallback that will never reflect real values.",
+    "recommendation": "Rotate the exposed API key immediately through the service provider&rsquo;s dashboard. Move all secrets to server-only environment variables. Restore the live fetch through a server-side API route that proxies the request without exposing the key to client-side code."
+  },
+  {
+    "severity": "CRITICAL",
+    "category": "Security",
+    "title": "Open Redirect Vulnerability on Sign-Up",
+    "impact": "Attackers can craft sign-up URLs that redirect users to malicious external sites after registration, enabling phishing campaigns where customers believe they are on the legitimate site throughout the entire process.",
+    "problem": "The redirect query parameter is used directly in router.push() without any validation that the destination is an internal path. Any external URL supplied in this parameter will be followed automatically after successful sign-up.",
+    "recommendation": "Validate all redirect targets against a strict allowlist of internal paths before use. Discard any value that does not match a known internal route and replace it with the default home path. Auth.js handles this validation natively as part of its session management."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Security",
+    "title": "JWT Tokens Valid for 30 Days With No Revocation",
+    "impact": "If a user&rsquo;s account is compromised, there is no way to invalidate their session. The attacker retains full authenticated access for up to 30 days even after the legitimate user changes their password or reports the breach.",
+    "problem": "Long-lived JWTs with no server-side revocation create an attack window that cannot be closed without rotating the signing secret and logging out all users simultaneously. There is also no logout endpoint that actually invalidates the token.",
+    "recommendation": "Migrate to Auth.js which provides server-managed sessions with database-backed revocation. In the interim, reduce token expiry significantly and implement a server-side token denylist checked on each authenticated request."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Security",
+    "title": "No Input Validation on Authentication Endpoints",
+    "impact": "Malformed or malicious data submitted to login and registration causes server errors and information disclosure. Without rate limiting, automated bots can hammer these endpoints continuously, potentially locking out real users or brute-forcing credentials.",
+    "problem": "Authentication handlers read directly from req.body without validating format, length, or type. There is no schema validation, no sanitisation, and no rate limiting &mdash; all three absent from every authentication endpoint simultaneously.",
+    "recommendation": "Introduce a Zod validation layer at every API boundary with strict schemas for all authentication inputs. Add rate limiting middleware on authentication routes to prevent brute-force and credential-stuffing attacks before they can impact real users."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Security",
+    "title": "jsonwebtoken Package Has Known CVE, Algorithm Confusion",
+    "impact": "CVE-2022-23540 allows an attacker to forge authentication tokens, potentially granting unauthorised admin access to any account on the platform without knowing any password.",
+    "problem": "jsonwebtoken@8.5.1 has a published vulnerability permitting token signature bypass under certain algorithm conditions. The dependency has not been updated despite a patched version being available for over two years.",
+    "recommendation": "Update jsonwebtoken to the latest patched version immediately as a standalone task. As part of the PRD migration, replace all custom JWT handling with Auth.js entirely &mdash; Auth.js manages token security internally and receives ongoing security maintenance."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Database",
+    "title": "GROQ Queries Built With String Interpolation",
+    "impact": "User-controlled URL segments embedded in CMS queries allow crafted requests that return data from unrelated document types &mdash; including unpublished draft content, internal configurations, or private records not intended for display.",
+    "problem": "Product detail pages build GROQ queries by interpolating URL parameters directly into the query string. GROQ is read-only so database writes are impossible, but unauthorised data exfiltration across document types is a genuine exposure.",
+    "recommendation": "Replace all string-interpolated queries with the parameterised form of client.fetch(), passing variables as a separate object. This separates query structure from user-supplied values and closes the interpolation attack surface on every product detail page."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Performance",
+    "title": "Homepage Fetches All Products With All Fields, No Projection",
+    "impact": "The homepage downloads the entire product catalogue including every field on each visit where cache is stale. On a 100+ product catalogue this causes multi-second page loads that directly increase bounce rates and reduce first-impression conversions.",
+    "problem": "The getStaticProps query fetches every field from every product without a GROQ projection. There is also no revalidate interval, so Incremental Static Regeneration is completely disabled and the page serves indefinitely stale content after the first build.",
+    "recommendation": "Add a GROQ projection selecting only fields required for the listing view. Set a revalidate interval matching content update frequency. For the PRD migration, App Router with React Server Components and Next.js fetch cache provides automatic, granular cache control without manual ISR configuration."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Architecture",
+    "title": "Framework Three Major Versions Behind, Next.js 12 vs Target 14",
+    "impact": "Three years of performance improvements, security patches, and framework features are missing. Every PRD requirement, Server Components, App Router layouts, streaming, is blocked until this upgrade completes.",
+    "problem": "The entire application runs on Next.js 12.1.6 with the Pages Router. Every new feature planned for the product requires either completing this upgrade first or accumulating workarounds that deepen technical debt.",
+    "recommendation": "Plan a phased migration: upgrade to Next.js 14 in Pages Router compatibility mode first, then progressively move routes to the App Router. TypeScript Strict mode and React Server Components both depend on completing this upgrade as a prerequisite."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Security",
+    "title": "No HTTP Security Headers Configured",
+    "impact": "Without security headers, the site can be embedded in a hidden iframe for clickjacking attacks and has no Content Security Policy to block injected scripts &mdash; leaving every page open to cross-site scripting exploits.",
+    "problem": "The Next.js configuration exports no headers() function. X-Frame-Options, Content-Security-Policy, X-Content-Type-Options, Referrer-Policy, and Permissions-Policy are entirely absent from every server response.",
+    "recommendation": "Add a headers() export to next.config.js with a complete security header set. Define a Content Security Policy whitelisting only trusted script and style sources. Use a centralised header management approach to test and maintain these configurations systematically."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Frontend",
+    "title": "SSR Props Dispatched via useEffect, Homepage Flash of Empty Content",
+    "impact": "The homepage briefly shows no products on every page load before data appears. This jarring flash signals a broken page and increases the likelihood of visitors leaving before the product grid becomes visible.",
+    "problem": "Server-fetched product data is passed as props but dispatched into Redux via useEffect. The component renders once empty then re-renders after the effect fires &mdash; a double render entirely avoidable by using the props directly in the render path.",
+    "recommendation": "Remove the useEffect dispatch and consume server props directly in the component render. For the PRD migration, App Router Server Components eliminate this pattern entirely &mdash; data is fetched and rendered server-side with no client-side re-hydration step."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Dependencies",
+    "title": "url-loader Webpack Override Conflicts With Next.js Image Pipeline",
+    "impact": "Automatic format conversion, lazy loading, and responsive image sizing are silently disabled across the entire site, causing larger file sizes and slower image delivery on every page without surfacing any visible errors.",
+    "problem": "A custom webpack rule catches all image file extensions and processes them with url-loader before Next.js can apply its optimisations, silently breaking the Image component&rsquo;s entire pipeline without any visible indication.",
+    "recommendation": "Remove the url-loader webpack rule and package entirely. Migrate all remaining raw img tags to the Next.js Image component. For SVGs needing inline use, adopt a dedicated SVG import strategy that does not intercept the image optimisation pipeline."
+  },
+  {
+    "severity": "HIGH",
+    "category": "Architecture",
+    "title": "Redux Serialization Check Globally Disabled",
+    "impact": "Non-serializable values in Redux state silently break SSR, state persistence, and debugging. These failures appear as intermittent hydration errors and state loss that are extremely difficult to reproduce or diagnose in a production environment.",
+    "problem": "The Redux store is configured with serializableCheck: false, disabling a safety mechanism that prevents Dates, functions, and class instances from entering state. This global disable masks problems rather than fixing them.",
+    "recommendation": "Identify which specific state slices trigger the check and fix each individually by converting values to serializable forms. As part of the PRD migration, replace Redux with Zustand which has simpler serialization semantics and eliminates this class of problem architecturally."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Accessibility",
+    "title": "Interactive Card Actions Use Divs Instead of Buttons",
+    "impact": "Keyboard-only users and screen reader users cannot interact with product cards at all. Add-to-cart, wishlist, and quick-view actions are completely inaccessible, cutting off a significant customer segment and creating compliance exposure.",
+    "problem": "All interactive actions in the product card component are div elements with onClick handlers. Divs are not keyboard focusable by default and are not announced as interactive by screen readers, violating WCAG 2.1 Level A minimum requirements.",
+    "recommendation": "Replace all interactive div elements with native button elements with descriptive accessible labels. Buttons receive keyboard focus, respond to Enter and Space, and are correctly announced by assistive technologies without any additional ARIA configuration."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Performance",
+    "title": "SSR Hydration Mismatch from Window Dimension Hook",
+    "impact": "Customers may see layout flickers on certain pages. In edge cases, entire component trees re-render client-side, degrading performance and potentially displaying incorrect layouts briefly before correcting.",
+    "problem": "The useWindowDimensions hook reads window.innerWidth during first render, which does not exist in the server-side environment. The server/client mismatch triggers React&rsquo;s hydration error mechanism on affected pages.",
+    "recommendation": "Guard all window access with a mounted state check returning a safe default during server rendering. For new development, use CSS custom properties or container queries for responsive behaviour without JavaScript dimension detection."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Frontend",
+    "title": "Search Bar Is Entirely Non-Functional",
+    "impact": "The search bar is visible to all customers but returns no results and performs no action. Customers who use it hit a dead end and are significantly more likely to leave the site, directly reducing conversion rates.",
+    "problem": "The SearchBar component renders a visible input field in the header, but its implementation contains only a TODO comment. All search interactions are silently ignored &mdash; there is no API behind it and no filtering logic.",
+    "recommendation": "Implement product search using a Sanity GROQ text match query through a dedicated API route. For the PRD&rsquo;s target experience, consider Sanity&rsquo;s native search or Algolia to support faceted filtering and relevance ranking as the catalogue grows."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Performance",
+    "title": "No Code Splitting or Dynamic Imports for Large Components",
+    "impact": "All components are included in the initial JavaScript bundle regardless of whether the user ever sees them. Heavy carousels and modals load on every page, increasing Time to Interactive and penalising mobile users on slower connections.",
+    "problem": "Large presentation components are statically imported throughout the codebase. Next.js dynamic() with lazy loading is not applied to any component that would benefit from deferred loading.",
+    "recommendation": "Audit import sizes using next build output and apply dynamic imports to below-fold components &mdash; prioritising carousels and modals. In the App Router migration, Suspense boundaries handle code splitting as a first-class architectural feature."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Dependencies",
+    "title": "Sanity Client Three Major Versions Behind",
+    "impact": "The outdated client lacks current API features, blocks CDN-delivered content, and will prevent adoption of real-time preview capabilities. Content delivery performance is degraded compared to what the current SDK enables.",
+    "problem": "The project uses @sanity/client v3.3.0 while the current release is v6.x. Major version upgrades include breaking changes to query APIs and authentication handling that must be addressed before production use.",
+    "recommendation": "Upgrade @sanity/client following official migration guides for each major version. Test all GROQ queries in a staging environment first. The upgrade unlocks CDN-hosted content delivery which significantly improves global read performance for product listings."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Database",
+    "title": "No ISR Revalidation, Product Listing Serves Stale Content Indefinitely",
+    "impact": "When products are updated in the CMS, changes are not reflected on the live site until a manual full rebuild. Customers see outdated pricing, discontinued products, and missing new arrivals until someone notices and triggers a rebuild manually.",
+    "problem": "The homepage getStaticProps specifies no revalidate interval. Without revalidation, the statically generated page is never refreshed by Next.js regardless of how frequently the underlying product data changes in Sanity.",
+    "recommendation": "Add a revalidate interval tuned to content update frequency. For high-frequency changes, configure Sanity webhook-based on-demand revalidation to regenerate only affected pages when CMS content is published &mdash; providing near-real-time updates without full rebuilds."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Code Quality",
+    "title": "react-query Imported But Entirely Unused",
+    "impact": "Its presence creates confusion about data fetching conventions, leading to a mix of ad-hoc approaches with no caching &mdash; meaning users re-download data they already have on every navigation, increasing server load unnecessarily.",
+    "problem": "react-query v3 is listed as a dependency and appears in imports but is not used for any data fetching. All fetching happens through a mix of getStaticProps, useEffect-based fetches, and Redux state &mdash; no consistent strategy exists.",
+    "recommendation": "Adopt React Query v5 (TanStack Query) consistently for all client-side data fetching as the PRD specifies. Remove all ad-hoc fetch patterns and document a single data fetching convention. Remove unused imports until the migration establishes the pattern clearly."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Dependencies",
+    "title": "@zeit/next-css Package Is Deprecated and Abandoned",
+    "impact": "A deprecated package without active maintenance grows as a security surface and will break on Next.js upgrades. It conflicts with Tailwind&rsquo;s PostCSS pipeline and may cause CSS processing failures in production builds.",
+    "problem": "@zeit/next-css was superseded by Next.js&rsquo;s built-in CSS import support several major versions ago. It receives no security updates and creates a redundant CSS processing chain alongside Tailwind.",
+    "recommendation": "Remove @zeit/next-css from the project. Next.js handles CSS module and global CSS imports natively with no plugin required. Verify the PostCSS configuration works correctly with only Tailwind and autoprefixer in the plugin chain after removal."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Performance",
+    "title": "Images Use Native <img> Tags Instead of Next.js Image Component",
+    "impact": "Images are served in their original format and size to every user regardless of device or connection speed. This directly increases Largest Contentful Paint scores, degrades mobile performance, and hurts SEO ranking in Core Web Vitals assessments.",
+    "problem": "Multiple components use HTML img elements instead of the Next.js Image component, opting out of automatic WebP conversion, lazy loading, responsive sizing, and blur-up placeholder generation.",
+    "recommendation": "Replace all img elements with the Next.js Image component. Define appropriate sizes and priority attributes based on above/below-fold position. Configure the remote image domain allowlist in next.config.js for externally hosted Sanity CDN images."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Backend",
+    "title": "No Pagination on Product API Endpoints",
+    "impact": "As the catalogue grows, API responses become progressively slower. A 500+ product catalogue served without pagination causes long loading times and potential timeouts for customers on slower connections.",
+    "problem": "Product listing endpoints return the entire catalogue in a single response with no limit, offset, or cursor mechanism. Performance degrades linearly as inventory grows with no architectural limit in place.",
+    "recommendation": "Add pagination to all collection endpoints using the Sanity GROQ slice operator for efficient native pagination. Expose page metadata in API responses so the front-end can implement infinite scroll or numbered navigation with a defined maximum page size."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Code Quality",
+    "title": "Mixed Error Handling, No Consistent Error Strategy",
+    "impact": "When API calls fail, error messages shown to customers are unpredictable &mdash; ranging from raw server error text to complete silence. This creates a poor user experience and makes production debugging very difficult.",
+    "problem": "Error handling is inconsistent across the codebase &mdash; some catch blocks log to console, others set state messages, some swallow errors silently. The err: any type bypasses TypeScript safety and allows undefined property access that can throw secondary errors.",
+    "recommendation": "Define a consistent error handling pattern: type all errors with a known shape, use a centralised formatting utility, and deliver user-facing messages through a unified notification component. TypeScript Strict mode will enforce proper error typing at compile time."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Architecture",
+    "title": "No ORM or Database Migration Infrastructure",
+    "impact": "User and order data has no schema enforcement or migration history. Schema changes require manual coordination and cannot be rolled back, creating a data layer that grows riskier to change as the platform scales.",
+    "problem": "Sanity is being used as a makeshift user database. The PRD requires migrating user accounts and orders to PostgreSQL with Prisma, but no schema or migration infrastructure exists to support this transition safely.",
+    "recommendation": "Begin the Prisma schema definition in parallel with ongoing development. Define models for User, Order, OrderItem, and Address matching PRD requirements. Establish a migration workflow in a development environment before any production data migration begins."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Frontend",
+    "title": "Favourites State Not Synchronised With Account, Lost on Logout",
+    "impact": "Customers who add items to their wishlist lose the entire list on logout or device switch. This reduces engagement with the wishlist feature and prevents the business from using wishlist data for re-engagement campaigns.",
+    "problem": "The favourites slice uses redux-persist for local storage only, never synchronised with the user&rsquo;s account on the server. There is no API endpoint to save or retrieve favourites, and the same clearCart no-op bug affects the favourites reset path.",
+    "recommendation": "Create an API endpoint to persist and retrieve favourites per user account. Sync local state on login and logout. Fix the no-op reset bug using the same pattern applied to the cart slice. In the PRD migration, model favourites as a proper user relationship in PostgreSQL."
+  },
+  {
+    "severity": "MEDIUM",
+    "category": "Backend",
+    "title": "Registration Uses Raw Axios to Sanity REST API",
+    "impact": "Bypassing the Sanity SDK creates a fragile integration that will silently break on API version changes. Error handling for Sanity-specific responses is absent, meaning registration failures surface as generic errors with no actionable message for the customer.",
+    "problem": "The registration endpoint constructs raw HTTP requests directly to the Sanity REST API using axios instead of the @sanity/client SDK, creating a fragile direct API dependency the SDK is designed to abstract safely.",
+    "recommendation": "Replace the raw axios call with the official Sanity SDK&rsquo;s mutation API in the short term. More importantly, move user account data to PostgreSQL per the PRD plan &mdash; using Sanity as a user database is an architectural misuse the migration resolves at the root."
+  },
+  {
+    "severity": "LOW",
+    "category": "Code Quality",
+    "title": "Console Logs Left in Production Authentication Flows",
+    "impact": "Email addresses and authentication states are logged to the browser console in production. This is visible to any customer who opens DevTools and may be captured by third-party browser extensions without the user&rsquo;s knowledge.",
+    "problem": "Multiple auth-related components and handlers contain console.log statements logging user inputs and API responses that were never removed before the code reached its current deployed state.",
+    "recommendation": "Remove all console.log statements from production code paths. Introduce a structured logging utility disabled in production environments. For server-side error tracking, integrate a service like Sentry that captures errors without exposing them in the browser console."
+  },
+  {
+    "severity": "LOW",
+    "category": "Performance",
+    "title": "Carousel Library Loaded Globally on Every Page",
+    "impact": "The carousel library and its CSS load on every page &mdash; including login and checkout &mdash; where no carousel exists. This adds unnecessary JavaScript weight to pages that never use it, increasing load time for all customers.",
+    "problem": "react-slick and slick-carousel are statically imported from globally-imported components. No dynamic import or lazy loading is applied, meaning the full carousel library initialises on every page regardless of content.",
+    "recommendation": "Wrap the carousel component in a dynamic import with SSR disabled and load its CSS only on pages that include it. Evaluate whether native CSS scroll snap could replace the third-party library entirely, eliminating the dependency rather than just deferring it."
+  },
+  {
+    "severity": "LOW",
+    "category": "Code Quality",
+    "title": "TypeScript \"any\" Used Throughout, No Strict Type Safety",
+    "impact": "Type errors are hidden behind any assertions, allowing bugs that would be caught at compile time to reach production. This increases the maintenance cost of every future change and directly contradicts the PRD&rsquo;s TypeScript Strict requirement.",
+    "problem": "The err: any pattern appears in every catch block, and other any assertions exist in API response handling and component props. TypeScript strict mode is not enabled, meaning many of these would fail immediately if it were turned on.",
+    "recommendation": "Enable TypeScript strict mode in tsconfig.json as the first step of the PRD migration. Define proper types for all API responses using auto-generated Sanity type schema. Replace all any catch bindings with unknown and add type narrowing before accessing error properties."
+  },
+  {
+    "severity": "LOW",
+    "category": "Dependencies",
+    "title": "Multiple Unused and Redundant Dependencies",
+    "impact": "Unused packages increase build times, expand the attack surface for supply chain vulnerabilities, and create confusion about which libraries are in active use. Each is a potential future CVE requiring patching with no benefit delivered.",
+    "problem": "package.json includes url-loader (replaced by Next.js image handling), @zeit/next-css (replaced by built-in CSS support), and react-query (unused). Combined with duplicate type declaration packages, the dependency tree carries significant unnecessary weight.",
+    "recommendation": "Run a dependency audit to identify all unused imports across the codebase. Remove confirmed-unused packages, replace deprecated ones with modern equivalents, and document the purpose of each remaining dependency. Enforce this in code review to prevent regrowth."
+  },
+  {
+    "severity": "LOW",
+    "category": "Frontend",
+    "title": "Missing Loading and Error States on Product Pages",
+    "impact": "When data is loading or a fetch fails, users see a blank layout rather than a meaningful state. This creates confusion about whether the site is working, increasing support enquiries and abandonment from customers who assume something is broken.",
+    "problem": "Product listing and detail components have no dedicated loading states or error boundary handling. Asynchronous operations either show nothing or crash the component tree with no recovery path offered to the user.",
+    "recommendation": "Add skeleton loading states for all data-driven components and implement error boundaries with meaningful recovery options. In the App Router migration, Suspense boundaries and error.tsx files provide these as first-class architectural features requiring minimal custom code."
+  },
+  {
+    "severity": "LOW",
+    "category": "Code Quality",
+    "title": "Inconsistent File Naming Convention",
+    "impact": "Inconsistent naming makes it difficult to locate files and creates confusion about whether naming styles indicate architectural roles. This slows developer onboarding and increases the risk of files being duplicated during the PRD migration refactoring.",
+    "problem": "Component files mix PascalCase and camelCase with no consistent rule. Some pages use camelCase while components use PascalCase. The inconsistency extends throughout hooks, utilities, and slice files.",
+    "recommendation": "Adopt and document a convention: PascalCase for components, camelCase for utilities and hooks, kebab-case for pages following App Router convention. Apply progressively during the PRD migration and enforce through ESLint rules to prevent regression."
+  },
+  {
+    "severity": "LOW",
+    "category": "Performance",
+    "title": "No Client-Side Caching Strategy for Repeated API Calls",
+    "impact": "Users who navigate between pages trigger fresh API calls every time for data that has not changed. This increases server load, delays page transitions, and degrades perceived performance on slower mobile connections.",
+    "problem": "There is no caching layer for API responses on the client side. Data fetched for a product detail page is discarded when the user navigates away and re-fetched if they return. The installed react-query package that solves this problem is not being used.",
+    "recommendation": "Implement React Query for all client-side data fetching with stale-while-revalidate cache settings. Define cache keys at the route level and configure global defaults for stale time and garbage collection. This directly fulfils the PRD&rsquo;s React Query requirement with minimal effort."
+  },
+  {
+    "severity": "LOW",
+    "category": "Backend",
+    "title": "API Routes Have No Consistent Response Format",
+    "impact": "Front-end components must handle different response shapes for each endpoint. This makes it impossible to write generic error handling logic that works reliably across multiple API endpoints, increasing the risk of subtle display bugs.",
+    "problem": "API routes return responses in inconsistent formats &mdash; some return raw data objects, some wrap in a data property, and error responses have varying structures. There is no standard envelope applied across the API surface.",
+    "recommendation": "Define a standard API response envelope with consistent success and error shapes and apply it to all existing and new routes. Generate TypeScript types from the response schema so the front-end benefits from compile-time type safety when consuming any endpoint."
+  },
+  {
+    "severity": "LOW",
+    "category": "Code Quality",
+    "title": "Redux Boilerplate Eliminated With PRD Target, Zustand",
+    "impact": "Redux complexity slows feature development and increases bundle size. The Immer no-op bugs found in this audit are a direct consequence of this complexity. Removing it reduces the surface area for this entire class of state management bug.",
+    "problem": "The application uses full Redux Toolkit setup for state that could be managed with a fraction of the code in Zustand as specified by the PRD. The Immer no-op bugs discovered in this audit are a direct result of Redux complexity.",
+    "recommendation": "Plan the Redux-to-Zustand migration as a dedicated sprint during the PRD rebuild. Define Zustand stores for cart, user session, and UI state. Migrate one slice at a time starting with the simplest. The migration will reduce boilerplate by roughly 60% for equivalent functionality."
+  },
+  {
+    "severity": "LOW",
+    "category": "Code Quality",
+    "title": "No Environment Variable Validation on Application Startup",
+    "impact": "If a required environment variable is missing in a deployment, the application starts successfully and fails at runtime when the variable is first accessed &mdash; often in a customer-facing code path, causing a live production outage that is hard to diagnose quickly.",
+    "problem": "There is no startup validation checking that required environment variables are present and correctly formatted before the application begins serving requests. Missing variables only surface when the specific code path using them is hit in production traffic.",
+    "recommendation": "Add a Zod-based startup validation step that checks all required environment variables against a defined schema before the server accepts any requests. Provide clear error messages listing exactly which variables are missing or malformed, making deployment failures obvious and fast to resolve."
+  }
+]
